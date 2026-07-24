@@ -11,7 +11,11 @@ async function main() {
   const adminEmail = process.env.ADMIN_EMAIL || 'admin@singhjibikes.com';
   await prisma.adminUser.upsert({
     where: { email: adminEmail },
-    update: {},
+    update: {
+      passwordHash: adminPassword,
+      name: 'Admin',
+      role: 'admin',
+    },
     create: {
       email: adminEmail,
       passwordHash: adminPassword,
