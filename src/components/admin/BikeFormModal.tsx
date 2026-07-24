@@ -24,7 +24,8 @@ export default function BikeFormModal({ isOpen, onClose, bike, onSubmit }: BikeF
     transmission: 'MANUAL',
     seatCapacity: '2',
     description: '',
-    image: ''
+    image: '',
+    registrationNumber: ''
   });
 
   useEffect(() => {
@@ -40,13 +41,14 @@ export default function BikeFormModal({ isOpen, onClose, bike, onSubmit }: BikeF
         transmission: bike.transmission || 'MANUAL',
         seatCapacity: bike.seatCapacity ? String(bike.seatCapacity) : '2',
         description: bike.description || '',
-        image: bike.images?.[0] || ''
+        image: bike.images?.[0] || '',
+        registrationNumber: bike.units?.[0]?.registrationNumber || ''
       });
     } else if (isOpen) {
       setFormData({
         name: '', brand: '', category: 'BIKE', pricePerDay: '',
         engine: '', mileage: '', fuelType: 'PETROL', transmission: 'MANUAL',
-        seatCapacity: '2', description: '', image: ''
+        seatCapacity: '2', description: '', image: '', registrationNumber: ''
       });
     }
   }, [bike, isOpen]);
@@ -119,6 +121,13 @@ export default function BikeFormModal({ isOpen, onClose, bike, onSubmit }: BikeF
             label="Engine (cc)" 
             value={formData.engine} 
             onChange={e => setFormData({ ...formData, engine: e.target.value })} 
+          />
+
+          <Input 
+            label="Registration Number" 
+            value={formData.registrationNumber} 
+            onChange={e => setFormData({ ...formData, registrationNumber: e.target.value })} 
+            placeholder="e.g. MH 01 AB 1234"
           />
           
           <Input 

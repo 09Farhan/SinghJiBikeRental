@@ -28,9 +28,10 @@ export async function POST(req: NextRequest) {
     }
 
     const body = await req.json();
+    const registrationNumber = body.registrationNumber;
     const validatedData = bikeSchema.parse(body);
 
-    const bike = await BikeService.createBike(validatedData);
+    const bike = await BikeService.createBike({ ...validatedData, registrationNumber });
     return NextResponse.json({ success: true, data: bike }, { status: 201 });
   } catch (error: any) {
     return NextResponse.json({ success: false, error: error.message || 'Validation error' }, { status: 400 });

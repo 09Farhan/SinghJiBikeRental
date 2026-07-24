@@ -22,9 +22,10 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
     }
 
     const body = await req.json();
+    const registrationNumber = body.registrationNumber;
     const validatedData = bikeSchema.partial().parse(body);
 
-    const bike = await BikeService.updateBike(params.id, validatedData);
+    const bike = await BikeService.updateBike(params.id, { ...validatedData, registrationNumber });
     return NextResponse.json({ success: true, data: bike });
   } catch (error: any) {
     return NextResponse.json({ success: false, error: error.message || 'Validation error' }, { status: 400 });

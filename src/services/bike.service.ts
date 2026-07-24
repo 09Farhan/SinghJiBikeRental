@@ -76,14 +76,49 @@ export const BikeService = {
   },
 
   async createBike(data: any) {
-    return prisma.bike.create({ data });
+    const { registrationNumber, ...bikeData } = data;
+    const bike = await prisma.bike.create({ data: bikeData });
+    if (registrationNumber) {
+      await prisma.bikeUnit.create({
+        data: {
+          bikeId: bike.id,
+          registrationNumber,
+          color: 'Standard',
+        }
+      });
+    }
+    return bike;
   },
 
   async updateBike(id: string, data: any) {
-    return prisma.bike.update({
+    const { registrationNumber, ...bikeData } = data;
+    const bike = await prisma.bike.update({
       where: { id },
-      data,
+      data: bikeData,
     });
+
+    if (registrationNumber) {
+      const firstUnit = await prisma.bikeUnit.findFirst({
+        where: { bikeId: id },
+        orderBy: { createdAt: 'asc' }
+      });
+      
+      if (firstUnit) {
+        await prisma.bikeUnit.update({
+          where: { id: firstUnit.id },
+          data: { registrationNumber }
+        });
+      } else {
+        await prisma.bikeUnit.create({
+          data: {
+            bikeId: id,
+            registrationNumber,
+            color: 'Standard'
+          }
+        });
+      }
+    }
+    return bike;
   },
 
   async deleteBike(id: string) {
