@@ -1,12 +1,17 @@
 import { Metadata } from 'next';
 import BikesCatalog from './BikesCatalog';
+import { BikeService } from '@/services/bike.service';
 
 export const metadata: Metadata = {
   title: 'Our Fleet - Premium Bikes & Scooters for Rent',
   description: 'Browse our premium fleet of motorcycles and scooters. Book your perfect ride with Singh Ji\'s Bike Rental.',
 };
+// Force dynamic to always fetch fresh bikes from DB
+export const dynamic = 'force-dynamic';
 
-export default function BikesPage() {
+export default async function BikesPage() {
+  const bikes = await BikeService.getAllBikes();
+
   return (
     <main className="min-h-screen bg-[#0a0e1a] pt-24 pb-16">
       <div className="container mx-auto px-4">
@@ -20,7 +25,7 @@ export default function BikesPage() {
           </p>
         </div>
 
-        <BikesCatalog />
+        <BikesCatalog bikes={bikes} />
       </div>
     </main>
   );

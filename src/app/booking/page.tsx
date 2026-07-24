@@ -7,38 +7,12 @@ import BookingSummary from '@/components/booking/BookingSummary';
 import { useBooking } from '@/hooks/useBooking';
 import Button from '@/components/ui/Button';
 
-// Demo data fallback
-const DEMO_BIKES = [
-  { id: '1', name: 'BMW G 310 GS', slug: 'bmw-g310-gs', brand: 'BMW', category: 'BIKE', pricePerDay: 2000, engine: '313cc Single Cylinder', mileage: '30 kmpl', fuelType: 'PETROL', transmission: 'MANUAL', seatCapacity: 2, description: 'The BMW G 310 GS is an adventure-ready motorcycle...', images: ['/images/bikes/bmw-g310-gs-1.jpg'], isActive: true, availableUnits: 2 },
-  { id: '2', name: 'Royal Enfield Classic 350', slug: 'royal-enfield-classic-350', brand: 'Royal Enfield', category: 'BIKE', pricePerDay: 1000, engine: '349cc Single Cylinder', mileage: '35 kmpl', fuelType: 'PETROL', transmission: 'MANUAL', seatCapacity: 2, description: 'The timeless Classic 350...', images: ['/images/bikes/royal-enfield-classic-350-1.jpg'], isActive: true, availableUnits: 3 },
-  { id: '3', name: 'Royal Enfield Himalayan', slug: 'royal-enfield-himalayan', brand: 'Royal Enfield', category: 'BIKE', pricePerDay: 1500, engine: '411cc Single Cylinder', mileage: '30 kmpl', fuelType: 'PETROL', transmission: 'MANUAL', seatCapacity: 2, description: 'Built for adventure...', images: ['/images/bikes/royal-enfield-himalayan-1.jpg'], isActive: true, availableUnits: 2 },
-  { id: '4', name: 'KTM Duke 390', slug: 'ktm-duke-390', brand: 'KTM', category: 'BIKE', pricePerDay: 1800, engine: '373cc Single Cylinder', mileage: '25 kmpl', fuelType: 'PETROL', transmission: 'MANUAL', seatCapacity: 2, description: 'Street-naked sportbike...', images: ['/images/bikes/ktm-duke-390-1.jpg'], isActive: true, availableUnits: 1 },
-  { id: '5', name: 'TVS Apache RTR 160', slug: 'tvs-apache-rtr-160', brand: 'TVS', category: 'BIKE', pricePerDay: 800, engine: '159.7cc Single Cylinder', mileage: '45 kmpl', fuelType: 'PETROL', transmission: 'MANUAL', seatCapacity: 2, description: 'Sporty performance...', images: ['/images/bikes/tvs-apache-rtr-160-1.jpg'], isActive: true, availableUnits: 2 },
-  { id: '6', name: 'Honda Activa 6G', slug: 'honda-activa-6g', brand: 'Honda', category: 'SCOOTER', pricePerDay: 400, engine: '109.51cc Single Cylinder', mileage: '60 kmpl', fuelType: 'PETROL', transmission: 'AUTOMATIC', seatCapacity: 2, description: 'Most trusted scooter...', images: ['/images/bikes/honda-activa-6g-1.jpg'], isActive: true, availableUnits: 3 },
-  { id: '7', name: 'Suzuki Access 125', slug: 'suzuki-access-125', brand: 'Suzuki', category: 'SCOOTER', pricePerDay: 450, engine: '124cc Single Cylinder', mileage: '55 kmpl', fuelType: 'PETROL', transmission: 'AUTOMATIC', seatCapacity: 2, description: 'Premium scooter experience...', images: ['/images/bikes/suzuki-access-125-1.jpg'], isActive: true, availableUnits: 2 },
-  { id: '8', name: 'Yamaha Aerox 155', slug: 'yamaha-aerox-155', brand: 'Yamaha', category: 'SCOOTER', pricePerDay: 600, engine: '155cc Single Cylinder', mileage: '40 kmpl', fuelType: 'PETROL', transmission: 'AUTOMATIC', seatCapacity: 2, description: 'Sportbike in scooter form...', images: ['/images/bikes/yamaha-aerox-155-1.jpg'], isActive: true, availableUnits: 1 }
-];
-
-function BookingContent() {
-  const searchParams = useSearchParams();
+export function BookingContent({ initialBike }: { initialBike: any }) {
   const router = useRouter();
-  const slug = searchParams.get('bike');
-  
-  const [bike, setBike] = useState<any>(null);
-  const [loading, setLoading] = useState(true);
+  const [bike, setBike] = useState<any>(initialBike);
+  const [loading, setLoading] = useState(false);
   const [bookingSuccess, setBookingSuccess] = useState(false);
-
-  useEffect(() => {
-    if (slug) {
-      const foundBike = DEMO_BIKES.find(b => b.slug === slug);
-      if (foundBike) {
-        setBike(foundBike);
-      }
-    }
-    setLoading(false);
-  }, [slug]);
-
-  const { 
+  const [bookingError, setBookingError] = useState<string | null>(null);  const { 
     startDate, 
     endDate, 
     totalDays, 
@@ -103,9 +77,23 @@ function BookingContent() {
           endDate={endDate}
           onStartDateChange={setStartDate}
           onEndDateChange={setEndDate}
-          onSubmit={(data) => {
-            console.log('Booking submitted', data);
-            setBookingSuccess(true);
+          onSubmit={async (data) => {
+            setBookingError(null);
+            try {
+              const res = await fetch('/api/bookings', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data),
+              });
+              const json = await res.json();
+              if (json.success) {
+                setBookingSuccess(true);
+              } else {
+                setBookingError(json.error || 'Failed to submit booking');
+              }
+            } catch (err: any) {
+              setBookingError(err.message || 'An error occurred');
+            }
           }} 
         />
       </div>
@@ -137,9 +125,44 @@ export default function BookingPage() {
             <div className="w-12 h-12 border-4 border-orange-500/20 border-t-orange-500 rounded-full animate-spin"></div>
           </div>
         }>
-          <BookingContent />
+          <BookingContentWrapper />
         </Suspense>
       </div>
     </main>
   );
+}
+
+// Wrapper component to handle useSearchParams inside Suspense
+function BookingContentWrapper() {
+  const searchParams = useSearchParams();
+  const slug = searchParams.get('bike');
+  const [bike, setBike] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (slug) {
+      fetch(`/api/bikes`)
+        .then(res => res.json())
+        .then(data => {
+          if (data.success) {
+            const foundBike = data.data.find((b: any) => b.slug === slug);
+            setBike(foundBike);
+          }
+          setLoading(false);
+        })
+        .catch(() => setLoading(false));
+    } else {
+      setLoading(false);
+    }
+  }, [slug]);
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center min-h-[60vh]">
+        <div className="w-12 h-12 border-4 border-orange-500/20 border-t-orange-500 rounded-full animate-spin"></div>
+      </div>
+    );
+  }
+
+  return <BookingContent initialBike={bike} />;
 }

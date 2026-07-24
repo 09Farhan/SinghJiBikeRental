@@ -1,14 +1,11 @@
 import Link from 'next/link';
 import { formatCurrency } from '@/lib/utils';
+import { BikeService } from '@/services/bike.service';
 
-const featuredBikes = [
-  { name: 'BMW G 310 GS', price: 2000, category: 'Adventure', image: '/images/bikes/bmw-g310-gs-1.jpg', slug: 'bmw-g310-gs' },
-  { name: 'Royal Enfield Classic 350', price: 1000, category: 'Cruiser', image: '/images/bikes/royal-enfield-classic-350-1.jpg', slug: 'royal-enfield-classic-350' },
-  { name: 'KTM Duke 390', price: 1800, category: 'Sport', image: '/images/bikes/ktm-duke-390-1.jpg', slug: 'ktm-duke-390' },
-  { name: 'Honda Activa 6G', price: 400, category: 'Scooter', image: '/images/bikes/honda-activa-6g-1.jpg', slug: 'honda-activa-6g' }
-];
-
-export default function FeaturedBikes() {
+export default async function FeaturedBikes() {
+  // Fetch up to 4 bikes for the featured section
+  const bikes = await BikeService.getAllBikes();
+  const featuredBikes = bikes.slice(0, 4);
   return (
     <section className="py-24 px-4 md:px-8 bg-[#0a0e1a]">
       <div className="max-w-7xl mx-auto">
@@ -55,7 +52,7 @@ export default function FeaturedBikes() {
                 </h3>
                 <div className="mt-auto flex items-center justify-between pt-4">
                   <p className="text-orange-400 font-bold">
-                    From {formatCurrency ? formatCurrency(bike.price) : `₹${bike.price}`}/day
+                    From {formatCurrency ? formatCurrency(bike.pricePerDay) : `₹${bike.pricePerDay}`}/day
                   </p>
                   <Link 
                     href={`/bikes/${bike.slug}`}

@@ -10,7 +10,7 @@ interface BookingFormProps {
   endDate: string;
   onStartDateChange: (date: string) => void;
   onEndDateChange: (date: string) => void;
-  onSubmit: (data: any) => void;
+  onSubmit: (data: any) => Promise<void>;
 }
 
 export default function BookingForm({ 
@@ -35,20 +35,24 @@ export default function BookingForm({
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate API call
-    setTimeout(() => {
-      onSubmit({
-        ...formData,
-        startDate,
-        endDate,
-        bikeId: bike.id
-      });
-      setIsSubmitting(false);
-    }, 1500);
+    // Add +91 to customer phone before submitting
+    const fullPhone = formData.customerPhone.startsWith('+') 
+      ? formData.customerPhone 
+      : `+91${formData.customerPhone}`;
+
+    await onSubmit({
+      ...formData,
+      customerPhone: fullPhone,
+      startDate,
+      endDate,
+      bikeId: bike.id
+    });
+    
+    setIsSubmitting(false);
   };
 
   return (

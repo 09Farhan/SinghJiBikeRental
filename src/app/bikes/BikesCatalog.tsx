@@ -4,26 +4,14 @@ import BikeFilters from '@/components/bikes/BikeFilters';
 import BikeCard from '@/components/bikes/BikeCard';
 import { useFilters } from '@/hooks/useFilters';
 
-// Demo data for the catalog
-const DEMO_BIKES = [
-  { id: '1', name: 'BMW G 310 GS', slug: 'bmw-g310-gs', brand: 'BMW', category: 'BIKE', pricePerDay: 2000, engine: '313cc Single Cylinder', mileage: '30 kmpl', fuelType: 'PETROL', transmission: 'MANUAL', seatCapacity: 2, description: 'The BMW G 310 GS is an adventure-ready motorcycle...', images: ['/images/bikes/bmw-g310-gs-1.jpg'], isActive: true, availableUnits: 2 },
-  { id: '2', name: 'Royal Enfield Classic 350', slug: 'royal-enfield-classic-350', brand: 'Royal Enfield', category: 'BIKE', pricePerDay: 1000, engine: '349cc Single Cylinder', mileage: '35 kmpl', fuelType: 'PETROL', transmission: 'MANUAL', seatCapacity: 2, description: 'The timeless Classic 350...', images: ['/images/bikes/royal-enfield-classic-350-1.jpg'], isActive: true, availableUnits: 3 },
-  { id: '3', name: 'Royal Enfield Himalayan', slug: 'royal-enfield-himalayan', brand: 'Royal Enfield', category: 'BIKE', pricePerDay: 1500, engine: '411cc Single Cylinder', mileage: '30 kmpl', fuelType: 'PETROL', transmission: 'MANUAL', seatCapacity: 2, description: 'Built for adventure...', images: ['/images/bikes/royal-enfield-himalayan-1.jpg'], isActive: true, availableUnits: 2 },
-  { id: '4', name: 'KTM Duke 390', slug: 'ktm-duke-390', brand: 'KTM', category: 'BIKE', pricePerDay: 1800, engine: '373cc Single Cylinder', mileage: '25 kmpl', fuelType: 'PETROL', transmission: 'MANUAL', seatCapacity: 2, description: 'Street-naked sportbike...', images: ['/images/bikes/ktm-duke-390-1.jpg'], isActive: true, availableUnits: 1 },
-  { id: '5', name: 'TVS Apache RTR 160', slug: 'tvs-apache-rtr-160', brand: 'TVS', category: 'BIKE', pricePerDay: 800, engine: '159.7cc Single Cylinder', mileage: '45 kmpl', fuelType: 'PETROL', transmission: 'MANUAL', seatCapacity: 2, description: 'Sporty performance...', images: ['/images/bikes/tvs-apache-rtr-160-1.jpg'], isActive: true, availableUnits: 2 },
-  { id: '6', name: 'Honda Activa 6G', slug: 'honda-activa-6g', brand: 'Honda', category: 'SCOOTER', pricePerDay: 400, engine: '109.51cc Single Cylinder', mileage: '60 kmpl', fuelType: 'PETROL', transmission: 'AUTOMATIC', seatCapacity: 2, description: 'Most trusted scooter...', images: ['/images/bikes/honda-activa-6g-1.jpg'], isActive: true, availableUnits: 3 },
-  { id: '7', name: 'Suzuki Access 125', slug: 'suzuki-access-125', brand: 'Suzuki', category: 'SCOOTER', pricePerDay: 450, engine: '124cc Single Cylinder', mileage: '55 kmpl', fuelType: 'PETROL', transmission: 'AUTOMATIC', seatCapacity: 2, description: 'Premium scooter experience...', images: ['/images/bikes/suzuki-access-125-1.jpg'], isActive: true, availableUnits: 2 },
-  { id: '8', name: 'Yamaha Aerox 155', slug: 'yamaha-aerox-155', brand: 'Yamaha', category: 'SCOOTER', pricePerDay: 600, engine: '155cc Single Cylinder', mileage: '40 kmpl', fuelType: 'PETROL', transmission: 'AUTOMATIC', seatCapacity: 2, description: 'Sportbike in scooter form...', images: ['/images/bikes/yamaha-aerox-155-1.jpg'], isActive: true, availableUnits: 1 }
-];
+export default function BikesCatalog({ bikes }: { bikes: any[] }) {
+  const { filters, setFilter, clearFilters, filteredBikes } = useFilters(bikes);
 
-export default function BikesCatalog() {
-  const { filters, setFilter, clearFilters, filteredBikes } = useFilters(DEMO_BIKES);
-
-  // Extract unique brands from demo data
+  // Extract unique brands from data
   const brands = useMemo(() => {
-    const brandSet = new Set(DEMO_BIKES.map(b => b.brand));
+    const brandSet = new Set(bikes.map(b => b.brand));
     return Array.from(brandSet).sort();
-  }, []);
+  }, [bikes]);
 
   return (
     <div className="flex flex-col lg:flex-row gap-8 items-start">

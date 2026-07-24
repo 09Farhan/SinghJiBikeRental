@@ -1,7 +1,8 @@
 node_modules
 .next
+# local env files
 .env
-.env.local
+.env*.local
 prisma/*.db
 coverage
 out

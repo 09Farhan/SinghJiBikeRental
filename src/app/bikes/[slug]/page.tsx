@@ -9,19 +9,10 @@ import Badge from '@/components/ui/Badge';
 import { formatCurrency } from '@/lib/utils';
 import { WHATSAPP_NUMBER } from '@/lib/constants';
 
-const DEMO_BIKES = [
-  { id: '1', name: 'BMW G 310 GS', slug: 'bmw-g310-gs', brand: 'BMW', category: 'BIKE', pricePerDay: 2000, engine: '313cc Single Cylinder', mileage: '30 kmpl', fuelType: 'PETROL', transmission: 'MANUAL', seatCapacity: 2, description: 'The BMW G 310 GS is an adventure-ready motorcycle that brings the GS promise to the sub-500cc segment. It is designed for everyday adventures and long rides.', images: ['/images/bikes/bmw-g310-gs-1.jpg'], isActive: true, availableUnits: 2 },
-  { id: '2', name: 'Royal Enfield Classic 350', slug: 'royal-enfield-classic-350', brand: 'Royal Enfield', category: 'BIKE', pricePerDay: 1000, engine: '349cc Single Cylinder', mileage: '35 kmpl', fuelType: 'PETROL', transmission: 'MANUAL', seatCapacity: 2, description: 'The timeless Classic 350 continues to hold its appeal with its retro styling and thumping engine. A perfect companion for city rides and highway cruising.', images: ['/images/bikes/royal-enfield-classic-350-1.jpg'], isActive: true, availableUnits: 3 },
-  { id: '3', name: 'Royal Enfield Himalayan', slug: 'royal-enfield-himalayan', brand: 'Royal Enfield', category: 'BIKE', pricePerDay: 1500, engine: '411cc Single Cylinder', mileage: '30 kmpl', fuelType: 'PETROL', transmission: 'MANUAL', seatCapacity: 2, description: 'Built for all roads and no roads. The Himalayan is your true adventure companion with exceptional ground clearance and rugged build.', images: ['/images/bikes/royal-enfield-himalayan-1.jpg'], isActive: true, availableUnits: 2 },
-  { id: '4', name: 'KTM Duke 390', slug: 'ktm-duke-390', brand: 'KTM', category: 'BIKE', pricePerDay: 1800, engine: '373cc Single Cylinder', mileage: '25 kmpl', fuelType: 'PETROL', transmission: 'MANUAL', seatCapacity: 2, description: 'The corner rocket. KTM Duke 390 offers thrilling performance with its lightweight chassis and powerful engine.', images: ['/images/bikes/ktm-duke-390-1.jpg'], isActive: true, availableUnits: 1 },
-  { id: '5', name: 'TVS Apache RTR 160', slug: 'tvs-apache-rtr-160', brand: 'TVS', category: 'BIKE', pricePerDay: 800, engine: '159.7cc Single Cylinder', mileage: '45 kmpl', fuelType: 'PETROL', transmission: 'MANUAL', seatCapacity: 2, description: 'A perfect blend of everyday practicality and sporty performance. The Apache RTR 160 is great for city commuting.', images: ['/images/bikes/tvs-apache-rtr-160-1.jpg'], isActive: true, availableUnits: 2 },
-  { id: '6', name: 'Honda Activa 6G', slug: 'honda-activa-6g', brand: 'Honda', category: 'SCOOTER', pricePerDay: 400, engine: '109.51cc Single Cylinder', mileage: '60 kmpl', fuelType: 'PETROL', transmission: 'AUTOMATIC', seatCapacity: 2, description: 'India\'s most trusted scooter. The Activa 6G offers smooth performance, great mileage, and ultimate reliability.', images: ['/images/bikes/honda-activa-6g-1.jpg'], isActive: true, availableUnits: 3 },
-  { id: '7', name: 'Suzuki Access 125', slug: 'suzuki-access-125', brand: 'Suzuki', category: 'SCOOTER', pricePerDay: 450, engine: '124cc Single Cylinder', mileage: '55 kmpl', fuelType: 'PETROL', transmission: 'AUTOMATIC', seatCapacity: 2, description: 'A premium scooter that delivers peppy performance without compromising on fuel efficiency and comfort.', images: ['/images/bikes/suzuki-access-125-1.jpg'], isActive: true, availableUnits: 2 },
-  { id: '8', name: 'Yamaha Aerox 155', slug: 'yamaha-aerox-155', brand: 'Yamaha', category: 'SCOOTER', pricePerDay: 600, engine: '155cc Single Cylinder', mileage: '40 kmpl', fuelType: 'PETROL', transmission: 'AUTOMATIC', seatCapacity: 2, description: 'A maxi-sports scooter that shares its DNA with the R15. Extremely fun to ride with sharp handling.', images: ['/images/bikes/yamaha-aerox-155-1.jpg'], isActive: true, availableUnits: 1 }
-];
+import { BikeService } from '@/services/bike.service';
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
-  const bike = DEMO_BIKES.find(b => b.slug === params.slug);
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  const bike = await BikeService.getBikeBySlug(params.slug);
   
   if (!bike) {
     return { title: 'Bike Not Found' };
@@ -33,8 +24,9 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   };
 }
 
-export default function BikeDetailPage({ params }: { params: { slug: string } }) {
-  const bike = DEMO_BIKES.find(b => b.slug === params.slug);
+export default async function BikeDetailPage({ params }: { params: { slug: string } }) {
+  const bike = await BikeService.getBikeBySlug(params.slug);
+  const relatedBikes = await BikeService.getAllBikes({ category: bike?.category });
 
   if (!bike) {
     notFound();
@@ -141,7 +133,7 @@ export default function BikeDetailPage({ params }: { params: { slug: string } })
         </div>
 
         {/* Related Bikes */}
-        <RelatedBikes currentSlug={bike.slug} bikes={DEMO_BIKES} />
+        <RelatedBikes currentSlug={bike.slug} bikes={relatedBikes} />
       </div>
 
       {/* JSON-LD Schema */}
