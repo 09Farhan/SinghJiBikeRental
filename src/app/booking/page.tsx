@@ -7,7 +7,7 @@ import BookingSummary from '@/components/booking/BookingSummary';
 import { useBooking } from '@/hooks/useBooking';
 import Button from '@/components/ui/Button';
 
-export function BookingContent({ initialBike }: { initialBike: any }) {
+function BookingContent({ initialBike }: { initialBike: any }) {
   const router = useRouter();
   const [bike, setBike] = useState<any>(initialBike);
   const [loading, setLoading] = useState(false);
