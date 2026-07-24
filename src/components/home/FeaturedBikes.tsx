@@ -28,16 +28,20 @@ export default async function FeaturedBikes() {
               className="group rounded-2xl bg-[#111827] border border-gray-700/50 overflow-hidden hover:border-orange-500/30 transition-all hover:-translate-y-1 shadow-lg hover:shadow-orange-500/10"
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              {/* Image Area placeholder */}
+              {/* Image Area */}
               <div className="h-48 bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center relative overflow-hidden">
-                <svg className="w-24 h-24 text-gray-600 opacity-50 group-hover:scale-110 transition-transform duration-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M5.5 16a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5z"></path>
-                  <path d="M18.5 16a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5z"></path>
-                  <path d="M15.5 16h-11"></path>
-                  <path d="M9 16v-5l2-4h5l3 4v5"></path>
-                  <path d="M14 11h-3"></path>
-                  <path d="M6.5 11l-2 5"></path>
-                </svg>
+                {bike.images?.[0] ? (
+                  <img src={bike.images[0]} alt={bike.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                ) : (
+                  <svg className="w-24 h-24 text-gray-600 opacity-50 group-hover:scale-110 transition-transform duration-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M5.5 16a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5z"></path>
+                    <path d="M18.5 16a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5z"></path>
+                    <path d="M15.5 16h-11"></path>
+                    <path d="M9 16v-5l2-4h5l3 4v5"></path>
+                    <path d="M14 11h-3"></path>
+                    <path d="M6.5 11l-2 5"></path>
+                  </svg>
+                )}
                 {/* Decorative overlay on hover */}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#111827] to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
               </div>
