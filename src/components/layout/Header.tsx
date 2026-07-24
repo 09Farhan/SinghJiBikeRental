@@ -38,13 +38,14 @@ export default function Header() {
   }, [pathname])
 
   return (
-    <header
-      className={cn(
-        'fixed top-0 left-0 right-0 z-40 transition-all duration-300',
-        isScrolled ? 'bg-[#0a0e1a]/80 backdrop-blur-xl border-b border-gray-800/50 py-3' : 'bg-transparent py-5',
-        isVisible ? 'translate-y-0' : '-translate-y-full'
-      )}
-    >
+    <>
+      <header
+        className={cn(
+          'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
+          isScrolled ? 'bg-[#0a0e1a]/80 backdrop-blur-xl border-b border-gray-800/50 py-3' : 'bg-transparent py-5',
+          isVisible ? 'translate-y-0' : '-translate-y-full'
+        )}
+      >
       <div className="max-w-7xl mx-auto px-4 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-1 z-50">
           <span className="text-orange-500 font-heading font-bold text-2xl">Singh Ji's</span>
@@ -87,6 +88,8 @@ export default function Header() {
         </button>
       </div>
 
+      </header>
+
       {/* Mobile Menu Overlay */}
       <div
         className={cn(
@@ -117,6 +120,6 @@ export default function Header() {
           </div>
         </nav>
       </div>
-    </header>
+    </>
   )
 }
