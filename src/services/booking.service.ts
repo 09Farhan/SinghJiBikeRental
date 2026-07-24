@@ -119,7 +119,7 @@ export const BookingService = {
   },
 
   async updateBookingStatus(id: string, status: BookingStatus) {
-    return prisma.booking.update({
+    const booking = await prisma.booking.update({
       where: { id },
       data: { status },
       include: {
@@ -127,6 +127,21 @@ export const BookingService = {
         customer: true
       }
     });
+
+    // Automatically update the bike unit's status based on the booking status
+    if (status === 'ACTIVE' || status === 'CONFIRMED') {
+      await prisma.bikeUnit.update({
+        where: { id: booking.bikeUnitId },
+        data: { status: 'BOOKED' }
+      });
+    } else if (status === 'COMPLETED' || status === 'CANCELLED') {
+      await prisma.bikeUnit.update({
+        where: { id: booking.bikeUnitId },
+        data: { status: 'AVAILABLE' }
+      });
+    }
+
+    return booking;
   },
 
   async getBookingsByDateRange(start: Date, end: Date): Promise<BookingWithDetails[]> {
@@ -146,6 +161,12 @@ export const BookingService = {
   async deleteBooking(id: string) {
     const booking = await prisma.booking.findUnique({ where: { id } });
     if (!booking) return;
+
+    // Free up the unit so it becomes available again
+    await prisma.bikeUnit.update({
+      where: { id: booking.bikeUnitId },
+      data: { status: 'AVAILABLE' }
+    });
 
     await prisma.booking.delete({ where: { id } });
 
