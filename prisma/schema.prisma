@@ -1,0 +1,148 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum BikeCategory {
+  BIKE
+  SCOOTER
+}
+
+enum FuelType {
+  PETROL
+  ELECTRIC
+}
+
+enum TransmissionType {
+  MANUAL
+  AUTOMATIC
+}
+
+enum UnitStatus {
+  AVAILABLE
+  BOOKED
+  MAINTENANCE
+}
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  ACTIVE
+  COMPLETED
+  CANCELLED
+}
+
+enum InquiryStatus {
+  NEW
+  READ
+  REPLIED
+}
+
+model Bike {
+  id            String          @id @default(cuid())
+  name          String
+  slug          String          @unique
+  brand         String
+  category      BikeCategory
+  description   String
+  images        String[]
+  pricePerDay   Int
+  engine        String
+  mileage       String
+  fuelType      FuelType
+  transmission  TransmissionType
+  seatCapacity  Int             @default(2)
+  isActive      Boolean         @default(true)
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+  units         BikeUnit[]
+
+  @@index([category])
+  @@index([brand])
+  @@index([isActive])
+}
+
+model BikeUnit {
+  id                 String     @id @default(cuid())
+  bikeId             String
+  bike               Bike       @relation(fields: [bikeId], references: [id], onDelete: Cascade)
+  registrationNumber String     @unique
+  color              String
+  status             UnitStatus @default(AVAILABLE)
+  notes              String?
+  createdAt          DateTime   @default(now())
+  updatedAt          DateTime   @updatedAt
+  bookings           Booking[]
+
+  @@index([bikeId, status])
+}
+
+model Booking {
+  id          String        @id @default(cuid())
+  bikeUnitId  String
+  bikeUnit    BikeUnit      @relation(fields: [bikeUnitId], references: [id])
+  customerId  String
+  customer    Customer      @relation(fields: [customerId], references: [id])
+  startDate   DateTime
+  endDate     DateTime
+  totalDays   Int
+  totalAmount Int
+  status      BookingStatus @default(PENDING)
+  notes       String?
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  @@index([bikeUnitId])
+  @@index([customerId])
+  @@index([status])
+  @@index([startDate, endDate])
+}
+
+model Customer {
+  id        String    @id @default(cuid())
+  name      String
+  email     String    @unique
+  phone     String
+  idProof   String?
+  address   String?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  bookings  Booking[]
+}
+
+model AdminUser {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  name         String
+  role         String   @default("admin")
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model ContactInquiry {
+  id        String        @id @default(cuid())
+  name      String
+  email     String
+  phone     String
+  message   String
+  status    InquiryStatus @default(NEW)
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+}
+
+model Review {
+  id         String   @id @default(cuid())
+  author     String
+  location   String
+  rating     Int      @default(5)
+  comment    String
+  images     String[] // Store base64 or URLs
+  isApproved Boolean  @default(false)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
