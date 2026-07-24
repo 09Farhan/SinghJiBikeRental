@@ -95,7 +95,7 @@ export default function AdminReviewsPage() {
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
-                <tr className="border-b border-gray-800 bg-gray-900/50">
+                <tr className="border-b border-gray-800 bg-gray-900/50 whitespace-nowrap">
                   <th className="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
                     Customer
                   </th>
@@ -118,7 +118,7 @@ export default function AdminReviewsPage() {
               </thead>
               <tbody className="divide-y divide-gray-800">
                 {reviews.map((review) => (
-                  <tr key={review.id} className="hover:bg-gray-800/20 transition-colors">
+                  <tr key={review.id} className="hover:bg-gray-800/20 transition-colors whitespace-nowrap">
                     <td className="px-6 py-4">
                       <div className="font-medium text-white">{review.author}</div>
                       <div className="text-sm text-gray-500">{review.location}</div>
@@ -135,8 +135,8 @@ export default function AdminReviewsPage() {
                         ))}
                       </div>
                     </td>
-                    <td className="px-6 py-4">
-                      <p className="text-sm text-gray-300 max-w-xs truncate" title={review.comment}>
+                    <td className="px-6 py-4 whitespace-normal min-w-[200px]">
+                      <p className="text-sm text-gray-300 line-clamp-2" title={review.comment}>
                         {review.comment}
                       </p>
                     </td>

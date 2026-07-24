@@ -37,7 +37,7 @@ export default function BookingsTable({ bookings, onStatusChange, onDeleteBookin
     <div className="overflow-x-auto">
       <table className="w-full text-left border-collapse">
         <thead>
-          <tr className="bg-[#1f2937] text-gray-400 text-xs uppercase tracking-wider">
+          <tr className="bg-[#1f2937] text-gray-400 text-xs uppercase tracking-wider whitespace-nowrap">
             <th className="px-6 py-4 font-medium">Booking ID</th>
             <th className="px-6 py-4 font-medium">Customer</th>
             <th className="px-6 py-4 font-medium">Bike</th>
@@ -50,7 +50,7 @@ export default function BookingsTable({ bookings, onStatusChange, onDeleteBookin
         </thead>
         <tbody className="divide-y divide-gray-800">
           {bookings.map((booking) => (
-            <tr key={booking.id} className="hover:bg-white/5 transition-colors">
+            <tr key={booking.id} className="hover:bg-white/5 transition-colors whitespace-nowrap">
               <td className="px-6 py-4">
                 <span className="text-orange-400 font-mono text-sm">{booking.id}</span>
               </td>

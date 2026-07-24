@@ -50,11 +50,11 @@ export default function DashboardClient({ initialStats, initialBookings }: { ini
 
   return (
     <div className="space-y-8">
-      <div className="flex justify-between items-center">
-        <h1 className="text-3xl font-bold text-white">Dashboard Overview</h1>
-        <div className="flex space-x-4">
-          <Button onClick={() => router.push('/admin/inventory')}>Add New Bike</Button>
-          <Button variant="outline" onClick={() => router.push('/admin/bookings')}>View All Bookings</Button>
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+        <h1 className="text-2xl md:text-3xl font-bold text-white">Dashboard Overview</h1>
+        <div className="flex flex-col sm:flex-row w-full md:w-auto gap-3">
+          <Button onClick={() => router.push('/admin/inventory')} className="w-full sm:w-auto">Add New Bike</Button>
+          <Button variant="outline" onClick={() => router.push('/admin/bookings')} className="w-full sm:w-auto">View All Bookings</Button>
         </div>
       </div>
 

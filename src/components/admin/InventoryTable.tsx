@@ -33,7 +33,7 @@ export default function InventoryTable({ inventory, onEdit, onDelete, onToggleUn
     <div className="overflow-x-auto">
       <table className="w-full text-left border-collapse">
         <thead>
-          <tr className="bg-[#1f2937] text-gray-400 text-xs uppercase tracking-wider">
+          <tr className="bg-[#1f2937] text-gray-400 text-xs uppercase tracking-wider whitespace-nowrap">
             <th className="px-6 py-4 font-medium w-10"></th>
             <th className="px-6 py-4 font-medium">Model</th>
             <th className="px-6 py-4 font-medium">Brand</th>
@@ -52,7 +52,7 @@ export default function InventoryTable({ inventory, onEdit, onDelete, onToggleUn
 
             return (
               <React.Fragment key={bike.id}>
-                <tr className="hover:bg-white/5 transition-colors group">
+                <tr className="hover:bg-white/5 transition-colors group whitespace-nowrap">
                   <td className="px-6 py-4">
                     <button 
                       onClick={() => toggleRow(bike.id)}
@@ -106,7 +106,7 @@ export default function InventoryTable({ inventory, onEdit, onDelete, onToggleUn
                       <div className="px-14 py-4">
                         <table className="w-full text-left">
                           <thead>
-                            <tr className="text-gray-500 text-xs uppercase">
+                            <tr className="text-gray-500 text-xs uppercase whitespace-nowrap">
                               <th className="pb-2 font-medium">Registration Number</th>
                               <th className="pb-2 font-medium">Color</th>
                               <th className="pb-2 font-medium">Status</th>
@@ -115,7 +115,7 @@ export default function InventoryTable({ inventory, onEdit, onDelete, onToggleUn
                           </thead>
                           <tbody className="divide-y divide-gray-800/50">
                             {bike.units.map((unit: any) => (
-                              <tr key={unit.id}>
+                              <tr key={unit.id} className="whitespace-nowrap">
                                 <td className="py-2 text-sm text-gray-300">{unit.registrationNumber}</td>
                                 <td className="py-2 text-sm text-gray-300">{unit.color}</td>
                                 <td className="py-2">
