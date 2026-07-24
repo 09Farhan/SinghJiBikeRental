@@ -23,7 +23,8 @@ export default function BikeFormModal({ isOpen, onClose, bike, onSubmit }: BikeF
     fuelType: 'PETROL',
     transmission: 'MANUAL',
     seatCapacity: '2',
-    description: ''
+    description: '',
+    image: ''
   });
 
   useEffect(() => {
@@ -38,23 +39,42 @@ export default function BikeFormModal({ isOpen, onClose, bike, onSubmit }: BikeF
         fuelType: bike.fuelType || 'PETROL',
         transmission: bike.transmission || 'MANUAL',
         seatCapacity: bike.seatCapacity ? String(bike.seatCapacity) : '2',
-        description: bike.description || ''
+        description: bike.description || '',
+        image: bike.images?.[0] || ''
       });
     } else if (isOpen) {
       setFormData({
         name: '', brand: '', category: 'BIKE', pricePerDay: '',
         engine: '', mileage: '', fuelType: 'PETROL', transmission: 'MANUAL',
-        seatCapacity: '2', description: ''
+        seatCapacity: '2', description: '', image: ''
       });
     }
   }, [bike, isOpen]);
 
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setFormData(prev => ({ ...prev, image: reader.result as string }));
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!formData.image && !bike) {
+      alert('Please upload an image');
+      return;
+    }
+    
     onSubmit({
       ...formData,
+      slug: formData.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, ''),
       pricePerDay: Number(formData.pricePerDay),
-      seatCapacity: Number(formData.seatCapacity)
+      seatCapacity: Number(formData.seatCapacity),
+      images: formData.image ? [formData.image] : undefined
     });
   };
 
@@ -145,7 +165,25 @@ export default function BikeFormModal({ isOpen, onClose, bike, onSubmit }: BikeF
             value={formData.description}
             onChange={e => setFormData({ ...formData, description: e.target.value })}
             className="w-full bg-[#111827] border border-gray-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 min-h-[100px] resize-y"
+            required
           ></textarea>
+        </div>
+
+        <div className="space-y-2">
+          <label className="text-sm font-medium text-gray-300">Bike Image</label>
+          <div className="flex items-center gap-4">
+            {formData.image && (
+              <div className="w-24 h-24 rounded-xl overflow-hidden bg-gray-800 border border-gray-700 flex-shrink-0">
+                <img src={formData.image} alt="Preview" className="w-full h-full object-cover" />
+              </div>
+            )}
+            <input 
+              type="file" 
+              accept="image/*" 
+              onChange={handleImageChange}
+              className="text-sm text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-orange-500/10 file:text-orange-500 hover:file:bg-orange-500/20"
+            />
+          </div>
         </div>
         
         <div className="flex justify-end space-x-3 pt-4 border-t border-gray-800">
