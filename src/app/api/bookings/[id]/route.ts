@@ -33,3 +33,17 @@ export async function PATCH(req: NextRequest, { params }: { params: { id: string
     return NextResponse.json({ success: false, error: 'Failed to update booking' }, { status: 500 });
   }
 }
+
+export async function DELETE(req: NextRequest, { params }: { params: { id: string } }) {
+  try {
+    const adminToken = req.cookies.get('adminToken')?.value;
+    if (!adminToken) {
+      return NextResponse.json({ success: false, error: 'Unauthorized' }, { status: 401 });
+    }
+
+    await BookingService.deleteBooking(params.id);
+    return NextResponse.json({ success: true, data: { message: 'Booking deleted successfully' } });
+  } catch (error) {
+    return NextResponse.json({ success: false, error: 'Failed to delete booking' }, { status: 500 });
+  }
+}

@@ -28,7 +28,7 @@ export default function BookingsPage() {
 
   useEffect(() => {
     fetchBookings();
-  }, []);
+  }, [activeTab]);
 
   const handleStatusChange = async (id: string, newStatus: string) => {
     try {
@@ -42,6 +42,22 @@ export default function BookingsPage() {
       }
     } catch (error) {
       console.error('Failed to update status', error);
+    }
+  };
+
+  const handleDeleteBooking = async (id: string) => {
+    try {
+      const res = await fetch(`/api/bookings/${id}`, {
+        method: 'DELETE',
+      });
+      if (res.ok) {
+        setBookings(bookings.filter(b => b.id !== id));
+      } else {
+        alert('Failed to delete booking');
+      }
+    } catch (error) {
+      console.error('Failed to delete booking', error);
+      alert('Error deleting booking');
     }
   };
 
@@ -86,11 +102,13 @@ export default function BookingsPage() {
         </div>
       </div>
 
-      <div className="bg-[#111827] border border-gray-700/50 rounded-2xl overflow-hidden">
+      <div className="bg-[#111827] border border-gray-700/50 rounded-2xl overflow-hidden min-h-[400px]">
         {isLoading ? (
-          <div className="p-8 text-center text-gray-400">Loading bookings...</div>
+          <div className="flex justify-center items-center h-64">
+            <div className="w-8 h-8 border-4 border-orange-500 border-t-transparent rounded-full animate-spin"></div>
+          </div>
         ) : (
-          <BookingsTable bookings={filteredBookings} onStatusChange={handleStatusChange} />
+          <BookingsTable bookings={filteredBookings} onStatusChange={handleStatusChange} onDeleteBooking={handleDeleteBooking} />
         )}
       </div>
     </div>

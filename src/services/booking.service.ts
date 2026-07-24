@@ -141,5 +141,11 @@ export const BookingService = {
       },
       orderBy: { startDate: 'asc' }
     });
+  },
+
+  async deleteBooking(id: string) {
+    return prisma.booking.delete({
+      where: { id }
+    });
   }
 };
