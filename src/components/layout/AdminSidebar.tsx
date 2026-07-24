@@ -6,16 +6,25 @@ import { usePathname } from 'next/navigation'
 import { ADMIN_NAV_LINKS } from '@/lib/constants'
 import { cn } from '@/lib/utils'
 
-export default function AdminSidebar() {
+interface AdminSidebarProps {
+  onClose?: () => void;
+}
+
+export default function AdminSidebar({ onClose }: AdminSidebarProps) {
   const pathname = usePathname()
 
   return (
     <aside className="w-64 flex-shrink-0 h-screen bg-[#111827] border-r border-gray-800 flex flex-col z-40">
-      {/* Logo */}
-      <div className="h-20 flex items-center px-6 border-b border-gray-800">
-        <Link href="/admin" className="text-orange-500 font-heading font-bold text-xl">
+      {/* Logo and Close Button */}
+      <div className="h-20 flex items-center justify-between px-6 border-b border-gray-800">
+        <Link href="/admin" onClick={onClose} className="text-orange-500 font-heading font-bold text-xl">
           Singh Ji's Admin
         </Link>
+        <button onClick={onClose} className="md:hidden text-gray-400 hover:text-white">
+          <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
       </div>
 
       {/* Nav Items */}
@@ -27,6 +36,7 @@ export default function AdminSidebar() {
             <Link
               key={link.href}
               href={link.href}
+              onClick={onClose}
               className={cn(
                 'flex items-center gap-3 px-4 py-3 rounded-xl transition-all',
                 isActive 
@@ -48,6 +58,7 @@ export default function AdminSidebar() {
         
         <Link
           href="/"
+          onClick={onClose}
           className="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition-all"
         >
           <span className="w-5 h-5 flex items-center justify-center">
