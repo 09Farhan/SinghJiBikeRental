@@ -123,7 +123,7 @@ export default function InventoryPage() {
   };
 
   return (
-    <div className="space-y-6 mt-[-64px]">
+    <div className="space-y-6">
       <div className="flex justify-between items-center">
         <h1 className="text-3xl font-bold text-white">Fleet Inventory</h1>
         <Button onClick={() => { setEditingBike(null); setIsModalOpen(true); }}>

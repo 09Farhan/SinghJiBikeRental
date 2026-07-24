@@ -78,7 +78,7 @@ export default function BookingsPage() {
   });
 
   return (
-    <div className="space-y-6 mt-[-64px]">
+    <div className="space-y-6">
       <div className="flex justify-between items-center">
         <h1 className="text-3xl font-bold text-white">Manage Bookings</h1>
       </div>

@@ -49,7 +49,7 @@ export default function DashboardClient({ initialStats, initialBookings }: { ini
   };
 
   return (
-    <div className="space-y-8 mt-[-64px]">
+    <div className="space-y-8">
       <div className="flex justify-between items-center">
         <h1 className="text-3xl font-bold text-white">Dashboard Overview</h1>
         <div className="flex space-x-4">
