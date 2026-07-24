@@ -1,8 +1,8 @@
 export const SITE_NAME = "Singh Ji's Bike Rental";
 export const SITE_DESCRIPTION = 'Premium bike and scooter rentals in Bangalore. Quality rides for your everyday commute and weekend getaways.';
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
-export const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP || '+919876543210';
-export const PHONE_NUMBER = process.env.NEXT_PUBLIC_PHONE || '+919876543210';
+export const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP || '+91 7365844003';
+export const PHONE_NUMBER = process.env.NEXT_PUBLIC_PHONE || '+91 7365844003';
 export const EMAIL_ADDRESS = 'info@singhjibikes.com';
 export const BUSINESS_ADDRESS = '123 MG Road, Bangalore, Karnataka 560001';
 export const BUSINESS_HOURS = 'Mon-Sun: 7:00 AM - 9:00 PM';

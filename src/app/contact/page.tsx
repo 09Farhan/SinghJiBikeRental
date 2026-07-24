@@ -208,7 +208,7 @@ export default function ContactPage() {
             </div>
 
             <a 
-              href="https://wa.me/919876543210" 
+              href={`https://wa.me/${WHATSAPP_NUMBER?.replace(/[^0-9]/g, '')}`} 
               target="_blank" 
               rel="noopener noreferrer"
               className="w-full py-4 rounded-xl border border-green-500/50 text-green-400 font-medium text-lg hover:bg-green-500/10 transition-all flex items-center justify-center gap-3"
