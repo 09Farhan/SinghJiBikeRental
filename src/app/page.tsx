@@ -7,6 +7,8 @@ import CTASection from '@/components/home/CTASection';
 import { Metadata } from 'next';
 import { FAQS as faqs } from '@/lib/constants';
 
+export const revalidate = 0;
+
 export const metadata: Metadata = {
   title: "Singh Ji's Bike Rental | Premium Bike & Scooter Rentals in India",
   description: "Rent premium bikes and scooters for your next adventure. Self-drive bike rental with doorstep delivery. BMW, Royal Enfield, KTM & more starting ₹600/day.",
