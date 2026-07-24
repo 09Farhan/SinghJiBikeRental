@@ -49,6 +49,32 @@ export default function InventoryPage() {
     // Note: We'd need an API route for unit updates, skipping for now since we focus on bike updates
   };
 
+  const handleDeleteUnit = async (bikeId: string, unitId: string) => {
+    try {
+      const res = await fetch(`/api/bikes/units/${unitId}`, {
+        method: 'DELETE',
+      });
+      const data = await res.json();
+      
+      if (data.success) {
+        setInventory(inventory.map(bike => {
+          if (bike.id === bikeId) {
+            return {
+              ...bike,
+              units: bike.units.filter((unit: any) => unit.id !== unitId)
+            };
+          }
+          return bike;
+        }));
+      } else {
+        alert('Failed to delete unit: ' + data.error);
+      }
+    } catch (error) {
+      console.error('Failed to delete unit', error);
+      alert('Error deleting unit');
+    }
+  };
+
   const handleSave = async (bikeData: any) => {
     try {
       const { image, ...payload } = bikeData;
@@ -105,6 +131,7 @@ export default function InventoryPage() {
             inventory={inventory} 
             onEdit={handleEdit} 
             onToggleUnit={handleToggleUnit} 
+            onDeleteUnit={handleDeleteUnit}
           />
         )}
       </div>

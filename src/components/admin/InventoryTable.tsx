@@ -9,9 +9,10 @@ interface InventoryTableProps {
   inventory: any[];
   onEdit: (bike: any) => void;
   onToggleUnit: (bikeId: string, unitId: string, status: string) => void;
+  onDeleteUnit?: (bikeId: string, unitId: string) => void;
 }
 
-export default function InventoryTable({ inventory, onEdit, onToggleUnit }: InventoryTableProps) {
+export default function InventoryTable({ inventory, onEdit, onToggleUnit, onDeleteUnit }: InventoryTableProps) {
   const [expandedRows, setExpandedRows] = useState<Record<string, boolean>>({});
 
   const toggleRow = (id: string) => {
@@ -98,7 +99,7 @@ export default function InventoryTable({ inventory, onEdit, onToggleUnit }: Inve
                               <th className="pb-2 font-medium">Registration Number</th>
                               <th className="pb-2 font-medium">Color</th>
                               <th className="pb-2 font-medium">Status</th>
-                              <th className="pb-2 font-medium text-right">Update Status</th>
+                              <th className="pb-2 font-medium text-right">Actions</th>
                             </tr>
                           </thead>
                           <tbody className="divide-y divide-gray-800/50">
@@ -109,7 +110,7 @@ export default function InventoryTable({ inventory, onEdit, onToggleUnit }: Inve
                                 <td className="py-2">
                                   <Badge variant={getUnitStatusVariant(unit.status)}>{unit.status}</Badge>
                                 </td>
-                                <td className="py-2 text-right">
+                                <td className="py-2 text-right flex justify-end gap-2 items-center h-full">
                                   <select
                                     value={unit.status}
                                     onChange={(e) => onToggleUnit(bike.id, unit.id, e.target.value)}
@@ -119,6 +120,21 @@ export default function InventoryTable({ inventory, onEdit, onToggleUnit }: Inve
                                     <option value="BOOKED">Booked</option>
                                     <option value="MAINTENANCE">Maintenance</option>
                                   </select>
+                                  {onDeleteUnit && (
+                                    <button
+                                      onClick={() => {
+                                        if (confirm('Are you sure you want to delete this unit?')) {
+                                          onDeleteUnit(bike.id, unit.id);
+                                        }
+                                      }}
+                                      className="text-red-500 hover:text-red-400 p-1"
+                                      title="Delete Unit"
+                                    >
+                                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                      </svg>
+                                    </button>
+                                  )}
                                 </td>
                               </tr>
                             ))}
