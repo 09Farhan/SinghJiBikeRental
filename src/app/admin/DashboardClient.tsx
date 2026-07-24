@@ -32,6 +32,7 @@ export default function DashboardClient({ initialStats, initialBookings }: { ini
       });
       if (res.ok) {
         setBookings(bookings.filter(b => b.id !== id));
+        router.refresh();
       } else {
         alert('Failed to delete booking');
       }

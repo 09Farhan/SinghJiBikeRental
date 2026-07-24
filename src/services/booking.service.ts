@@ -144,8 +144,20 @@ export const BookingService = {
   },
 
   async deleteBooking(id: string) {
-    return prisma.booking.delete({
-      where: { id }
+    const booking = await prisma.booking.findUnique({ where: { id } });
+    if (!booking) return;
+
+    await prisma.booking.delete({ where: { id } });
+
+    // Check if customer has other bookings
+    const customerBookingsCount = await prisma.booking.count({
+      where: { customerId: booking.customerId }
     });
+
+    if (customerBookingsCount === 0) {
+      await prisma.customer.delete({ where: { id: booking.customerId } });
+    }
+
+    return booking;
   }
 };
