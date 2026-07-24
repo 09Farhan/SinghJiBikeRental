@@ -69,7 +69,7 @@ export default function BikeFormModal({ isOpen, onClose, bike, onSubmit }: BikeF
       slug: formData.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, ''),
       pricePerDay: Number(formData.pricePerDay),
       seatCapacity: Number(formData.seatCapacity),
-      images: formData.image ? [formData.image] : undefined
+      images: formData.image ? [formData.image] : []
     });
   };
 
@@ -175,8 +175,16 @@ export default function BikeFormModal({ isOpen, onClose, bike, onSubmit }: BikeF
           <label className="text-sm font-medium text-gray-300">Bike Image</label>
           <div className="flex items-center gap-4">
             {formData.image && (
-              <div className="w-24 h-24 rounded-xl overflow-hidden bg-gray-800 border border-gray-700 flex-shrink-0">
+              <div className="relative w-24 h-24 rounded-xl overflow-hidden bg-gray-800 border border-gray-700 flex-shrink-0 group">
                 <img src={formData.image} alt="Preview" className="w-full h-full object-cover" />
+                <button
+                  type="button"
+                  onClick={() => setFormData(prev => ({ ...prev, image: '' }))}
+                  title="Remove Image"
+                  className="absolute top-1 right-1 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs opacity-0 group-hover:opacity-100 transition-opacity"
+                >
+                  ✕
+                </button>
               </div>
             )}
             <CldUploadWidget 
