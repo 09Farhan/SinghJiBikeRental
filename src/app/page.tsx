@@ -7,7 +7,7 @@ import CTASection from '@/components/home/CTASection';
 import { Metadata } from 'next';
 import { FAQS as faqs } from '@/lib/constants';
 
-export const revalidate = 0;
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: "Singh Ji's Bike Rental | Premium Bike & Scooter Rentals in India",
