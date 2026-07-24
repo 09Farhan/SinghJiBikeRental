@@ -1,6 +1,15 @@
 import Link from 'next/link';
+import { prisma } from '@/lib/prisma';
 
-export default function HeroSection() {
+export default async function HeroSection() {
+  const totalBikes = await prisma.bikeUnit.count();
+  const reviewStats = await prisma.review.aggregate({
+    _avg: { rating: true },
+    where: { isApproved: true }
+  });
+  
+  const displayRating = reviewStats._avg.rating ? reviewStats._avg.rating.toFixed(1) : "4.8";
+  const displayBikes = totalBikes > 0 ? `${totalBikes}+` : "50+";
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-[#0a0e1a] via-[#0a0e1a]/95 to-[#0a0e1a] py-20 px-4 md:px-8">
       {/* Decorative Gradients */}
@@ -63,12 +72,12 @@ export default function HeroSection() {
           </div>
           <div className="hidden md:block w-1 h-1 rounded-full bg-gray-700"></div>
           <div className="flex items-center gap-2">
-            <span className="text-orange-400 font-bold text-lg">50+</span> 
+            <span className="text-orange-400 font-bold text-lg">{displayBikes}</span> 
             <span>Bikes Available</span>
           </div>
           <div className="hidden md:block w-1 h-1 rounded-full bg-gray-700"></div>
           <div className="flex items-center gap-2">
-            <span className="text-orange-400 font-bold text-lg">4.8★</span> 
+            <span className="text-orange-400 font-bold text-lg">{displayRating}★</span> 
             <span>Rating</span>
           </div>
         </div>
