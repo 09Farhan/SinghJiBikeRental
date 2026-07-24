@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { BUSINESS_ADDRESS, PHONE_NUMBER, BUSINESS_HOURS, GOOGLE_MAPS_EMBED } from '@/lib/constants';
+import { BUSINESS_ADDRESS, PHONE_NUMBER, WHATSAPP_NUMBER, BUSINESS_HOURS, GOOGLE_MAPS_EMBED } from '@/lib/constants';
 
 // We simulate importing these since they might not be fully built in the real system yet
 // import Button from '@/components/ui/Button'
