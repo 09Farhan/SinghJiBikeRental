@@ -66,8 +66,8 @@ export default async function BikeDetailPage({ params }: { params: { slug: strin
             </h1>
             
             <div className="flex items-center gap-4 mb-8">
-              <Badge variant={bike.availableUnits > 0 ? "success" : "danger"}>
-                {bike.availableUnits > 0 ? `${bike.availableUnits} Available` : 'Sold Out'}
+              <Badge variant={(bike.availableUnits || 0) > 0 ? "success" : "danger"}>
+                {(bike.availableUnits || 0) > 0 ? `${bike.availableUnits} Available` : 'Sold Out'}
               </Badge>
             </div>
 
@@ -91,7 +91,7 @@ export default async function BikeDetailPage({ params }: { params: { slug: strin
                 <Button 
                   size="lg" 
                   className="w-full bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white text-lg py-6"
-                  disabled={bike.availableUnits === 0}
+                  disabled={(bike.availableUnits || 0) === 0}
                 >
                   Book This Bike
                 </Button>
@@ -155,7 +155,7 @@ export default async function BikeDetailPage({ params }: { params: { slug: strin
               "url": `https://singhjibikerental.com/bikes/${bike.slug}`,
               "priceCurrency": "INR",
               "price": bike.pricePerDay,
-              "availability": bike.availableUnits > 0 ? "https://schema.org/InStock" : "https://schema.org/OutOfStock"
+              "availability": (bike.availableUnits || 0) > 0 ? "https://schema.org/InStock" : "https://schema.org/OutOfStock"
             }
           })
         }}
