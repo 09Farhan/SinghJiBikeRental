@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { toast } from 'react-hot-toast';
 import StatsCards from '@/components/admin/StatsCards';
 import BookingsTable from '@/components/admin/BookingsTable';
 import Button from '@/components/ui/Button';
@@ -19,9 +20,13 @@ export default function DashboardClient({ initialStats, initialBookings }: { ini
       });
       if (res.ok) {
         setBookings(bookings.map(b => b.id === id ? { ...b, status: newStatus } : b));
+        toast.success('Status updated');
+      } else {
+        toast.error('Failed to update status');
       }
     } catch (error) {
       console.error('Failed to update status', error);
+      toast.error('Failed to update status');
     }
   };
 
@@ -33,12 +38,13 @@ export default function DashboardClient({ initialStats, initialBookings }: { ini
       if (res.ok) {
         setBookings(bookings.filter(b => b.id !== id));
         router.refresh();
+        toast.success('Booking deleted');
       } else {
-        alert('Failed to delete booking');
+        toast.error('Failed to delete booking');
       }
     } catch (error) {
       console.error('Failed to delete booking', error);
-      alert('Error deleting booking');
+      toast.error('Error deleting booking');
     }
   };
 

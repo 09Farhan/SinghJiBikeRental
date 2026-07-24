@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react';
 import Modal from '@/components/ui/Modal';
 import Input from '@/components/ui/Input';
 import Button from '@/components/ui/Button';
+import { CldUploadWidget } from 'next-cloudinary';
+import { toast } from 'react-hot-toast';
 
 interface BikeFormModalProps {
   isOpen: boolean;
@@ -53,21 +55,12 @@ export default function BikeFormModal({ isOpen, onClose, bike, onSubmit }: BikeF
     }
   }, [bike, isOpen]);
 
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setFormData(prev => ({ ...prev, image: reader.result as string }));
-      };
-      reader.readAsDataURL(file);
-    }
-  };
+  // handleImageChange removed in favor of CldUploadWidget
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.image && !bike) {
-      alert('Please upload an image');
+      toast.error('Please upload an image');
       return;
     }
     
@@ -186,12 +179,22 @@ export default function BikeFormModal({ isOpen, onClose, bike, onSubmit }: BikeF
                 <img src={formData.image} alt="Preview" className="w-full h-full object-cover" />
               </div>
             )}
-            <input 
-              type="file" 
-              accept="image/*" 
-              onChange={handleImageChange}
-              className="text-sm text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-orange-500/10 file:text-orange-500 hover:file:bg-orange-500/20"
-            />
+            <CldUploadWidget 
+              uploadPreset="bike_rental_preset"
+              onSuccess={(result: any) => {
+                setFormData(prev => ({ ...prev, image: result.info.secure_url }));
+              }}
+            >
+              {({ open }) => (
+                <button 
+                  type="button" 
+                  onClick={(e) => { e.preventDefault(); open(); }}
+                  className="text-sm py-2 px-4 rounded-full font-semibold bg-orange-500/10 text-orange-500 hover:bg-orange-500/20 transition-colors"
+                >
+                  Upload Image
+                </button>
+              )}
+            </CldUploadWidget>
           </div>
         </div>
         

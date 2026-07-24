@@ -5,6 +5,7 @@ import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import FloatingActions from '@/components/layout/FloatingActions'
 import { BUSINESS_ADDRESS, PHONE_NUMBER } from '@/lib/constants'
+import { Toaster } from 'react-hot-toast'
 
 const outfit = Outfit({
   subsets: ['latin'],
@@ -77,6 +78,7 @@ export default function RootLayout({
         <main>{children}</main>
         <Footer />
         <FloatingActions />
+        <Toaster position="bottom-right" toastOptions={{ style: { background: '#1f2937', color: '#fff', border: '1px solid #374151' } }} />
       </body>
     </html>
   )

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { toast } from 'react-hot-toast';
 import InventoryTable from '@/components/admin/InventoryTable';
 import BikeFormModal from '@/components/admin/BikeFormModal';
 import Button from '@/components/ui/Button';
@@ -44,12 +45,13 @@ export default function InventoryPage() {
       
       if (data.success) {
         setInventory(inventory.filter(bike => bike.id !== bikeId));
+        toast.success('Bike deleted successfully');
       } else {
-        alert('Failed to delete bike: ' + data.error);
+        toast.error('Failed to delete bike: ' + data.error);
       }
     } catch (error) {
       console.error('Failed to delete bike', error);
-      alert('Error deleting bike');
+      toast.error('Error deleting bike');
     }
   };
 
@@ -84,12 +86,13 @@ export default function InventoryPage() {
           }
           return bike;
         }));
+        toast.success('Unit deleted successfully');
       } else {
-        alert('Failed to delete unit: ' + data.error);
+        toast.error('Failed to delete unit: ' + data.error);
       }
     } catch (error) {
       console.error('Failed to delete unit', error);
-      alert('Error deleting unit');
+      toast.error('Error deleting unit');
     }
   };
 
@@ -108,13 +111,14 @@ export default function InventoryPage() {
       const data = await res.json();
       if (data.success) {
         await fetchInventory(); // Refresh data
+        toast.success('Bike saved successfully');
         setIsModalOpen(false);
       } else {
-        alert('Failed to save bike: ' + data.error);
+        toast.error('Failed to save bike: ' + data.error);
       }
     } catch (error) {
       console.error('Error saving bike', error);
-      alert('Error saving bike');
+      toast.error('Error saving bike');
     }
   };
 
