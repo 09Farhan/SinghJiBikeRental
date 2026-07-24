@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Outfit, Inter } from 'next/font/google'
+import { Inter } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
@@ -7,15 +7,9 @@ import FloatingActions from '@/components/layout/FloatingActions'
 import { BUSINESS_ADDRESS, PHONE_NUMBER } from '@/lib/constants'
 import { Toaster } from 'react-hot-toast'
 
-const outfit = Outfit({
-  subsets: ['latin'],
-  variable: '--font-heading',
-  display: 'swap',
-})
-
 const inter = Inter({
   subsets: ['latin'],
-  variable: '--font-body',
+  variable: '--font-inter',
   display: 'swap',
 })
 
@@ -66,7 +60,7 @@ export default function RootLayout({
   }
 
   return (
-    <html lang="en" className={`${outfit.variable} ${inter.variable}`}>
+    <html lang="en" className={inter.variable}>
       <head>
         <script
           type="application/ld+json"
