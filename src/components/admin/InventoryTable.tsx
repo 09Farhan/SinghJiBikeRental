@@ -8,11 +8,12 @@ import Button from '@/components/ui/Button';
 interface InventoryTableProps {
   inventory: any[];
   onEdit: (bike: any) => void;
+  onDelete: (bikeId: string) => void;
   onToggleUnit: (bikeId: string, unitId: string, status: string) => void;
   onDeleteUnit?: (bikeId: string, unitId: string) => void;
 }
 
-export default function InventoryTable({ inventory, onEdit, onToggleUnit, onDeleteUnit }: InventoryTableProps) {
+export default function InventoryTable({ inventory, onEdit, onDelete, onToggleUnit, onDeleteUnit }: InventoryTableProps) {
   const [expandedRows, setExpandedRows] = useState<Record<string, boolean>>({});
 
   const toggleRow = (id: string) => {
@@ -83,6 +84,16 @@ export default function InventoryTable({ inventory, onEdit, onToggleUnit, onDele
                       className="text-orange-400 hover:text-orange-300 text-sm font-medium mr-4"
                     >
                       Edit Model
+                    </button>
+                    <button 
+                      onClick={() => {
+                        if (confirm(`Are you sure you want to delete ${bike.name}?`)) {
+                          onDelete(bike.id);
+                        }
+                      }}
+                      className="text-red-500 hover:text-red-400 text-sm font-medium mr-4"
+                    >
+                      Delete
                     </button>
                     <button className="text-blue-400 hover:text-blue-300 text-sm font-medium">
                       + Add Unit

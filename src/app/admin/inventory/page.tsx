@@ -35,6 +35,24 @@ export default function InventoryPage() {
     setIsModalOpen(true);
   };
 
+  const handleDeleteBike = async (bikeId: string) => {
+    try {
+      const res = await fetch(`/api/bikes/${bikeId}`, {
+        method: 'DELETE',
+      });
+      const data = await res.json();
+      
+      if (data.success) {
+        setInventory(inventory.filter(bike => bike.id !== bikeId));
+      } else {
+        alert('Failed to delete bike: ' + data.error);
+      }
+    } catch (error) {
+      console.error('Failed to delete bike', error);
+      alert('Error deleting bike');
+    }
+  };
+
   const handleToggleUnit = async (bikeId: string, unitId: string, newStatus: string) => {
     // Optimistic update
     setInventory(inventory.map(bike => {
@@ -130,6 +148,7 @@ export default function InventoryPage() {
           <InventoryTable 
             inventory={inventory} 
             onEdit={handleEdit} 
+            onDelete={handleDeleteBike}
             onToggleUnit={handleToggleUnit} 
             onDeleteUnit={handleDeleteUnit}
           />
