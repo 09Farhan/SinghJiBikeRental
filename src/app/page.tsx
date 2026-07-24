@@ -9,7 +9,7 @@ import { FAQS as faqs } from '@/lib/constants';
 
 export const metadata: Metadata = {
   title: "Singh Ji's Bike Rental | Premium Bike & Scooter Rentals in India",
-  description: "Rent premium bikes and scooters for your next adventure. Self-drive bike rental with doorstep delivery. BMW, Royal Enfield, KTM & more starting ₹400/day.",
+  description: "Rent premium bikes and scooters for your next adventure. Self-drive bike rental with doorstep delivery. BMW, Royal Enfield, KTM & more starting ₹600/day.",
   keywords: "bike rental, scooter rental, rent a bike, self drive bikes, premium bike rental India, Royal Enfield rental, KTM rental",
   openGraph: {
     title: "Singh Ji's Bike Rental | Premium Bike & Scooter Rentals",

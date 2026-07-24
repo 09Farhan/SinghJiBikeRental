@@ -30,7 +30,7 @@ export default function HeroSection() {
           className="animate-fade-in-up text-gray-300 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed font-body"
           style={{ animationDelay: '200ms' }}
         >
-          Rent premium bikes and scooters for your next adventure. Self-drive rentals with doorstep delivery, starting at just ₹400/day.
+          Rent premium bikes and scooters for your next adventure. Self-drive rentals with doorstep delivery, starting at just ₹600/day.
         </p>
         
         {/* CTA Buttons */}
