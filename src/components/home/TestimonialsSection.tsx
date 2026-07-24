@@ -40,6 +40,7 @@ export default function TestimonialsSection() {
   const handleReviewSuccess = () => {
     setShowReviewForm(false);
     setShowSuccessMessage(true);
+    fetchReviews();
     setTimeout(() => setShowSuccessMessage(false), 5000);
   };
 
@@ -58,7 +59,7 @@ export default function TestimonialsSection() {
 
           {showSuccessMessage && (
             <div className="mt-6 text-green-400 bg-green-500/10 border border-green-500/20 px-6 py-3 rounded-full">
-              Thank you! Your review has been submitted and is pending approval.
+              Thank you! Your review has been submitted successfully.
             </div>
           )}
         </div>

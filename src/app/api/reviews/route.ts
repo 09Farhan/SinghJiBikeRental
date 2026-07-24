@@ -22,7 +22,7 @@ export async function POST(req: NextRequest) {
         rating: data.rating,
         comment: data.comment,
         images: data.images || [],
-        isApproved: false, // Requires admin approval
+        isApproved: true, // Auto-approve by default
       },
     });
 
