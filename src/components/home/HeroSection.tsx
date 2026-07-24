@@ -2,9 +2,7 @@ import Link from 'next/link';
 import { prisma } from '@/lib/prisma';
 
 export default async function HeroSection() {
-  const totalBikes = await prisma.bikeUnit.count({
-    where: { status: 'AVAILABLE' }
-  });
+  const totalBikes = await prisma.bikeUnit.count();
   const reviewStats = await prisma.review.aggregate({
     _avg: { rating: true },
     where: { isApproved: true }
