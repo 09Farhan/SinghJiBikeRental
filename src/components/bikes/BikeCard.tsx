@@ -32,7 +32,7 @@ export default function BikeCard({ bike, index = 0 }: BikeCardProps) {
         </div>
         
         <div className="absolute top-3 left-3">
-             <Badge variant="default" className="bg-white/10 backdrop-blur-md border-white/20 text-white">
+             <Badge variant="default" className="bg-black/40 backdrop-blur-md border-white/10 text-white">
               {bike.category}
             </Badge>
         </div>
