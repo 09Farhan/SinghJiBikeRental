@@ -32,9 +32,9 @@ export default function BikeCard({ bike, index = 0 }: BikeCardProps) {
         </div>
         
         <div className="absolute top-3 left-3">
-             <Badge variant="default" className="bg-black/40 backdrop-blur-md border-white/10 text-white">
+             <span className="px-3 py-1 text-sm rounded-full border font-medium inline-flex items-center bg-black/60 backdrop-blur-md border-white/20 text-white shadow-sm">
               {bike.category}
-            </Badge>
+            </span>
         </div>
       </div>
 
