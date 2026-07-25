@@ -23,7 +23,7 @@ export const NAV_LINKS = [
 
 export const ADMIN_NAV_LINKS = [
   { name: 'Dashboard', href: '/admin' },
-  { name: 'Inventory', href: '/admin/bikes' },
+  { name: 'Inventory', href: '/admin/inventory' },
   { name: 'Bookings', href: '/admin/bookings' },
   { name: 'Messages', href: '/admin/messages' },
   { name: 'Reviews', href: '/admin/reviews' },
