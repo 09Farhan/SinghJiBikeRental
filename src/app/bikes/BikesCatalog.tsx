@@ -16,7 +16,7 @@ export default function BikesCatalog({ bikes }: { bikes: any[] }) {
   return (
     <div className="flex flex-col lg:flex-row gap-8 items-start">
       {/* Sidebar Filters */}
-      <aside className="w-full lg:w-1/4 sticky top-24">
+      <aside className="w-full lg:w-1/4 lg:sticky lg:top-24 z-30">
         <BikeFilters 
           filters={filters} 
           onFilterChange={setFilter} 
