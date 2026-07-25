@@ -16,7 +16,7 @@ export default function Footer() {
               <span className="text-gray-300 font-heading font-medium text-xl">Bike Rental</span>
             </Link>
             <p className="text-gray-400 mt-2">
-              Premium bike and scooter rentals for your ultimate adventure. Experience the thrill of the ride with our well-maintained fleet.
+              Premium bike and scooter rentals in Siliguri for your ultimate adventure. Experience the thrill of the ride with our well-maintained fleet.
             </p>
             <div className="flex gap-4 mt-4">
               {/* Social placeholders */}

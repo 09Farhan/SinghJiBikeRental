@@ -53,7 +53,7 @@ export default function ContactPage() {
             Get in Touch
           </h1>
           <p className="text-gray-400 text-lg max-w-2xl">
-            Have questions about renting a bike or need assistance? We're here to help you get on the road.
+            Have questions about renting a bike in Siliguri or need assistance? We're here to help you get on the road.
           </p>
         </div>
 
@@ -167,7 +167,7 @@ export default function ContactPage() {
               </div>
               <div>
                 <h3 className="text-white font-medium mb-1">Our Location</h3>
-                <p className="text-gray-400 text-sm leading-relaxed">{BUSINESS_ADDRESS || '123 Bike Lane, Adventure City, India'}</p>
+                <p className="text-gray-400 text-sm leading-relaxed">{BUSINESS_ADDRESS || 'Siliguri, West Bengal'}</p>
               </div>
             </div>
 

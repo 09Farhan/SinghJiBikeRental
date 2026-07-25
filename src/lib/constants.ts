@@ -1,12 +1,12 @@
 export const SITE_NAME = "Singh Ji's Bike Rental";
-export const SITE_DESCRIPTION = 'Premium bike and scooter rentals in Bangalore. Quality rides for your everyday commute and weekend getaways.';
+export const SITE_DESCRIPTION = 'Premium bike and scooter rentals in Siliguri, West Bengal. Quality rides for your everyday commute and weekend getaways.';
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
 export const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP || '+917365844003';
 export const PHONE_NUMBER = process.env.NEXT_PUBLIC_PHONE || '+917365844003';
 export const EMAIL_ADDRESS = 'info@singhjibikes.com';
-export const BUSINESS_ADDRESS = "SinghJi's Cafe, opp. SIT Petrol Pump, Siliguri, Methibari";
+export const BUSINESS_ADDRESS = "SinghJi's Cafe, opp. SIT Petrol Pump, Siliguri, West Bengal 734001";
 export const BUSINESS_HOURS = 'Mon-Sun: 7:00 AM - 9:00 PM';
-export const GOOGLE_MAPS_EMBED = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15551.782631720235!2d77.58784333604859!3d12.975306631626084!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1670c9b44e6d%3A0xf8dfc3e8517e4fe0!2sBengaluru%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin';
+export const GOOGLE_MAPS_EMBED = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d114068.74088926442!2d88.35515255479008!3d26.727101831818274!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e44114f5441dcd%3A0xdeb5c4701fa08d87!2sSiliguri%2C%20West%20Bengal!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin';
 
 export const MIN_RENTAL_DAYS = 1;
 export const MAX_RENTAL_DAYS = 30;

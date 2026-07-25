@@ -10,12 +10,12 @@ import { FAQS as faqs } from '@/lib/constants';
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
-  title: "Singh Ji's Bike Rental | Premium Bike & Scooter Rentals in India",
-  description: "Rent premium bikes and scooters for your next adventure. Self-drive bike rental with doorstep delivery. BMW, Royal Enfield, KTM & more starting ₹600/day.",
-  keywords: "bike rental, scooter rental, rent a bike, self drive bikes, premium bike rental India, Royal Enfield rental, KTM rental",
+  title: "Singh Ji's Bike Rental | Premium Bike & Scooter Rentals in Siliguri",
+  description: "Rent premium bikes and scooters in Siliguri for your next adventure. Self-drive bike rental with doorstep delivery in Siliguri. BMW, Royal Enfield, KTM & more starting ₹600/day.",
+  keywords: "bike rental Siliguri, scooter rental Siliguri, rent a bike in Siliguri, self drive bikes Siliguri, premium bike rental Siliguri, Royal Enfield rental Siliguri, Darjeeling bike trip",
   openGraph: {
-    title: "Singh Ji's Bike Rental | Premium Bike & Scooter Rentals",
-    description: "Rent premium bikes and scooters for your next adventure. Self-drive bike rental with doorstep delivery.",
+    title: "Singh Ji's Bike Rental | Premium Bike & Scooter Rentals in Siliguri",
+    description: "Rent premium bikes and scooters in Siliguri for your next adventure. Self-drive bike rental with doorstep delivery.",
     url: 'https://singhjibikes.com',
     siteName: "Singh Ji's Bike Rental",
     locale: 'en_IN',
@@ -38,12 +38,36 @@ export default function HomePage() {
     }))
   };
 
+  const rentalServiceSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    serviceType: 'Vehicle Rental',
+    provider: {
+      '@type': 'LocalBusiness',
+      name: "Singh Ji's Bike Rental",
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Siliguri',
+        addressRegion: 'West Bengal',
+        addressCountry: 'IN'
+      }
+    },
+    areaServed: {
+      '@type': 'City',
+      name: 'Siliguri'
+    }
+  };
+
   return (
     <main className="flex min-h-screen flex-col bg-[#0a0e1a]">
       {/* JSON-LD for SEO */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(rentalServiceSchema) }}
       />
       
       <HeroSection />

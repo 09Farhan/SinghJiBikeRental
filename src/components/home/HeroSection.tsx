@@ -22,7 +22,7 @@ export default async function HeroSection() {
           className="animate-fade-in-up bg-orange-500/10 border border-orange-500/30 text-orange-400 rounded-full px-4 py-2 text-sm font-medium mb-8"
           style={{ animationDelay: '0ms' }}
         >
-          Premium Bike & Scooter Rentals
+          Premium Bike & Scooter Rentals in Siliguri
         </div>
         
         {/* Main Heading */}
@@ -30,7 +30,7 @@ export default async function HeroSection() {
           className="animate-fade-in-up font-heading text-5xl md:text-7xl font-bold tracking-tight mb-6"
           style={{ animationDelay: '100ms' }}
         >
-          <span className="text-white block mb-2">Explore India on</span>
+          <span className="text-white block mb-2">Explore Siliguri on</span>
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-400">Two Wheels</span>
         </h1>
         
@@ -39,7 +39,7 @@ export default async function HeroSection() {
           className="animate-fade-in-up text-gray-300 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed font-body"
           style={{ animationDelay: '200ms' }}
         >
-          Rent premium bikes and scooters for your next adventure. Self-drive rentals with doorstep delivery, starting at just ₹600/day.
+          Rent premium bikes and scooters in Siliguri for your next adventure. Self-drive rentals with doorstep delivery, starting at just ₹600/day.
         </p>
         
         {/* CTA Buttons */}

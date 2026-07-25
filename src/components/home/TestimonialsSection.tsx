@@ -49,7 +49,7 @@ export default function TestimonialsSection() {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16 flex flex-col items-center">
           <h2 className="font-heading text-3xl md:text-5xl font-bold text-white mb-4">
-            What Our Riders Say
+            What Our Riders in Siliguri Say
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-orange-500 to-amber-500 rounded-full mb-8"></div>
           

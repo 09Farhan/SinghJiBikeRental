@@ -16,22 +16,22 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Singh Ji\'s Bike Rental | Premium Bike & Scooter Rentals',
+    default: 'Singh Ji\'s Bike Rental | Premium Bike & Scooter Rentals in Siliguri',
     template: '%s | Singh Ji\'s Bike Rental',
   },
-  description: 'Premium bike rental in India. Rent bike online, self drive bike rental for a luxury adventure experience.',
-  keywords: ['bike rental in India', 'rent bike online', 'self drive bike rental', 'premium bike rental', 'scooter rental'],
+  description: 'Premium bike rental in Siliguri, West Bengal. Rent bike online, self drive bike rental for a luxury adventure experience in Siliguri.',
+  keywords: ['bike rental in Siliguri', 'rent bike online', 'self drive bike rental Siliguri', 'premium bike rental', 'scooter rental in Siliguri', 'bike on rent in Siliguri'],
   openGraph: {
     locale: 'en_IN',
     type: 'website',
     siteName: 'Singh Ji\'s Bike Rental',
-    title: 'Singh Ji\'s Bike Rental | Premium Bike & Scooter Rentals',
-    description: 'Premium bike rental in India. Rent bike online, self drive bike rental for a luxury adventure experience.',
+    title: 'Singh Ji\'s Bike Rental | Premium Bike & Scooter Rentals in Siliguri',
+    description: 'Premium bike rental in Siliguri, West Bengal. Rent bike online, self drive bike rental for a luxury adventure experience in Siliguri.',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Singh Ji\'s Bike Rental',
-    description: 'Premium bike rental in India. Rent bike online, self drive bike rental for a luxury adventure experience.',
+    description: 'Premium bike rental in Siliguri, West Bengal. Rent bike online, self drive bike rental for a luxury adventure experience in Siliguri.',
   },
   robots: {
     index: true,
@@ -46,7 +46,7 @@ export default function RootLayout({
 }) {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'LocalBusiness',
+    '@type': ['LocalBusiness', 'AutoRental'],
     name: 'Singh Ji\'s Bike Rental',
     image: 'https://www.singhjibikerental.com/logo.png',
     '@id': 'https://www.singhjibikerental.com',
@@ -55,9 +55,15 @@ export default function RootLayout({
     address: {
       '@type': 'PostalAddress',
       streetAddress: BUSINESS_ADDRESS,
-      addressLocality: 'India',
+      addressLocality: 'Siliguri',
+      addressRegion: 'West Bengal',
+      postalCode: '734001',
       addressCountry: 'IN',
     },
+    areaServed: {
+      '@type': 'City',
+      name: 'Siliguri'
+    }
   }
 
   return (

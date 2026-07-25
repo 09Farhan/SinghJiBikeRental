@@ -62,7 +62,7 @@ export default function BenefitsSection() {
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-16">
           <h2 className="font-heading text-3xl md:text-5xl font-bold text-white mb-4">
-            Why Ride With Singh Ji's?
+            Why Ride With Singh Ji's in Siliguri?
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-orange-500 to-amber-500 mx-auto rounded-full"></div>
         </div>
