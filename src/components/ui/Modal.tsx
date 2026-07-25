@@ -59,7 +59,7 @@ export default function Modal({
       />
       <div
         className={cn(
-          'relative bg-[#111827] border border-gray-700/50 rounded-2xl shadow-2xl p-6 mx-4 w-full animate-fade-in-up',
+          'relative bg-[#111827] border border-gray-700/50 rounded-2xl shadow-2xl p-6 mx-4 w-full animate-fade-in-up max-h-[90vh] overflow-y-auto',
           sizes[size]
         )}
       >
