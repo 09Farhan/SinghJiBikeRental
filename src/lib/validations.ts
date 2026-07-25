@@ -17,7 +17,11 @@ export const contactSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
   email: z.string().email('Invalid email address'),
   phone: z.string().regex(/^[0-9+\\-]{10,15}$/, 'Invalid phone number format'),
-  message: z.string().min(10, 'Message must be at least 10 characters'),
+  message: z.string().optional(),
+  preferredBike: z.string().optional(),
+  pickupLocation: z.string().optional(),
+  rentalDate: z.string().optional(),
+  source: z.string().default('CONTACT_FORM'),
 });
 
 export const bikeSchema = z.object({

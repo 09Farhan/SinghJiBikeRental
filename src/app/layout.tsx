@@ -4,6 +4,7 @@ import './globals.css'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import FloatingActions from '@/components/layout/FloatingActions'
+import DelayedPopup from '@/components/ui/DelayedPopup'
 import { BUSINESS_ADDRESS, PHONE_NUMBER } from '@/lib/constants'
 import { Toaster } from 'react-hot-toast'
 
@@ -72,6 +73,7 @@ export default function RootLayout({
         <main>{children}</main>
         <Footer />
         <FloatingActions />
+        <DelayedPopup />
         <Toaster position="bottom-right" toastOptions={{ style: { background: '#1f2937', color: '#fff', border: '1px solid #374151' } }} />
       </body>
     </html>

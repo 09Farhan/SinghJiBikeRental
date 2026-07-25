@@ -12,6 +12,26 @@ interface AdminSidebarProps {
 
 export default function AdminSidebar({ onClose }: AdminSidebarProps) {
   const pathname = usePathname()
+  const [unreadCount, setUnreadCount] = React.useState(0)
+
+  React.useEffect(() => {
+    const fetchUnreadCount = async () => {
+      try {
+        const res = await fetch('/api/admin/messages?status=NEW')
+        if (res.ok) {
+          const json = await res.json()
+          setUnreadCount(json.data?.length || 0)
+        }
+      } catch (e) {
+        console.error('Failed to fetch unread messages')
+      }
+    }
+    fetchUnreadCount()
+    
+    // Optional polling every 30s
+    const interval = setInterval(fetchUnreadCount, 30000)
+    return () => clearInterval(interval)
+  }, [])
 
   return (
     <aside className="w-64 flex-shrink-0 h-screen bg-[#111827] border-r border-gray-800 flex flex-col z-40">
@@ -44,12 +64,19 @@ export default function AdminSidebar({ onClose }: AdminSidebarProps) {
                   : 'text-gray-400 hover:text-white hover:bg-white/5'
               )}
             >
-              <span className="w-5 h-5 flex items-center justify-center">
-                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              </span>
-              <span className="font-medium text-sm">{link.name}</span>
+              <div className="flex items-center gap-3">
+                <span className="w-5 h-5 flex items-center justify-center">
+                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                </span>
+                <span className="font-medium text-sm">{link.name}</span>
+              </div>
+              {link.name === 'Messages' && unreadCount > 0 && (
+                <span className="bg-orange-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full ml-auto">
+                  {unreadCount}
+                </span>
+              )}
             </Link>
           )
         })}

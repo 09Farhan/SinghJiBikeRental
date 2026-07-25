@@ -125,12 +125,16 @@ model AdminUser {
 }
 
 model ContactInquiry {
-  id        String        @id @default(cuid())
-  name      String
-  email     String
-  phone     String
-  message   String
-  status    InquiryStatus @default(NEW)
+  id             String        @id @default(cuid())
+  name           String
+  email          String
+  phone          String
+  message        String?
+  preferredBike  String?
+  pickupLocation String?
+  rentalDate     String?
+  source         String        @default("CONTACT_FORM")
+  status         InquiryStatus @default(NEW)
   createdAt DateTime      @default(now())
   updatedAt DateTime      @updatedAt
 }

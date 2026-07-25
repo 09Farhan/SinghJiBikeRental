@@ -12,7 +12,7 @@ export async function POST(req: NextRequest) {
       data: validatedData
     });
 
-    EmailService.sendContactNotification(inquiry).catch(console.error);
+    // EmailService.sendContactNotification(inquiry).catch(console.error);
 
     return NextResponse.json({ success: true, data: inquiry }, { status: 201 });
   } catch (error: any) {
