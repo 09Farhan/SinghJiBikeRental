@@ -7,18 +7,21 @@ export const dynamic = 'force-dynamic';
 export async function GET(req: NextRequest) {
   try {
     const adminPassword = await bcrypt.hash('Admin@123456', 10);
-    const adminEmail = process.env.ADMIN_EMAIL || 'admin@singhjibikes.com';
     
-    await prisma.adminUser.update({
-      where: { email: adminEmail },
+    await prisma.adminUser.updateMany({
       data: {
         passwordHash: adminPassword,
       },
     });
     
+    const admins = await prisma.adminUser.findMany({
+      select: { email: true }
+    });
+    
     return NextResponse.json({ 
       success: true, 
-      message: 'Password reset successfully to Admin@123456. Please delete this endpoint immediately.' 
+      message: 'All admin passwords reset successfully to Admin@123456. Please delete this endpoint immediately.',
+      adminEmails: admins.map(a => a.email)
     });
   } catch (error: any) {
     return NextResponse.json({ success: false, error: error.message }, { status: 500 });
