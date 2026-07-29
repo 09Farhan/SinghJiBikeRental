@@ -27,7 +27,7 @@ export default function BikeCard({ bike, index = 0 }: BikeCardProps) {
         
         <div className="absolute top-3 right-3">
             <Badge variant={bike.availableUnits > 0 ? "success" : "danger"}>
-              {bike.availableUnits > 0 ? `${bike.availableUnits} Left` : 'Sold Out'}
+              {bike.availableUnits > 0 ? 'Available' : 'Sold Out'}
             </Badge>
         </div>
         

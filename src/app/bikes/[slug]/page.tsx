@@ -67,7 +67,7 @@ export default async function BikeDetailPage({ params }: { params: { slug: strin
             
             <div className="flex items-center gap-4 mb-8">
               <Badge variant={(bike.availableUnits || 0) > 0 ? "success" : "danger"}>
-                {(bike.availableUnits || 0) > 0 ? `${bike.availableUnits} Available` : 'Sold Out'}
+                {(bike.availableUnits || 0) > 0 ? 'Available' : 'Sold Out'}
               </Badge>
             </div>
 
