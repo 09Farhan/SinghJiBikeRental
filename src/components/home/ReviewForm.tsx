@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef } from 'react';
+import Image from 'next/image';
 import Button from '@/components/ui/Button';
 import Input from '@/components/ui/Input';
 
@@ -159,7 +160,7 @@ export default function ReviewForm({ onClose, onSuccess }: ReviewFormProps) {
               <div className="flex gap-4 mb-2">
                 {images.map((src, i) => (
                   <div key={i} className="relative w-20 h-20 rounded-lg overflow-hidden border border-gray-700">
-                    <img src={src} alt="Upload preview" className="w-full h-full object-cover" />
+                    <Image src={src} alt="Upload preview" fill unoptimized className="object-cover" />
                     <button
                       type="button"
                       onClick={() => removeImage(i)}

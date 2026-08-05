@@ -1,8 +1,13 @@
 'use client';
 import React, { useState } from 'react';
-import DateRangePicker from './DateRangePicker';
+import dynamic from 'next/dynamic';
 import Input from '@/components/ui/Input';
 import Button from '@/components/ui/Button';
+
+const DateRangePicker = dynamic(() => import('./DateRangePicker'), {
+  loading: () => <div className="h-[340px] bg-[#111827] animate-pulse rounded-2xl"></div>,
+  ssr: false
+});
 
 interface BookingFormProps {
   bike: any;

@@ -1,7 +1,10 @@
 'use client';
 
 import { useState } from 'react';
-import ChangePasswordModal from '@/components/admin/ChangePasswordModal';
+import dynamic from 'next/dynamic';
+const ChangePasswordModal = dynamic(() => import('@/components/admin/ChangePasswordModal'), {
+  ssr: false
+});
 
 interface AdminHeaderProps {
   onMenuClick?: () => void;

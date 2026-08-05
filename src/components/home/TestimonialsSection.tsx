@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import Button from '@/components/ui/Button';
 import ReviewForm from './ReviewForm';
 
@@ -102,8 +103,8 @@ export default function TestimonialsSection() {
                   {t.images && t.images.length > 0 && (
                     <div className="flex gap-2 mb-6 mt-auto">
                       {t.images.map((img, i) => (
-                        <div key={i} className="w-16 h-16 rounded-lg overflow-hidden border border-gray-700">
-                          <img src={img} alt={`Review photo ${i + 1}`} className="w-full h-full object-cover" />
+                        <div key={i} className="relative w-16 h-16 rounded-lg overflow-hidden border border-gray-700">
+                          <Image src={img} alt={`Review photo ${i + 1}`} fill sizes="64px" className="object-cover" />
                         </div>
                       ))}
                     </div>

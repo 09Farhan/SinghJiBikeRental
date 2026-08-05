@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Modal from '@/components/ui/Modal';
+import Image from 'next/image';
 import Input from '@/components/ui/Input';
 import Button from '@/components/ui/Button';
 import { CldUploadWidget } from 'next-cloudinary';
@@ -176,7 +177,7 @@ export default function BikeFormModal({ isOpen, onClose, bike, onSubmit }: BikeF
           <div className="flex items-center gap-4">
             {formData.image && (
               <div className="relative w-24 h-24 rounded-xl overflow-hidden bg-gray-800 border border-gray-700 flex-shrink-0 group">
-                <img src={formData.image} alt="Preview" className="w-full h-full object-cover" />
+                <Image src={formData.image} alt="Preview" fill sizes="96px" className="object-cover" />
                 <button
                   type="button"
                   onClick={() => setFormData(prev => ({ ...prev, image: '' }))}

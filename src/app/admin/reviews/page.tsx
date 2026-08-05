@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import Badge from '@/components/ui/Badge';
 import Button from '@/components/ui/Button';
 
@@ -143,12 +144,9 @@ export default function AdminReviewsPage() {
                     <td className="px-6 py-4">
                       <div className="flex -space-x-2">
                         {review.images && review.images.slice(0, 3).map((img, i) => (
-                          <img
-                            key={i}
-                            src={img}
-                            alt="Preview"
-                            className="w-8 h-8 rounded-full border-2 border-[#111827] object-cover"
-                          />
+                          <div key={i} className="relative w-8 h-8 rounded-full border-2 border-[#111827] overflow-hidden">
+                             <Image src={img} alt="Preview" fill sizes="32px" className="object-cover" />
+                          </div>
                         ))}
                         {review.images && review.images.length === 0 && (
                           <span className="text-gray-500 text-sm">None</span>
