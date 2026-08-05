@@ -94,13 +94,13 @@ export default function AdminMessagesPage() {
             placeholder="Search name, email, phone..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full bg-[#0a0e1a] border border-gray-700 rounded-xl px-4 py-2.5 text-white placeholder-gray-500 focus:outline-none focus:border-orange-500"
+            className="w-full bg-[#0a0e1a] border border-gray-700 rounded-xl px-4 py-2.5 text-white placeholder-gray-500 focus:outline-none focus:border-amber-500"
           />
         </div>
         <select
           value={filterStatus}
           onChange={(e) => setFilterStatus(e.target.value)}
-          className="bg-[#0a0e1a] border border-gray-700 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-orange-500"
+          className="bg-[#0a0e1a] border border-gray-700 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-amber-500"
         >
           <option value="">All Statuses</option>
           <option value="NEW">New (Unread)</option>
@@ -110,7 +110,7 @@ export default function AdminMessagesPage() {
         <select
           value={filterSource}
           onChange={(e) => setFilterSource(e.target.value)}
-          className="bg-[#0a0e1a] border border-gray-700 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-orange-500"
+          className="bg-[#0a0e1a] border border-gray-700 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-amber-500"
         >
           <option value="">All Sources</option>
           <option value="CONTACT_FORM">Contact Form</option>
@@ -149,7 +149,7 @@ export default function AdminMessagesPage() {
                   <tr key={msg.id} className="hover:bg-white/[0.02] transition-colors">
                     <td className="p-4 align-top">
                       <span className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium border ${
-                        msg.status === 'NEW' ? 'bg-orange-500/10 text-orange-500 border-orange-500/20' :
+                        msg.status === 'NEW' ? 'bg-amber-500/10 text-amber-500 border-amber-500/20' :
                         msg.status === 'REPLIED' ? 'bg-green-500/10 text-green-400 border-green-500/20' :
                         'bg-gray-800 text-gray-300 border-gray-700'
                       }`}>
@@ -159,8 +159,8 @@ export default function AdminMessagesPage() {
                     <td className="p-4 align-top">
                       <div className="font-medium text-white">{msg.name}</div>
                       <div className="text-sm text-gray-400 mt-1">
-                        <a href={`mailto:${msg.email}`} className="hover:text-orange-400 transition-colors block">{msg.email}</a>
-                        <a href={`tel:${msg.phone}`} className="hover:text-orange-400 transition-colors block mt-0.5">{msg.phone}</a>
+                        <a href={`mailto:${msg.email}`} className="hover:text-amber-400 transition-colors block">{msg.email}</a>
+                        <a href={`tel:${msg.phone}`} className="hover:text-amber-400 transition-colors block mt-0.5">{msg.phone}</a>
                       </div>
                     </td>
                     <td className="p-4 align-top max-w-md">
@@ -192,7 +192,7 @@ export default function AdminMessagesPage() {
                     <td className="p-4 align-top text-right">
                       <div className="flex flex-col items-end gap-2">
                         {msg.status === 'NEW' && (
-                          <button onClick={() => updateStatus(msg.id, 'READ')} className="text-xs font-medium text-orange-500 hover:text-orange-400 transition-colors">
+                          <button onClick={() => updateStatus(msg.id, 'READ')} className="text-xs font-medium text-amber-500 hover:text-amber-400 transition-colors">
                             Mark Read
                           </button>
                         )}

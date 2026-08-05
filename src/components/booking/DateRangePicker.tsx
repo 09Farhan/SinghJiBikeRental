@@ -63,7 +63,7 @@ export default function DateRangePicker({
               min={minStartDate}
               value={startDate}
               onChange={handleStartChange}
-              className="w-full bg-gray-800/50 border border-gray-700 text-white rounded-xl px-4 py-3 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition-all [color-scheme:dark]"
+              className="w-full bg-gray-800/50 border border-gray-700 text-white rounded-xl px-4 py-3 focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all [color-scheme:dark]"
               required
             />
           </div>
@@ -78,7 +78,7 @@ export default function DateRangePicker({
               min={getMinEndDate()}
               value={endDate}
               onChange={(e) => onEndDateChange(e.target.value)}
-              className="w-full bg-gray-800/50 border border-gray-700 text-white rounded-xl px-4 py-3 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition-all [color-scheme:dark]"
+              className="w-full bg-gray-800/50 border border-gray-700 text-white rounded-xl px-4 py-3 focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all [color-scheme:dark]"
               required
               disabled={!startDate}
             />
@@ -88,7 +88,7 @@ export default function DateRangePicker({
 
       {days > 0 && (
         <div className="flex justify-center -mt-2">
-          <Badge variant="default" className="bg-orange-500/10 text-orange-400 border-orange-500/20 px-4 py-1.5">
+          <Badge variant="default" className="bg-amber-500/10 text-amber-400 border-amber-500/20 px-4 py-1.5">
             Duration: {days} {days === 1 ? 'day' : 'days'}
           </Badge>
         </div>

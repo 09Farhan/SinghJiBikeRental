@@ -76,7 +76,7 @@ export default function DelayedPopup() {
         onClick={handleClose}
       />
       
-      <div className="relative w-full max-w-md bg-[#111827] border border-gray-700/50 rounded-2xl shadow-2xl shadow-orange-500/10 overflow-hidden animate-fade-in-up z-10">
+      <div className="relative w-full max-w-md bg-[#111827] border border-gray-700/50 rounded-2xl shadow-2xl shadow-amber-500/10 overflow-hidden animate-fade-in-up z-10">
         {/* Header */}
         <div className="bg-gradient-to-r from-[#1f2937] to-[#111827] p-6 border-b border-gray-700/50 flex justify-between items-center">
           <div>
@@ -122,7 +122,7 @@ export default function DelayedPopup() {
                     required
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full bg-[#0a0e1a] border border-gray-700 rounded-xl px-3 py-2 text-white text-sm focus:outline-none focus:border-orange-500"
+                    className="w-full bg-[#0a0e1a] border border-gray-700 rounded-xl px-3 py-2 text-white text-sm focus:outline-none focus:border-amber-500"
                     placeholder="John Doe"
                   />
                 </div>
@@ -134,7 +134,7 @@ export default function DelayedPopup() {
                     required
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full bg-[#0a0e1a] border border-gray-700 rounded-xl px-3 py-2 text-white text-sm focus:outline-none focus:border-orange-500"
+                    className="w-full bg-[#0a0e1a] border border-gray-700 rounded-xl px-3 py-2 text-white text-sm focus:outline-none focus:border-amber-500"
                     placeholder="+91..."
                   />
                 </div>
@@ -148,7 +148,7 @@ export default function DelayedPopup() {
                   required
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full bg-[#0a0e1a] border border-gray-700 rounded-xl px-3 py-2 text-white text-sm focus:outline-none focus:border-orange-500"
+                  className="w-full bg-[#0a0e1a] border border-gray-700 rounded-xl px-3 py-2 text-white text-sm focus:outline-none focus:border-amber-500"
                   placeholder="john@example.com"
                 />
               </div>
@@ -160,7 +160,7 @@ export default function DelayedPopup() {
                     name="preferredBike"
                     value={formData.preferredBike}
                     onChange={handleChange}
-                    className="w-full bg-[#0a0e1a] border border-gray-700 rounded-xl px-3 py-2 text-white text-sm focus:outline-none focus:border-orange-500 appearance-none"
+                    className="w-full bg-[#0a0e1a] border border-gray-700 rounded-xl px-3 py-2 text-white text-sm focus:outline-none focus:border-amber-500 appearance-none"
                   >
                     <option value="">Select (Any)</option>
                     <option value="scooter">Scooter</option>
@@ -175,7 +175,7 @@ export default function DelayedPopup() {
                     name="rentalDate"
                     value={formData.rentalDate}
                     onChange={handleChange}
-                    className="w-full bg-[#0a0e1a] border border-gray-700 rounded-xl px-3 py-2 text-white text-sm focus:outline-none focus:border-orange-500"
+                    className="w-full bg-[#0a0e1a] border border-gray-700 rounded-xl px-3 py-2 text-white text-sm focus:outline-none focus:border-amber-500"
                   />
                 </div>
               </div>
@@ -187,7 +187,7 @@ export default function DelayedPopup() {
                   name="pickupLocation"
                   value={formData.pickupLocation}
                   onChange={handleChange}
-                  className="w-full bg-[#0a0e1a] border border-gray-700 rounded-xl px-3 py-2 text-white text-sm focus:outline-none focus:border-orange-500"
+                  className="w-full bg-[#0a0e1a] border border-gray-700 rounded-xl px-3 py-2 text-white text-sm focus:outline-none focus:border-amber-500"
                   placeholder="e.g. Airport, Hotel Name"
                 />
               </div>

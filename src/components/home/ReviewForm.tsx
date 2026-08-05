@@ -130,7 +130,7 @@ export default function ReviewForm({ onClose, onSuccess }: ReviewFormProps) {
                     type="button"
                     onClick={() => setRating(star)}
                     className={`transition-colors focus:outline-none ${
-                      star <= rating ? 'text-amber-400' : 'text-gray-700'
+                      star <= rating ? 'text-yellow-400' : 'text-gray-700'
                     }`}
                   >
                     <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
@@ -175,7 +175,7 @@ export default function ReviewForm({ onClose, onSuccess }: ReviewFormProps) {
                   <button
                     type="button"
                     onClick={() => fileInputRef.current?.click()}
-                    className="w-20 h-20 rounded-lg border-2 border-dashed border-gray-700 flex flex-col items-center justify-center text-gray-500 hover:border-orange-500 hover:text-orange-500 transition-colors"
+                    className="w-20 h-20 rounded-lg border-2 border-dashed border-gray-700 flex flex-col items-center justify-center text-gray-500 hover:border-amber-500 hover:text-amber-500 transition-colors"
                   >
                     <svg className="w-6 h-6 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />

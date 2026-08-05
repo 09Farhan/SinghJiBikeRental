@@ -13,7 +13,7 @@ export default async function FeaturedBikes() {
         <div className="text-center mb-16">
           <h2 className="font-heading text-3xl md:text-5xl font-bold text-white mb-4 inline-block relative">
             Our Featured Rides
-            <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-1/2 h-1 bg-orange-500 rounded-full"></div>
+            <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-1/2 h-1 bg-amber-500 rounded-full"></div>
           </h2>
           <p className="text-gray-400 mt-6 text-lg max-w-2xl mx-auto">
             Hand-picked bikes and scooters for every kind of rider
@@ -25,7 +25,7 @@ export default async function FeaturedBikes() {
           {featuredBikes.map((bike, index) => (
             <div 
               key={bike.slug}
-              className="group rounded-2xl bg-[#111827] border border-gray-700/50 overflow-hidden hover:border-orange-500/30 transition-all hover:-translate-y-1 shadow-lg hover:shadow-orange-500/10"
+              className="group rounded-2xl bg-[#111827] border border-gray-700/50 overflow-hidden hover:border-amber-500/30 transition-all hover:-translate-y-1 shadow-lg hover:shadow-amber-500/10"
               style={{ animationDelay: `${index * 100}ms` }}
             >
               {/* Image Area */}
@@ -48,19 +48,19 @@ export default async function FeaturedBikes() {
 
               {/* Content */}
               <div className="p-5 flex flex-col h-full">
-                <span className="text-xs font-semibold text-amber-500 bg-amber-500/10 px-2 py-1 rounded w-fit mb-3">
+                <span className="text-xs font-semibold text-yellow-500 bg-yellow-500/10 px-2 py-1 rounded w-fit mb-3">
                   {bike.category}
                 </span>
                 <h3 className="text-lg font-heading font-semibold text-white mb-2">
                   {bike.name}
                 </h3>
                 <div className="mt-auto flex items-center justify-between pt-4">
-                  <p className="text-orange-400 font-bold">
+                  <p className="text-amber-400 font-bold">
                     From {formatCurrency ? formatCurrency(bike.pricePerDay) : `₹${bike.pricePerDay}`}/day
                   </p>
                   <Link 
                     href={`/bikes/${bike.slug}`}
-                    className="text-orange-500 hover:text-orange-400 font-medium text-sm transition-colors flex items-center gap-1 group-hover:translate-x-1 duration-300"
+                    className="text-amber-500 hover:text-amber-400 font-medium text-sm transition-colors flex items-center gap-1 group-hover:translate-x-1 duration-300"
                   >
                     View Details <span aria-hidden="true">&rarr;</span>
                   </Link>
@@ -74,7 +74,7 @@ export default async function FeaturedBikes() {
         <div className="text-center">
           <Link 
             href="/bikes"
-            className="inline-flex items-center justify-center px-8 py-3 rounded-xl border border-orange-500/50 text-orange-400 font-medium hover:bg-orange-500/10 transition-colors"
+            className="inline-flex items-center justify-center px-8 py-3 rounded-xl border border-amber-500/50 text-amber-400 font-medium hover:bg-amber-500/10 transition-colors"
           >
             View All Bikes <span aria-hidden="true" className="ml-2">&rarr;</span>
           </Link>

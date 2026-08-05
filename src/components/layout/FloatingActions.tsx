@@ -42,7 +42,7 @@ export default function FloatingActions() {
       {/* Phone */}
       <a
         href={`tel:${PHONE_NUMBER}`}
-        className="w-14 h-14 bg-gradient-to-r from-orange-500 to-amber-500 rounded-full flex items-center justify-center shadow-lg shadow-orange-500/20 text-white hover:scale-110 transition-transform duration-300 group relative"
+        className="w-14 h-14 bg-gradient-to-r from-amber-500 to-yellow-500 rounded-full flex items-center justify-center shadow-lg shadow-amber-500/20 text-white hover:scale-110 transition-transform duration-300 group relative"
         aria-label="Call Us"
       >
         <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">

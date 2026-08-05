@@ -33,7 +33,7 @@ export default function InventoryTable({ inventory, onEdit, onDelete, onToggleUn
     <div className="overflow-x-auto">
       <table className="w-full text-left border-collapse">
         <thead>
-          <tr className="bg-[#1f2937] text-gray-400 text-xs uppercase tracking-wider whitespace-nowrap">
+          <tr className="bg-[#0a0e1a] text-gray-400 text-xs uppercase tracking-wider whitespace-nowrap">
             <th className="px-6 py-4 font-medium w-10"></th>
             <th className="px-6 py-4 font-medium">Model</th>
             <th className="px-6 py-4 font-medium">Brand</th>
@@ -76,12 +76,12 @@ export default function InventoryTable({ inventory, onEdit, onDelete, onToggleUn
                   <td className="px-6 py-4 text-xs text-gray-400">
                     <span className="text-green-400">{available} Avail</span> ·{' '}
                     <span className="text-red-400">{booked} Booked</span> ·{' '}
-                    <span className="text-amber-400">{maintenance} Maint</span>
+                    <span className="text-yellow-400">{maintenance} Maint</span>
                   </td>
                   <td className="px-6 py-4 text-right">
                     <button 
                       onClick={() => onEdit(bike)}
-                      className="text-orange-400 hover:text-orange-300 text-sm font-medium mr-4"
+                      className="text-amber-400 hover:text-orange-300 text-sm font-medium mr-4"
                     >
                       Edit Model
                     </button>
@@ -102,7 +102,7 @@ export default function InventoryTable({ inventory, onEdit, onDelete, onToggleUn
                 </tr>
                 {isExpanded && (
                   <tr>
-                    <td colSpan={7} className="p-0 border-t border-gray-800 bg-[#172033]">
+                    <td colSpan={7} className="p-0 border-t border-gray-800 bg-[#0a0e1a] shadow-neu-pressed inset-shadow">
                       <div className="px-14 py-4">
                         <table className="w-full text-left">
                           <thead>
@@ -125,7 +125,7 @@ export default function InventoryTable({ inventory, onEdit, onDelete, onToggleUn
                                   <select
                                     value={unit.status}
                                     onChange={(e) => onToggleUnit(bike.id, unit.id, e.target.value)}
-                                    className="bg-[#1f2937] border border-gray-700 text-white text-xs rounded p-1 focus:ring-1 focus:ring-orange-500 outline-none"
+                                    className="bg-[#0a0e1a] shadow-neu-pressed border-none text-white text-xs rounded p-1.5 focus:ring-1 focus:ring-amber-500/50 outline-none"
                                   >
                                     <option value="AVAILABLE">Available</option>
                                     <option value="BOOKED">Booked</option>

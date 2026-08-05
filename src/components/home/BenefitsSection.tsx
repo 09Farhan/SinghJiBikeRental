@@ -64,16 +64,16 @@ export default function BenefitsSection() {
           <h2 className="font-heading text-3xl md:text-5xl font-bold text-white mb-4">
             Why Ride With Singh Ji's in Siliguri?
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-orange-500 to-amber-500 mx-auto rounded-full"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-amber-500 to-yellow-500 mx-auto rounded-full"></div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {benefits.map((benefit, idx) => (
             <div 
               key={idx}
-              className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:border-orange-500/30 transition-all hover:-translate-y-1 shadow-lg hover:shadow-orange-500/5 group"
+              className="bg-[#111827] shadow-neu border border-gray-800 rounded-2xl p-6 hover:-translate-y-1 transition-all group"
             >
-              <div className="w-12 h-12 rounded-xl bg-orange-500/10 flex items-center justify-center text-orange-400 mb-5 group-hover:scale-110 group-hover:bg-orange-500/20 transition-all">
+              <div className="w-12 h-12 rounded-xl bg-[#3d53e1]/10 flex items-center justify-center text-[#6a80fa] mb-5 group-hover:scale-110 group-hover:bg-[#3d53e1]/20 transition-all">
                 {benefit.icon}
               </div>
               <h3 className="font-heading font-semibold text-white text-lg mb-3">

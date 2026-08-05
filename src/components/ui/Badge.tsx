@@ -15,7 +15,7 @@ export default function Badge({
 }: BadgeProps) {
   const variants = {
     success: 'bg-emerald-500/15 text-emerald-400 border-emerald-500/20',
-    warning: 'bg-amber-500/15 text-amber-400 border-amber-500/20',
+    warning: 'bg-yellow-500/15 text-yellow-400 border-yellow-500/20',
     danger: 'bg-red-500/15 text-red-400 border-red-500/20',
     info: 'bg-blue-500/15 text-blue-400 border-blue-500/20',
     default: 'bg-gray-500/15 text-gray-400 border-gray-500/20',

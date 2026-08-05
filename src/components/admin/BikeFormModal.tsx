@@ -95,7 +95,7 @@ export default function BikeFormModal({ isOpen, onClose, bike, onSubmit }: BikeF
             <select 
               value={formData.category}
               onChange={e => setFormData({ ...formData, category: e.target.value })}
-              className="w-full bg-[#111827] border border-gray-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500"
+              className="w-full bg-[#111827] border border-gray-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500"
             >
               <option value="BIKE">Bike</option>
               <option value="SCOOTER">Scooter</option>
@@ -134,7 +134,7 @@ export default function BikeFormModal({ isOpen, onClose, bike, onSubmit }: BikeF
             <select 
               value={formData.fuelType}
               onChange={e => setFormData({ ...formData, fuelType: e.target.value })}
-              className="w-full bg-[#111827] border border-gray-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500"
+              className="w-full bg-[#111827] border border-gray-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500"
             >
               <option value="PETROL">Petrol</option>
               <option value="ELECTRIC">Electric</option>
@@ -146,7 +146,7 @@ export default function BikeFormModal({ isOpen, onClose, bike, onSubmit }: BikeF
             <select 
               value={formData.transmission}
               onChange={e => setFormData({ ...formData, transmission: e.target.value })}
-              className="w-full bg-[#111827] border border-gray-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500"
+              className="w-full bg-[#111827] border border-gray-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500"
             >
               <option value="MANUAL">Manual</option>
               <option value="AUTOMATIC">Automatic</option>
@@ -166,7 +166,7 @@ export default function BikeFormModal({ isOpen, onClose, bike, onSubmit }: BikeF
           <textarea 
             value={formData.description}
             onChange={e => setFormData({ ...formData, description: e.target.value })}
-            className="w-full bg-[#111827] border border-gray-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 min-h-[100px] resize-y"
+            className="w-full bg-[#111827] border border-gray-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 min-h-[100px] resize-y"
             required
           ></textarea>
         </div>
@@ -197,7 +197,7 @@ export default function BikeFormModal({ isOpen, onClose, bike, onSubmit }: BikeF
                 <button 
                   type="button" 
                   onClick={(e) => { e.preventDefault(); open(); }}
-                  className="text-sm py-2 px-4 rounded-full font-semibold bg-orange-500/10 text-orange-500 hover:bg-orange-500/20 transition-colors"
+                  className="text-sm py-2 px-4 rounded-full font-semibold bg-amber-500/10 text-amber-500 hover:bg-amber-500/20 transition-colors"
                 >
                   Upload Image
                 </button>

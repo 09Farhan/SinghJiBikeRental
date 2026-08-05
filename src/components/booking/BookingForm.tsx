@@ -108,7 +108,7 @@ export default function BookingForm({
                   onChange={handleChange}
                   pattern="[0-9]{10}"
                   placeholder="9876543210"
-                  className="flex-1 min-w-0 block w-full px-4 py-3 rounded-none rounded-r-xl bg-gray-800/50 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition-all sm:text-sm"
+                  className="flex-1 min-w-0 block w-full px-4 py-3 rounded-none rounded-r-xl bg-gray-800/50 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all sm:text-sm"
                   required
                 />
               </div>
@@ -123,7 +123,7 @@ export default function BookingForm({
               onChange={handleChange}
               rows={3}
               placeholder="Any specific requirements like extra helmets?"
-              className="w-full bg-gray-800/50 border border-gray-700 text-white rounded-xl px-4 py-3 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition-all resize-none"
+              className="w-full bg-gray-800/50 border border-gray-700 text-white rounded-xl px-4 py-3 focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all resize-none"
             />
           </div>
         </div>
@@ -132,7 +132,7 @@ export default function BookingForm({
       <Button 
         type="submit" 
         size="lg" 
-        className="w-full bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white text-lg py-6 shadow-lg shadow-orange-500/20"
+        className="w-full bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-600 hover:to-yellow-600 text-white text-lg py-6 shadow-lg shadow-amber-500/20"
         loading={isSubmitting}
         disabled={!startDate || !endDate}
       >

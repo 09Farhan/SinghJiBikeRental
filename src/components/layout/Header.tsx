@@ -42,13 +42,13 @@ export default function Header() {
       <header
         className={cn(
           'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-          isScrolled ? 'bg-[#0a0e1a]/80 backdrop-blur-xl border-b border-gray-800/50 py-3' : 'bg-transparent py-5',
+          isScrolled ? 'bg-[#0a0e1a]/90 backdrop-blur-xl shadow-neu py-3' : 'bg-transparent py-5',
           isVisible ? 'translate-y-0' : '-translate-y-full'
         )}
       >
       <div className="max-w-7xl mx-auto px-4 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-1 z-50">
-          <span className="text-orange-500 font-heading font-bold text-2xl">Singh Ji's</span>
+          <span className="text-amber-500 font-heading font-bold text-2xl">Singh Ji's</span>
           <span className="text-gray-300 font-heading font-medium text-xl">Bike Rental</span>
         </Link>
 
@@ -62,7 +62,7 @@ export default function Header() {
                 href={link.href}
                 className={cn(
                   'text-sm font-medium transition-colors hover:text-white',
-                  isActive ? 'text-orange-500' : 'text-gray-300'
+                  isActive ? 'text-amber-500' : 'text-gray-300'
                 )}
               >
                 {link.name}
@@ -106,7 +106,7 @@ export default function Header() {
                 href={link.href}
                 className={cn(
                   'text-2xl font-heading font-medium transition-colors',
-                  isActive ? 'text-orange-500' : 'text-gray-300'
+                  isActive ? 'text-amber-500' : 'text-gray-300'
                 )}
               >
                 {link.name}

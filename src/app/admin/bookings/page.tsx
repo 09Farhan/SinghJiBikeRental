@@ -91,8 +91,8 @@ export default function BookingsPage() {
               onClick={() => setActiveTab(tab)}
               className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors whitespace-nowrap ${
                 activeTab === tab 
-                  ? 'bg-orange-500 text-white' 
-                  : 'bg-[#111827] text-gray-400 hover:text-white border border-gray-700/50'
+                  ? 'bg-gradient-to-r from-amber-500 to-yellow-500 shadow-glow text-white' 
+                  : 'bg-[#111827] shadow-neu text-gray-400 hover:text-white border border-gray-800'
               }`}
             >
               {tab}
@@ -108,10 +108,10 @@ export default function BookingsPage() {
         </div>
       </div>
 
-      <div className="bg-[#111827] border border-gray-700/50 rounded-2xl overflow-hidden min-h-[400px]">
+      <div className="bg-[#111827] shadow-neu border border-gray-800 rounded-2xl overflow-hidden min-h-[400px]">
         {isLoading ? (
           <div className="flex justify-center items-center h-64">
-            <div className="w-8 h-8 border-4 border-orange-500 border-t-transparent rounded-full animate-spin"></div>
+            <div className="w-8 h-8 border-4 border-amber-500 border-t-transparent rounded-full animate-spin"></div>
           </div>
         ) : (
           <BookingsTable bookings={filteredBookings} onStatusChange={handleStatusChange} onDeleteBooking={handleDeleteBooking} />

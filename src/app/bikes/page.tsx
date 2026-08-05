@@ -18,7 +18,7 @@ export default async function BikesPage() {
         {/* Header Section */}
         <div className="mb-12 text-center max-w-3xl mx-auto">
           <h1 className="text-4xl md:text-5xl font-heading font-bold text-white mb-4">
-            Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-amber-500">Fleet</span>
+            Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-yellow-500">Fleet</span>
           </h1>
           <p className="text-gray-400 text-lg">
             Find your perfect ride. From powerful superbikes to nimble scooters, we have something for every journey.

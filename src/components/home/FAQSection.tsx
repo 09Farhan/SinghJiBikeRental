@@ -18,25 +18,25 @@ export default function FAQSection() {
           <h2 className="font-heading text-3xl md:text-5xl font-bold text-white mb-4">
             Frequently Asked Questions
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-orange-500 to-amber-500 mx-auto rounded-full"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-amber-500 to-yellow-500 mx-auto rounded-full"></div>
         </div>
 
         <div className="space-y-4">
           {faqs.map((faq, index) => (
             <div 
               key={index} 
-              className="border-b border-gray-800"
+              className="bg-[#111827] shadow-neu border border-gray-800 rounded-2xl mb-4 overflow-hidden"
             >
               <button
-                className="w-full flex justify-between items-center py-4 text-left focus:outline-none group"
+                className="w-full flex justify-between items-center p-6 text-left focus:outline-none group"
                 onClick={() => toggleFAQ(index)}
               >
-                <span className={`font-medium text-lg transition-colors ${openIndex === index ? 'text-orange-400' : 'text-white group-hover:text-orange-400'}`}>
+                <span className={`font-medium text-lg transition-colors ${openIndex === index ? 'text-amber-400' : 'text-white group-hover:text-amber-400'}`}>
                   {faq.q}
                 </span>
                 <span className="ml-4 flex-shrink-0">
                   <svg 
-                    className={`w-5 h-5 text-gray-400 transition-transform duration-300 ${openIndex === index ? 'rotate-180 text-orange-400' : ''}`}
+                    className={`w-5 h-5 text-gray-400 transition-transform duration-300 ${openIndex === index ? 'rotate-180 text-amber-400' : ''}`}
                     fill="none" 
                     viewBox="0 0 24 24" 
                     stroke="currentColor"
@@ -51,7 +51,7 @@ export default function FAQSection() {
                   openIndex === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
                 }`}
               >
-                <p className="pb-6 text-gray-400 leading-relaxed">
+                <p className="px-6 pb-6 text-gray-400 leading-relaxed">
                   {faq.a}
                 </p>
               </div>

@@ -26,7 +26,7 @@ function BookingContent({ initialBike }: { initialBike: any }) {
   if (loading) {
     return (
       <div className="flex justify-center items-center min-h-[60vh]">
-        <div className="w-12 h-12 border-4 border-orange-500/20 border-t-orange-500 rounded-full animate-spin"></div>
+        <div className="w-12 h-12 border-4 border-amber-500/20 border-t-amber-500 rounded-full animate-spin"></div>
       </div>
     );
   }
@@ -37,7 +37,7 @@ function BookingContent({ initialBike }: { initialBike: any }) {
         <h2 className="text-3xl font-heading font-bold text-white mb-4">Vehicle Not Found</h2>
         <p className="text-gray-400 mb-8">Please select a vehicle from our fleet to continue.</p>
         <Link href="/bikes">
-          <Button className="bg-orange-500 text-white hover:bg-orange-600">Browse Fleet</Button>
+          <Button className="bg-amber-500 text-white hover:bg-amber-600">Browse Fleet</Button>
         </Link>
       </div>
     );
@@ -122,7 +122,7 @@ export default function BookingPage() {
         
         <Suspense fallback={
           <div className="flex justify-center items-center min-h-[40vh]">
-            <div className="w-12 h-12 border-4 border-orange-500/20 border-t-orange-500 rounded-full animate-spin"></div>
+            <div className="w-12 h-12 border-4 border-amber-500/20 border-t-amber-500 rounded-full animate-spin"></div>
           </div>
         }>
           <BookingContentWrapper />
@@ -159,7 +159,7 @@ function BookingContentWrapper() {
   if (loading) {
     return (
       <div className="flex justify-center items-center min-h-[60vh]">
-        <div className="w-12 h-12 border-4 border-orange-500/20 border-t-orange-500 rounded-full animate-spin"></div>
+        <div className="w-12 h-12 border-4 border-amber-500/20 border-t-amber-500 rounded-full animate-spin"></div>
       </div>
     );
   }

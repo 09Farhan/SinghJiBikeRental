@@ -12,7 +12,7 @@ interface BikeCardProps {
 export default function BikeCard({ bike, index = 0 }: BikeCardProps) {
   return (
     <div
-      className="rounded-2xl bg-[#111827] border border-gray-700/50 overflow-hidden group hover:border-orange-500/30 transition-all duration-300 animate-fade-in-up"
+      className="rounded-2xl bg-[#111827] shadow-neu overflow-hidden group hover:-translate-y-1 transition-all duration-300 animate-fade-in-up"
       style={{ animationDelay: `${index * 100}ms` }}
     >
       <div className="relative h-52 bg-gradient-to-br from-gray-700 to-gray-800 overflow-hidden flex items-center justify-center">
@@ -40,10 +40,10 @@ export default function BikeCard({ bike, index = 0 }: BikeCardProps) {
 
       <div className="p-5 flex flex-col gap-4">
         <div>
-          <p className="text-orange-400 text-xs uppercase tracking-wider font-medium mb-1">
+          <p className="text-amber-400 text-xs uppercase tracking-wider font-medium mb-1">
             {bike.brand}
           </p>
-          <h3 className="text-lg font-heading font-semibold text-white group-hover:text-orange-400 transition-colors line-clamp-1">
+          <h3 className="text-lg font-heading font-semibold text-white group-hover:text-amber-400 transition-colors line-clamp-1">
             {bike.name}
           </h3>
         </div>
@@ -62,14 +62,14 @@ export default function BikeCard({ bike, index = 0 }: BikeCardProps) {
         <div className="flex items-center justify-between mt-2">
           <div>
             <p className="text-gray-400 text-xs">Starting from</p>
-            <p className="text-orange-400 text-xl font-bold">
+            <p className="text-amber-400 text-xl font-bold">
               {formatCurrency(bike.pricePerDay)}<span className="text-sm font-normal text-gray-500">/day</span>
             </p>
           </div>
         </div>
         
         <Link href={`/bikes/${bike.slug}`} className="block mt-2">
-            <Button className="w-full bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white border-0 py-2">
+            <Button fullWidth>
                 Book Now
             </Button>
         </Link>

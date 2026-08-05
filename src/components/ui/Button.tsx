@@ -30,10 +30,10 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     const disabledStyles = 'disabled:opacity-50 disabled:cursor-not-allowed'
     
     const variants = {
-      primary: 'bg-gradient-to-r from-orange-500 to-amber-500 text-white hover:shadow-lg hover:shadow-orange-500/25 hover:scale-[1.02]',
+      primary: 'bg-gradient-to-r from-amber-500 to-yellow-500 text-white shadow-glow hover:shadow-glow-strong hover:-translate-y-0.5',
       secondary: 'bg-gray-700 text-white hover:bg-gray-600',
-      outline: 'border-2 border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white',
-      ghost: 'text-gray-400 hover:text-white hover:bg-white/5',
+      outline: 'border-2 border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-white',
+      ghost: 'bg-[#111827] text-gray-300 shadow-neu hover:text-white active:shadow-neu-pressed active:translate-y-px',
       danger: 'bg-red-600 text-white hover:bg-red-700',
     }
     

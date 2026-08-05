@@ -37,7 +37,7 @@ export default function BookingsTable({ bookings, onStatusChange, onDeleteBookin
     <div className="overflow-x-auto">
       <table className="w-full text-left border-collapse">
         <thead>
-          <tr className="bg-[#1f2937] text-gray-400 text-xs uppercase tracking-wider whitespace-nowrap">
+          <tr className="bg-[#0a0e1a] text-gray-400 text-xs uppercase tracking-wider whitespace-nowrap">
             <th className="px-6 py-4 font-medium">Booking ID</th>
             <th className="px-6 py-4 font-medium">Customer</th>
             <th className="px-6 py-4 font-medium">Bike</th>
@@ -52,7 +52,7 @@ export default function BookingsTable({ bookings, onStatusChange, onDeleteBookin
           {bookings.map((booking) => (
             <tr key={booking.id} className="hover:bg-white/5 transition-colors whitespace-nowrap">
               <td className="px-6 py-4">
-                <span className="text-orange-400 font-mono text-sm">{booking.id}</span>
+                <span className="text-amber-400 font-mono text-sm">{booking.id}</span>
               </td>
               <td className="px-6 py-4">
                 <div className="text-white text-sm font-medium">{booking.customer.name}</div>
@@ -80,7 +80,7 @@ export default function BookingsTable({ bookings, onStatusChange, onDeleteBookin
                 <select
                   value={booking.status}
                   onChange={(e) => onStatusChange(booking.id, e.target.value)}
-                  className="bg-[#1f2937] border border-gray-700 text-white text-xs rounded p-1.5 focus:ring-1 focus:ring-orange-500 outline-none"
+                  className="bg-[#0a0e1a] shadow-neu-pressed border-none text-white text-xs rounded p-1.5 focus:ring-1 focus:ring-amber-500/50 outline-none"
                 >
                   <option value="PENDING">Pending</option>
                   <option value="CONFIRMED">Confirmed</option>

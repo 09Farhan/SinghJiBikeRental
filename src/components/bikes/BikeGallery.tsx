@@ -52,7 +52,7 @@ export default function BikeGallery({ images, bikeName }: BikeGalleryProps) {
             className={cn(
               "relative h-24 rounded-2xl overflow-hidden flex items-center justify-center border-2 transition-all duration-300",
               !hasImages && item,
-              selectedIndex === idx ? "border-orange-500 opacity-100" : "border-gray-700/50 opacity-60 hover:opacity-100 hover:border-gray-500"
+              selectedIndex === idx ? "border-amber-500 opacity-100" : "border-gray-700/50 opacity-60 hover:opacity-100 hover:border-gray-500"
             )}
           >
             {hasImages ? (

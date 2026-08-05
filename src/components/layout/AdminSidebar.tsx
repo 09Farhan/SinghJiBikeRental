@@ -37,7 +37,7 @@ export default function AdminSidebar({ onClose }: AdminSidebarProps) {
     <aside className="w-64 flex-shrink-0 h-screen bg-[#111827] border-r border-gray-800 flex flex-col z-40">
       {/* Logo and Close Button */}
       <div className="h-20 flex items-center justify-between px-6 border-b border-gray-800">
-        <Link href="/admin" onClick={onClose} className="text-orange-500 font-heading font-bold text-xl">
+        <Link href="/admin" onClick={onClose} className="text-amber-500 font-heading font-bold text-xl">
           Singh Ji's Admin
         </Link>
         <button onClick={onClose} className="md:hidden text-gray-400 hover:text-white">
@@ -60,7 +60,7 @@ export default function AdminSidebar({ onClose }: AdminSidebarProps) {
               className={cn(
                 'flex items-center gap-3 px-4 py-3 rounded-xl transition-all',
                 isActive 
-                  ? 'bg-orange-500/10 text-orange-500 border-r-2 border-orange-500' 
+                  ? 'bg-amber-500/10 text-amber-500 border-r-2 border-amber-500' 
                   : 'text-gray-400 hover:text-white hover:bg-white/5'
               )}
             >
@@ -73,7 +73,7 @@ export default function AdminSidebar({ onClose }: AdminSidebarProps) {
                 <span className="font-medium text-sm">{link.name}</span>
               </div>
               {link.name === 'Messages' && unreadCount > 0 && (
-                <span className="bg-orange-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full ml-auto">
+                <span className="bg-amber-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full ml-auto">
                   {unreadCount}
                 </span>
               )}

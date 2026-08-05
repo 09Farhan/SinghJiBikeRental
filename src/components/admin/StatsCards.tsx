@@ -48,8 +48,8 @@ export default function StatsCards({ stats }: StatsCardsProps) {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 8h6m-5 0a3 3 0 110 6H9l3 3m-3-6h6m6 1a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
       ),
-      colorClass: 'text-orange-400',
-      bgClass: 'bg-orange-500/10'
+      colorClass: 'text-amber-400',
+      bgClass: 'bg-amber-500/10'
     },
     {
       title: 'Total Customers',
@@ -70,8 +70,8 @@ export default function StatsCards({ stats }: StatsCardsProps) {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
       ),
-      colorClass: 'text-amber-400',
-      bgClass: 'bg-amber-500/10'
+      colorClass: 'text-yellow-400',
+      bgClass: 'bg-yellow-500/10'
     }
   ];
 
@@ -80,7 +80,7 @@ export default function StatsCards({ stats }: StatsCardsProps) {
       {cards.map((card, index) => (
         <div 
           key={index} 
-          className="bg-[#111827] border border-gray-700/50 rounded-2xl p-6 flex items-center hover:border-gray-600 transition-colors"
+          className="bg-[#111827] shadow-neu border border-gray-800 rounded-2xl p-6 flex items-center hover:shadow-neu-pressed transition-all"
         >
           <div className={`w-12 h-12 rounded-full ${card.bgClass} flex items-center justify-center mr-4`}>
             <div className={card.colorClass}>

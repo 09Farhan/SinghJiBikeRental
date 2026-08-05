@@ -17,8 +17,8 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
           glassmorphism
             ? 'bg-white/5 backdrop-blur-sm border-white/10'
             : 'bg-[#111827] border-gray-700/50',
-          hover && !glassmorphism && 'hover:bg-[#1f2937] hover:border-gray-600/50 hover:shadow-xl hover:shadow-orange-500/5 hover:scale-[1.01]',
-          hover && glassmorphism && 'hover:bg-white/10 hover:shadow-xl hover:shadow-orange-500/5 hover:scale-[1.01]',
+          hover && !glassmorphism && 'hover:bg-[#1f2937] hover:border-gray-600/50 hover:shadow-xl hover:shadow-amber-500/5 hover:scale-[1.01]',
+          hover && glassmorphism && 'hover:bg-white/10 hover:shadow-xl hover:shadow-amber-500/5 hover:scale-[1.01]',
           onClick && 'cursor-pointer',
           className
         )}

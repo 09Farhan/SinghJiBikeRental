@@ -138,14 +138,14 @@ export default function InventoryPage() {
           { label: 'Available', value: inventory.reduce((acc, bike) => acc + (bike.units?.filter((u: any) => u.status === 'AVAILABLE').length || 0), 0), color: 'text-green-400' },
           { label: 'In Maintenance', value: inventory.reduce((acc, bike) => acc + (bike.units?.filter((u: any) => u.status === 'MAINTENANCE').length || 0), 0), color: 'text-red-400' }
         ].map((stat, i) => (
-          <Card key={i} className="bg-[#111827] border-gray-700/50 p-4">
+          <Card key={i} className="bg-[#111827] shadow-neu border border-gray-800 p-4">
             <div className="text-sm text-gray-400 mb-1">{stat.label}</div>
             <div className={`text-2xl font-bold ${stat.color}`}>{stat.value}</div>
           </Card>
         ))}
       </div>
 
-      <div className="bg-[#111827] border border-gray-700/50 rounded-2xl overflow-hidden">
+      <div className="bg-[#111827] shadow-neu border border-gray-800 rounded-2xl overflow-hidden">
         {isLoading ? (
           <div className="p-8 text-center text-gray-400">Loading inventory...</div>
         ) : (

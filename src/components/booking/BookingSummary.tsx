@@ -34,7 +34,7 @@ export default function BookingSummary({
           )}
         </div>
         <div>
-          <Badge variant="default" className="bg-orange-500/10 text-orange-400 border-orange-500/20 mb-1">
+          <Badge variant="default" className="bg-amber-500/10 text-amber-400 border-amber-500/20 mb-1">
             {bike.brand}
           </Badge>
           <h4 className="text-lg font-heading font-semibold text-white line-clamp-2">
@@ -51,7 +51,7 @@ export default function BookingSummary({
             <p className="text-white font-medium">{startDate ? formatDate(startDate) : '--'}</p>
           </div>
           <div className="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center border border-gray-700">
-            <svg className="w-4 h-4 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            <svg className="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
           </div>
           <div className="text-right">
             <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">Drop-off</p>
@@ -76,7 +76,7 @@ export default function BookingSummary({
             <p className="text-sm text-gray-400 mb-1">Total Amount</p>
             <p className="text-xs text-gray-500">Includes all taxes (GST)</p>
           </div>
-          <p className="text-3xl font-bold text-orange-400">
+          <p className="text-3xl font-bold text-amber-400">
             {formatCurrency(totalAmount)}
           </p>
         </div>
