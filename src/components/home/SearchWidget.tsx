@@ -29,8 +29,19 @@ export default function SearchWidget() {
     router.push(`/bikes?${params.toString()}`);
   };
 
-  const inputClass = "w-full bg-[#0a0e1a] shadow-neu-pressed border border-gray-800 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-amber-500/50 transition-all appearance-none";
+  const baseInputClass = "w-full bg-[#0a0e1a] shadow-neu-pressed border border-gray-800 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-amber-500/50 transition-all [color-scheme:dark] cursor-pointer";
+  const selectInputClass = baseInputClass + " appearance-none";
   const labelClass = "block text-xs font-medium text-gray-400 mb-1.5 uppercase tracking-wider";
+
+  const handleInputClick = (e: React.MouseEvent<HTMLInputElement>) => {
+    if ('showPicker' in e.currentTarget) {
+      try {
+        (e.currentTarget as HTMLInputElement).showPicker();
+      } catch (err) {
+        // Ignored
+      }
+    }
+  };
 
   return (
     <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-20 -mt-16 sm:-mt-20 animate-fade-in-up" style={{ animationDelay: '500ms' }}>
@@ -43,36 +54,40 @@ export default function SearchWidget() {
               <label className={labelClass}>Pick Up Date</label>
               <input 
                 type="date" 
-                className={inputClass}
+                className={baseInputClass}
                 value={formData.pickupDate}
                 onChange={(e) => setFormData({ ...formData, pickupDate: e.target.value })}
+                onClick={handleInputClick}
               />
             </div>
             <div>
               <label className={labelClass}>Time</label>
               <input 
                 type="time" 
-                className={inputClass}
+                className={baseInputClass}
                 value={formData.pickupTime}
                 onChange={(e) => setFormData({ ...formData, pickupTime: e.target.value })}
+                onClick={handleInputClick}
               />
             </div>
             <div>
               <label className={labelClass}>Drop Date</label>
               <input 
                 type="date" 
-                className={inputClass}
+                className={baseInputClass}
                 value={formData.dropDate}
                 onChange={(e) => setFormData({ ...formData, dropDate: e.target.value })}
+                onClick={handleInputClick}
               />
             </div>
             <div>
               <label className={labelClass}>Time</label>
               <input 
                 type="time" 
-                className={inputClass}
+                className={baseInputClass}
                 value={formData.dropTime}
                 onChange={(e) => setFormData({ ...formData, dropTime: e.target.value })}
+                onClick={handleInputClick}
               />
             </div>
           </div>
@@ -83,7 +98,7 @@ export default function SearchWidget() {
               <label className={labelClass}>Vehicle Type</label>
               <div className="relative">
                 <select 
-                  className={inputClass}
+                  className={selectInputClass}
                   value={formData.category}
                   onChange={(e) => setFormData({ ...formData, category: e.target.value })}
                 >
@@ -100,14 +115,13 @@ export default function SearchWidget() {
               <label className={labelClass}>Location</label>
               <div className="relative">
                 <select 
-                  className={inputClass}
+                  className={selectInputClass}
                   value={formData.location}
                   onChange={(e) => setFormData({ ...formData, location: e.target.value })}
                 >
                   <option value="Siliguri">Siliguri</option>
                   <option value="Bagdogra">Bagdogra Airport</option>
                   <option value="NJP">NJP Railway</option>
-                  <option value="Darjeeling">Darjeeling</option>
                 </select>
                 <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-500">
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
