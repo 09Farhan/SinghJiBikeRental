@@ -193,8 +193,8 @@ export default function ContactPage() {
               </div>
               <div>
                 <h3 className="text-white font-medium mb-1">Email Address</h3>
-                <a href="mailto:info@singhjibikes.com" className="text-gray-400 text-sm hover:text-amber-400 transition-colors">
-                  info@singhjibikes.com
+                <a href="mailto:singhjirental@gmail.com" className="text-gray-400 text-sm hover:text-amber-400 transition-colors">
+                  singhjirental@gmail.com
                 </a>
               </div>
             </div>

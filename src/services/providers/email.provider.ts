@@ -10,9 +10,9 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-const fromEmail = process.env.SMTP_EMAIL || 'bookings@singhjibikes.com';
+const fromEmail = process.env.SMTP_EMAIL || 'singhjirental@gmail.com';
 const adminEmails = [
-  process.env.ADMIN_EMAIL_1 || 'admin@singhjibikes.com',
+  process.env.ADMIN_EMAIL_1 || 'singhjirental@gmail.com',
   process.env.ADMIN_EMAIL_2,
 ].filter(Boolean) as string[];
 

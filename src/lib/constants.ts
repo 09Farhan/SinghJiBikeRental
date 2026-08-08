@@ -3,7 +3,7 @@ export const SITE_DESCRIPTION = 'Premium bike and scooter rentals in Siliguri, W
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
 export const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP || '+917365844003';
 export const PHONE_NUMBER = process.env.NEXT_PUBLIC_PHONE || '+917365844003';
-export const EMAIL_ADDRESS = 'info@singhjibikes.com';
+export const EMAIL_ADDRESS = 'singhjirental@gmail.com';
 export const BUSINESS_ADDRESS = "SinghJi's Cafe, opp. SIT Petrol Pump, Siliguri, West Bengal 734001";
 export const BUSINESS_HOURS = 'Mon-Sun: 7:00 AM - 9:00 PM';
 export const GOOGLE_MAPS_EMBED = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d114068.74088926442!2d88.35515255479008!3d26.727101831818274!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e44114f5441dcd%3A0xdeb5c4701fa08d87!2sSiliguri%2C%20West%20Bengal!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin';
