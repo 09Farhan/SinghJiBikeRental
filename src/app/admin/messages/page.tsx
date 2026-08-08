@@ -14,6 +14,8 @@ type Message = {
   rentalDate?: string;
   source: string;
   status: 'NEW' | 'READ' | 'REPLIED';
+  emailSent?: boolean;
+  notificationError?: string | null;
   createdAt: string;
 };
 
@@ -184,7 +186,22 @@ export default function AdminMessagesPage() {
                           <span className="bg-blue-500/20 text-blue-400 px-2 py-0.5 rounded text-[10px] font-bold tracking-wider">CONTACT</span>
                         )}
                       </div>
-                      <div className="text-gray-500">
+                      <div className="flex items-center gap-1.5 mt-2">
+                        {msg.emailSent ? (
+                          <span title="Email Sent" className="text-green-500 bg-green-500/10 p-1 rounded-md" aria-label="Email Sent">
+                            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                          </span>
+                        ) : msg.notificationError ? (
+                          <span title={`Email Error: ${msg.notificationError}`} className="text-red-400 bg-red-400/10 p-1 rounded-md" aria-label="Email Failed">
+                            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                          </span>
+                        ) : (
+                          <span title="Email Pending" className="text-gray-500 bg-gray-800 p-1 rounded-md">
+                            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                          </span>
+                        )}
+                      </div>
+                      <div className="text-gray-500 mt-1">
                         {format(new Date(msg.createdAt), 'MMM d, yyyy')}
                         <div className="text-xs">{format(new Date(msg.createdAt), 'h:mm a')}</div>
                       </div>

@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { BookingService } from '@/services/booking.service';
 import { bookingSchema } from '@/lib/validations';
-import { EmailService } from '@/services/email.service';
+import { NotificationService } from '@/services/notification.service';
 
 export async function GET(req: NextRequest) {
   try {
@@ -33,9 +33,7 @@ export async function POST(req: NextRequest) {
     const booking = await BookingService.createBooking(validatedData);
     
     // Send email notification async
-    if (booking.customer && booking.bikeUnit?.bike) {
-      EmailService.sendBookingConfirmation(booking, booking.customer, booking.bikeUnit.bike).catch(console.error);
-    }
+    NotificationService.processBookingNotification(booking.id).catch(console.error);
 
     return NextResponse.json({ success: true, data: booking }, { status: 201 });
   } catch (error: any) {

@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { contactSchema } from '@/lib/validations';
 import { prisma } from '@/lib/prisma';
-import { EmailService } from '@/services/email.service';
+import { NotificationService } from '@/services/notification.service';
 
 export async function POST(req: NextRequest) {
   try {
@@ -12,7 +12,8 @@ export async function POST(req: NextRequest) {
       data: validatedData
     });
 
-    // EmailService.sendContactNotification(inquiry).catch(console.error);
+    // Send email notification async
+    NotificationService.processLeadNotification(inquiry.id).catch(console.error);
 
     return NextResponse.json({ success: true, data: inquiry }, { status: 201 });
   } catch (error: any) {
