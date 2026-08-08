@@ -32,8 +32,8 @@ export async function POST(req: NextRequest) {
 
     const booking = await BookingService.createBooking(validatedData);
     
-    // Send email notification async
-    NotificationService.processBookingNotification(booking.id).catch(console.error);
+    // Send email notification and await it so Vercel doesn't kill the function
+    await NotificationService.processBookingNotification(booking.id);
 
     return NextResponse.json({ success: true, data: booking }, { status: 201 });
   } catch (error: any) {

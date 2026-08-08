@@ -26,13 +26,13 @@ export const NotificationService = {
       }
 
       try {
-        // Send to Admin
-        await EmailProvider.sendBookingEmail(booking);
-        
-        // Send 'Thank You' to Customer
+        // Send emails concurrently to speed up the API response
+        const emailPromises = [EmailProvider.sendBookingEmail(booking)];
         if (booking.customer?.email) {
-          await EmailProvider.sendCustomerBookingEmail(booking);
+          emailPromises.push(EmailProvider.sendCustomerBookingEmail(booking));
         }
+        
+        await Promise.all(emailPromises);
         
         await prisma.booking.update({
           where: { id: bookingId },

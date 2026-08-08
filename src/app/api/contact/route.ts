@@ -12,8 +12,8 @@ export async function POST(req: NextRequest) {
       data: validatedData
     });
 
-    // Send email notification async
-    NotificationService.processLeadNotification(inquiry.id).catch(console.error);
+    // Send email notification and await it so Vercel doesn't kill the function
+    await NotificationService.processLeadNotification(inquiry.id);
 
     return NextResponse.json({ success: true, data: inquiry }, { status: 201 });
   } catch (error: any) {
