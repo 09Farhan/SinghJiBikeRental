@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { z } from 'zod';
 import { contactSchema } from '@/lib/validations';
 import { prisma } from '@/lib/prisma';
 import { NotificationService } from '@/services/notification.service';
@@ -24,6 +25,10 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ success: true, data: inquiry }, { status: 201 });
   } catch (error: any) {
-    return NextResponse.json({ success: false, error: error.message || 'Validation error' }, { status: 400 });
+    if (error instanceof z.ZodError) {
+      return NextResponse.json({ success: false, errors: error.errors }, { status: 400 });
+    }
+    console.error('[Contact POST API] Error:', error);
+    return NextResponse.json({ success: false, error: 'An internal server error occurred' }, { status: 500 });
   }
 }

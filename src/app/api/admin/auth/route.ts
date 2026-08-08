@@ -47,6 +47,7 @@ export async function POST(req: NextRequest) {
 
     return response;
   } catch (error: any) {
-    return NextResponse.json({ success: false, error: error.message || 'Authentication error' }, { status: 400 });
+    console.error('[Admin Auth API] Error:', error);
+    return NextResponse.json({ success: false, error: 'An internal server error occurred' }, { status: 500 });
   }
 }

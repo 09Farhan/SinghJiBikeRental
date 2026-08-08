@@ -33,6 +33,10 @@ export async function POST(req: NextRequest) {
       } 
     });
   } catch (error: any) {
-    return NextResponse.json({ success: false, error: error.message || 'Error checking availability' }, { status: 400 });
+    if (error instanceof z.ZodError) {
+      return NextResponse.json({ success: false, errors: error.errors }, { status: 400 });
+    }
+    console.error('[Availability API] Error:', error);
+    return NextResponse.json({ success: false, error: 'An internal server error occurred' }, { status: 500 });
   }
 }

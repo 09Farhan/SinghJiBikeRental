@@ -54,6 +54,7 @@ export async function PUT(req: NextRequest) {
     if (error instanceof z.ZodError) {
       return NextResponse.json({ success: false, errors: error.errors }, { status: 400 });
     }
-    return NextResponse.json({ success: false, error: error.message || 'Server error' }, { status: 500 });
+    console.error('[Admin Password API] Error:', error);
+    return NextResponse.json({ success: false, error: 'An internal server error occurred' }, { status: 500 });
   }
 }

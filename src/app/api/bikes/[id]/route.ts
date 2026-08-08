@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { z } from 'zod';
 import { BikeService } from '@/services/bike.service';
 import { bikeSchema } from '@/lib/validations';
 import { RateLimitService } from '@/services/rate-limit.service';
@@ -41,7 +42,11 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
     const bike = await BikeService.updateBike(params.id, { ...validatedData, registrationNumber });
     return NextResponse.json({ success: true, data: bike });
   } catch (error: any) {
-    return NextResponse.json({ success: false, error: error.message || 'Validation error' }, { status: 400 });
+    if (error instanceof z.ZodError) {
+      return NextResponse.json({ success: false, errors: error.errors }, { status: 400 });
+    }
+    console.error('[Bikes PUT API] Error:', error);
+    return NextResponse.json({ success: false, error: 'An internal server error occurred' }, { status: 500 });
   }
 }
 

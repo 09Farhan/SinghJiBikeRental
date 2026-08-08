@@ -47,7 +47,8 @@ export const AdminService = {
 
   async verifyAdminToken(token: string): Promise<{ id: string, email: string } | null> {
     try {
-      const secret = process.env.NEXTAUTH_SECRET || 'your-secret-key-change-in-production';
+      const secret = process.env.NEXTAUTH_SECRET;
+      if (!secret) throw new Error('NEXTAUTH_SECRET environment variable is not set');
       const decoded = jwt.verify(token, secret) as { id: string, email: string };
       return decoded;
     } catch (e) {
@@ -56,7 +57,8 @@ export const AdminService = {
   },
 
   createAdminToken(admin: AdminUser): string {
-    const secret = process.env.NEXTAUTH_SECRET || 'your-secret-key-change-in-production';
+    const secret = process.env.NEXTAUTH_SECRET;
+    if (!secret) throw new Error('NEXTAUTH_SECRET environment variable is not set');
     return jwt.sign(
       { id: admin.id, email: admin.email, role: admin.role },
       secret,
