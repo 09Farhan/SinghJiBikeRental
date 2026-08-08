@@ -1,4 +1,5 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 
 // Assuming BikeFiltersType matches the one in types
 export type BikeFiltersType = {
@@ -10,8 +11,10 @@ export type BikeFiltersType = {
 };
 
 export function useFilters(initialBikes: any[]) {
+  const searchParams = useSearchParams();
+
   const [filters, setFilters] = useState<BikeFiltersType>({
-    category: 'All',
+    category: searchParams?.get('category') || 'All',
   });
 
   const setFilter = (key: keyof BikeFiltersType, value: any) => {

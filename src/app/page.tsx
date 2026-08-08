@@ -1,4 +1,5 @@
 import HeroSection from '@/components/home/HeroSection';
+import SearchWidget from '@/components/home/SearchWidget';
 import FeaturedBikes from '@/components/home/FeaturedBikes';
 import BenefitsSection from '@/components/home/BenefitsSection';
 import TestimonialsSection from '@/components/home/TestimonialsSection';
@@ -71,6 +72,7 @@ export default function HomePage() {
       />
       
       <HeroSection />
+      <SearchWidget />
       <FeaturedBikes />
       <BenefitsSection />
       <TestimonialsSection />

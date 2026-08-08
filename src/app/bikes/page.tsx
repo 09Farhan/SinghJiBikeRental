@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Suspense } from 'react';
 import BikesCatalog from './BikesCatalog';
 import { BikeService } from '@/services/bike.service';
 
@@ -25,7 +26,9 @@ export default async function BikesPage() {
           </p>
         </div>
 
-        <BikesCatalog bikes={bikes} />
+        <Suspense fallback={<div className="flex justify-center p-12"><div className="w-8 h-8 border-4 border-amber-500 border-t-transparent rounded-full animate-spin"></div></div>}>
+          <BikesCatalog bikes={bikes} />
+        </Suspense>
       </div>
     </main>
   );
