@@ -1,9 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { BikeService } from '@/services/bike.service';
 import { bikeSchema } from '@/lib/validations';
+import { RateLimitService } from '@/services/rate-limit.service';
 
 export async function GET(req: NextRequest) {
   try {
+    const ip = RateLimitService.getIp(req);
+    const rateLimit = await RateLimitService.checkLimit(ip, null, 'public');
+    if (!rateLimit.allowed) {
+      return NextResponse.json({ success: false, error: rateLimit.error }, { status: 429 });
+    }
+
     const { searchParams } = new URL(req.url);
     const filters = {
       category: searchParams.get('category') || undefined,
@@ -25,6 +32,12 @@ export async function POST(req: NextRequest) {
     const adminToken = req.cookies.get('adminToken')?.value;
     if (!adminToken) {
       return NextResponse.json({ success: false, error: 'Unauthorized' }, { status: 401 });
+    }
+
+    const ip = RateLimitService.getIp(req);
+    const rateLimit = await RateLimitService.checkLimit(ip, null, 'authenticated');
+    if (!rateLimit.allowed) {
+      return NextResponse.json({ success: false, error: rateLimit.error }, { status: 429 });
     }
 
     const body = await req.json();

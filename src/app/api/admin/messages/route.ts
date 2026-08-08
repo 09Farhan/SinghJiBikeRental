@@ -1,10 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
+import { RateLimitService } from '@/services/rate-limit.service';
 
 export const dynamic = 'force-dynamic';
 
 export async function GET(req: NextRequest) {
   try {
+    const ip = RateLimitService.getIp(req);
+    const rateLimit = await RateLimitService.checkLimit(ip, null, 'authenticated');
+    if (!rateLimit.allowed) {
+      return NextResponse.json({ success: false, error: rateLimit.error }, { status: 429 });
+    }
+
     const searchParams = req.nextUrl.searchParams;
     const query = searchParams.get('q') || '';
     const status = searchParams.get('status');

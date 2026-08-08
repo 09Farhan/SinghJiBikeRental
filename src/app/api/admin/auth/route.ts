@@ -1,11 +1,18 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { loginSchema } from '@/lib/validations';
 import { AdminService } from '@/services/admin.service';
+import { RateLimitService } from '@/services/rate-limit.service';
 
 export async function POST(req: NextRequest) {
   try {
+    const ip = RateLimitService.getIp(req);
     const body = await req.json();
     const { email, password } = loginSchema.parse(body);
+
+    const rateLimit = await RateLimitService.checkLimit(ip, email, 'auth');
+    if (!rateLimit.allowed) {
+      return NextResponse.json({ success: false, error: rateLimit.error }, { status: 429 });
+    }
 
     const admin = await AdminService.authenticateAdmin(email, password);
     
@@ -14,6 +21,9 @@ export async function POST(req: NextRequest) {
     }
 
     const token = AdminService.createAdminToken(admin);
+
+    // Clear limit on successful login
+    await RateLimitService.clearLimit(ip, email, 'auth');
 
     const response = NextResponse.json({ 
       success: true, 

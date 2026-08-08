@@ -1,17 +1,24 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import { z } from 'zod';
+import { RateLimitService } from '@/services/rate-limit.service';
 
 const reviewSchema = z.object({
-  author: z.string().min(2, 'Name must be at least 2 characters'),
-  location: z.string().min(2, 'Location is required'),
+  author: z.string().min(2, 'Name must be at least 2 characters').max(100, 'Name is too long'),
+  location: z.string().min(2, 'Location is required').max(100, 'Location is too long'),
   rating: z.number().min(1).max(5),
-  comment: z.string().min(10, 'Review must be at least 10 characters'),
-  images: z.array(z.string()).optional(), // Array of base64 strings
-});
+  comment: z.string().min(10, 'Review must be at least 10 characters').max(1000, 'Review is too long'),
+  images: z.array(z.string().max(500, 'Image URL is too long')).max(5, 'Too many images').optional(),
+}).strict();
 
 export async function POST(req: NextRequest) {
   try {
+    const ip = RateLimitService.getIp(req);
+    const rateLimit = await RateLimitService.checkLimit(ip, null, 'public');
+    if (!rateLimit.allowed) {
+      return NextResponse.json({ success: false, error: rateLimit.error }, { status: 429 });
+    }
+
     const body = await req.json();
     const data = reviewSchema.parse(body);
 

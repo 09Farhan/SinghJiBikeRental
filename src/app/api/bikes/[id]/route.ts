@@ -1,9 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { BikeService } from '@/services/bike.service';
 import { bikeSchema } from '@/lib/validations';
+import { RateLimitService } from '@/services/rate-limit.service';
 
 export async function GET(req: NextRequest, { params }: { params: { id: string } }) {
   try {
+    const ip = RateLimitService.getIp(req);
+    const rateLimit = await RateLimitService.checkLimit(ip, null, 'public');
+    if (!rateLimit.allowed) {
+      return NextResponse.json({ success: false, error: rateLimit.error }, { status: 429 });
+    }
+
     const bike = await BikeService.getBikeById(params.id);
     if (!bike) {
       return NextResponse.json({ success: false, error: 'Bike not found' }, { status: 404 });
@@ -19,6 +26,12 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
     const adminToken = req.cookies.get('adminToken')?.value;
     if (!adminToken) {
       return NextResponse.json({ success: false, error: 'Unauthorized' }, { status: 401 });
+    }
+
+    const ip = RateLimitService.getIp(req);
+    const rateLimit = await RateLimitService.checkLimit(ip, null, 'authenticated');
+    if (!rateLimit.allowed) {
+      return NextResponse.json({ success: false, error: rateLimit.error }, { status: 429 });
     }
 
     const body = await req.json();
@@ -37,6 +50,12 @@ export async function DELETE(req: NextRequest, { params }: { params: { id: strin
     const adminToken = req.cookies.get('adminToken')?.value;
     if (!adminToken) {
       return NextResponse.json({ success: false, error: 'Unauthorized' }, { status: 401 });
+    }
+
+    const ip = RateLimitService.getIp(req);
+    const rateLimit = await RateLimitService.checkLimit(ip, null, 'authenticated');
+    if (!rateLimit.allowed) {
+      return NextResponse.json({ success: false, error: rateLimit.error }, { status: 429 });
     }
 
     await BikeService.deleteBike(params.id);
