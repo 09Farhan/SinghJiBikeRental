@@ -55,6 +55,50 @@ export const EmailProvider = {
     }
   },
 
+  async sendCustomerBookingEmail(booking: any) {
+    if (!process.env.RESEND_API_KEY) {
+      return { id: 'simulated_customer_email_id' };
+    }
+
+    const { customer, bikeUnit, startDate, endDate, totalDays, totalAmount, id } = booking;
+    const bike = bikeUnit?.bike;
+
+    const html = `
+      <div style="font-family: Arial, sans-serif; max-w-md: 600px; margin: 0 auto; color: #333;">
+        <h2 style="color: #2563eb;">Booking Received, ${customer?.name.split(' ')[0]}!</h2>
+        <p>Thank you for choosing Singh Ji's Bike Rental. We have received your booking request.</p>
+        
+        <div style="background-color: #f8fafc; padding: 15px; border-radius: 8px; margin: 20px 0;">
+          <h3 style="margin-top: 0; color: #1e293b;">Booking Summary</h3>
+          <p><strong>Vehicle:</strong> ${bike?.brand} ${bike?.name}</p>
+          <p><strong>Pickup:</strong> ${new Date(startDate).toLocaleDateString()}</p>
+          <p><strong>Drop-off:</strong> ${new Date(endDate).toLocaleDateString()}</p>
+          <p><strong>Duration:</strong> ${totalDays} days</p>
+          <p><strong>Estimated Amount:</strong> ₹${totalAmount}</p>
+        </div>
+
+        <p>Our team will review your request and get back to you shortly to confirm availability and hand-over details.</p>
+        
+        <p style="margin-top: 30px;">
+          Best Regards,<br>
+          <strong>Singh Ji's Bike Rental Team</strong>
+        </p>
+      </div>
+    `;
+
+    try {
+      const data = await resend.emails.send({
+        from: `Singh Ji's Bike Rental <${fromEmail}>`,
+        to: customer.email,
+        subject: `Your Booking Request is Received - Singh Ji's Bike Rental`,
+        html,
+      });
+      return data;
+    } catch (error) {
+      throw error;
+    }
+  },
+
   async sendLeadEmail(inquiry: any) {
     if (!process.env.RESEND_API_KEY) {
       console.warn('[EmailProvider] RESEND_API_KEY missing. Simulating lead email.');
