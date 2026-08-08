@@ -55,7 +55,7 @@ export default function AdminLoginPage() {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="singhjirental@gmail.com"
+                placeholder="admin@singhjibikes.com"
                 required
               />
             </div>
