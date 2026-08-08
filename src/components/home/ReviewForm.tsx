@@ -1,9 +1,10 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
 import Button from '@/components/ui/Button';
 import Input from '@/components/ui/Input';
+import { CldUploadWidget } from 'next-cloudinary';
 
 interface ReviewFormProps {
   onClose: () => void;
@@ -15,37 +16,12 @@ export default function ReviewForm({ onClose, onSuccess }: ReviewFormProps) {
   const [error, setError] = useState<string | null>(null);
   const [rating, setRating] = useState(5);
   const [images, setImages] = useState<string[]>([]);
-  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const [formData, setFormData] = useState({
     author: '',
     location: '',
     comment: '',
   });
-
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const files = e.target.files;
-    if (!files) return;
-
-    if (images.length + files.length > 3) {
-      setError('You can only upload up to 3 photos.');
-      return;
-    }
-
-    Array.from(files).forEach((file) => {
-      // Validate file size (e.g., < 2MB per image to prevent DB bloat)
-      if (file.size > 2 * 1024 * 1024) {
-        setError('Each photo must be under 2MB.');
-        return;
-      }
-
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setImages((prev) => [...prev, reader.result as string]);
-      };
-      reader.readAsDataURL(file);
-    });
-  };
 
   const removeImage = (index: number) => {
     setImages(images.filter((_, i) => i !== index));
@@ -173,26 +149,27 @@ export default function ReviewForm({ onClose, onSuccess }: ReviewFormProps) {
                   </div>
                 ))}
                 {images.length < 3 && (
-                  <button
-                    type="button"
-                    onClick={() => fileInputRef.current?.click()}
-                    className="w-20 h-20 rounded-lg border-2 border-dashed border-gray-700 flex flex-col items-center justify-center text-gray-500 hover:border-amber-500 hover:text-amber-500 transition-colors"
+                  <CldUploadWidget 
+                    uploadPreset="bike_rental_preset"
+                    onSuccess={(result: any) => {
+                      setImages((prev) => [...prev, result.info.secure_url]);
+                    }}
                   >
-                    <svg className="w-6 h-6 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-                    </svg>
-                    <span className="text-xs font-medium">Add Photo</span>
-                  </button>
+                    {({ open }) => (
+                      <button
+                        type="button"
+                        onClick={(e) => { e.preventDefault(); open(); }}
+                        className="w-20 h-20 rounded-lg border-2 border-dashed border-gray-700 flex flex-col items-center justify-center text-gray-500 hover:border-amber-500 hover:text-amber-500 transition-colors"
+                      >
+                        <svg className="w-6 h-6 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                        </svg>
+                        <span className="text-xs font-medium text-center leading-tight">Add Photo</span>
+                      </button>
+                    )}
+                  </CldUploadWidget>
                 )}
               </div>
-              <input
-                type="file"
-                ref={fileInputRef}
-                className="hidden"
-                accept="image/*"
-                multiple
-                onChange={handleFileChange}
-              />
             </div>
 
             <div className="pt-4">
