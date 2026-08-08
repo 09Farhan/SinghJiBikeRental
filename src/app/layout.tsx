@@ -16,22 +16,22 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Singh Ji\'s Bike Rental | Premium Bike & Scooter Rentals in Siliguri',
+    default: 'Singh Ji\'s Bike Rental | Bike Rental in Siliguri',
     template: '%s | Singh Ji\'s Bike Rental',
   },
-  description: 'Premium bike rental in Siliguri, West Bengal. Rent bike online, self drive bike rental for a luxury adventure experience in Siliguri.',
-  keywords: ['bike rental in Siliguri', 'rent bike online', 'self drive bike rental Siliguri', 'premium bike rental', 'scooter rental in Siliguri', 'bike on rent in Siliguri'],
+  description: 'Looking for a bike rental in Siliguri? Singh Ji\'s Bike Rental offers premium motorcycles and scooters on rent for local travel and Darjeeling/Sikkim trips. Book online!',
+  keywords: ['bike rental in Siliguri', 'bike rental Siliguri', 'scooter rental Siliguri', 'bike rent in Siliguri', 'bike on rent in Siliguri', 'rent a bike in Siliguri', 'motorcycle rental Siliguri'],
   openGraph: {
     locale: 'en_IN',
     type: 'website',
     siteName: 'Singh Ji\'s Bike Rental',
-    title: 'Singh Ji\'s Bike Rental | Premium Bike & Scooter Rentals in Siliguri',
-    description: 'Premium bike rental in Siliguri, West Bengal. Rent bike online, self drive bike rental for a luxury adventure experience in Siliguri.',
+    title: 'Singh Ji\'s Bike Rental | Bike Rental in Siliguri',
+    description: 'Looking for a bike rental in Siliguri? Singh Ji\'s Bike Rental offers premium motorcycles and scooters on rent for local travel and Darjeeling/Sikkim trips.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Singh Ji\'s Bike Rental',
-    description: 'Premium bike rental in Siliguri, West Bengal. Rent bike online, self drive bike rental for a luxury adventure experience in Siliguri.',
+    title: 'Singh Ji\'s Bike Rental | Bike Rental in Siliguri',
+    description: 'Looking for a bike rental in Siliguri? Singh Ji\'s Bike Rental offers premium motorcycles and scooters on rent for local travel and Darjeeling/Sikkim trips.',
   },
   robots: {
     index: true,
@@ -52,6 +52,8 @@ export default function RootLayout({
     '@id': 'https://www.singhjibikerental.com',
     url: 'https://www.singhjibikerental.com',
     telephone: PHONE_NUMBER,
+    priceRange: '₹600 - ₹3000',
+    openingHours: 'Mo-Su 07:00-21:00',
     address: {
       '@type': 'PostalAddress',
       streetAddress: BUSINESS_ADDRESS,
@@ -60,10 +62,13 @@ export default function RootLayout({
       postalCode: '734001',
       addressCountry: 'IN',
     },
-    areaServed: {
-      '@type': 'City',
-      name: 'Siliguri'
-    }
+    areaServed: [
+      { '@type': 'City', name: 'Siliguri' },
+      { '@type': 'City', name: 'Darjeeling' },
+      { '@type': 'City', name: 'Sikkim' },
+      { '@type': 'Place', name: 'Bagdogra Airport' },
+      { '@type': 'Place', name: 'New Jalpaiguri Railway Station (NJP)' }
+    ]
   }
 
   return (

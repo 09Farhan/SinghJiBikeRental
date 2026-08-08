@@ -32,7 +32,13 @@ export default async function FeaturedBikes() {
               {/* Image Area */}
               <div className="h-48 bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center relative overflow-hidden">
                 {bike.images?.[0] ? (
-                  <Image src={bike.images[0]} alt={bike.name} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-cover group-hover:scale-110 transition-transform duration-500" />
+                  <Image 
+                    src={bike.images[0]} 
+                    alt={`${bike.name} on Rent in Siliguri`}
+                    fill 
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" 
+                    className="object-cover group-hover:scale-110 transition-transform duration-500" 
+                  />
                 ) : (
                   <svg className="w-24 h-24 text-gray-600 opacity-50 group-hover:scale-110 transition-transform duration-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M5.5 16a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5z"></path>

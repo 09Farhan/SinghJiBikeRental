@@ -39,8 +39,8 @@ export default async function HeroSection() {
           className="animate-fade-in-up font-heading text-5xl md:text-7xl font-bold tracking-tight mb-6"
           style={{ animationDelay: '100ms' }}
         >
-          <span className="text-white block mb-2">Explore Siliguri on</span>
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-yellow-400">Two Wheels</span>
+          <span className="text-white block mb-2">Premium Bike Rental</span>
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-yellow-400">in Siliguri</span>
         </h1>
         
         {/* Subheading */}

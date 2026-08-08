@@ -11,12 +11,12 @@ import { FAQS as faqs } from '@/lib/constants';
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
-  title: "Singh Ji's Bike Rental | Premium Bike & Scooter Rentals in Siliguri",
-  description: "Rent premium bikes and scooters in Siliguri for your next adventure. Self-drive bike rental with doorstep delivery in Siliguri. BMW, Royal Enfield, KTM & more starting ₹600/day.",
-  keywords: "bike rental Siliguri, scooter rental Siliguri, rent a bike in Siliguri, self drive bikes Siliguri, premium bike rental Siliguri, Royal Enfield rental Siliguri, Darjeeling bike trip",
+  title: "Singh Ji's Bike Rental | Bike Rental in Siliguri",
+  description: "Looking for a bike rental in Siliguri? Singh Ji's Bike Rental offers premium motorcycles and scooters on rent for local travel and Darjeeling/Sikkim trips. Book online!",
+  keywords: "bike rental Siliguri, scooter rental Siliguri, rent a bike in Siliguri, bike rent in Siliguri, two wheeler rental Siliguri, bike rental near NJP, bike rental Bagdogra",
   openGraph: {
-    title: "Singh Ji's Bike Rental | Premium Bike & Scooter Rentals in Siliguri",
-    description: "Rent premium bikes and scooters in Siliguri for your next adventure. Self-drive bike rental with doorstep delivery.",
+    title: "Singh Ji's Bike Rental | Bike Rental in Siliguri",
+    description: "Looking for a bike rental in Siliguri? Singh Ji's Bike Rental offers premium motorcycles and scooters on rent for local travel and Darjeeling/Sikkim trips.",
     url: 'https://singhjibikes.com',
     siteName: "Singh Ji's Bike Rental",
     locale: 'en_IN',

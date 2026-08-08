@@ -29,7 +29,13 @@ export default function BikeGallery({ images, bikeName }: BikeGalleryProps) {
         !hasImages && placeholders[selectedIndex]
       )}>
         {hasImages ? (
-          <Image src={images[selectedIndex]} alt={`${bikeName} - ${selectedIndex + 1}`} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
+          <Image 
+            src={images[selectedIndex]} 
+            alt={`${bikeName} Rental in Siliguri - Image ${selectedIndex + 1}`}
+            fill 
+            sizes="(max-width: 768px) 100vw, 50vw" 
+            className="object-cover" 
+          />
         ) : (
           <>
             <svg className="w-64 h-64 text-gray-600 opacity-50 drop-shadow-2xl" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -57,7 +63,13 @@ export default function BikeGallery({ images, bikeName }: BikeGalleryProps) {
             )}
           >
             {hasImages ? (
-              <Image src={item} alt={`${bikeName} thumbnail ${idx + 1}`} fill sizes="(max-width: 768px) 33vw, 20vw" className="object-cover" />
+              <Image 
+                src={item} 
+                alt={`${bikeName} on Rent Siliguri Thumbnail ${idx + 1}`}
+                fill 
+                sizes="(max-width: 768px) 33vw, 20vw" 
+                className="object-cover" 
+              />
             ) : (
               <svg className="w-12 h-12 text-gray-500 opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 002 12v4c0 .6.4 1 1 1h2m0 0a2 2 0 104 0m-4 0a2 2 0 114 0m0 0c.3 0 .7.1 1 .2m7-.2a2 2 0 104 0m-4 0a2 2 0 114 0m-4 0c-.3 0-.7.1-1 .2m0 0H8.3" />

@@ -31,27 +31,27 @@ export const ADMIN_NAV_LINKS = [
 
 export const FAQS = [
   {
-    q: 'What documents do I need to rent a bike?',
-    a: 'You need a valid government-issued photo ID (Aadhar, Passport, or Driving License) and a valid driving license appropriate for the vehicle type. For scooters under 50cc, a regular license works. For motorcycles, you need a motorcycle-specific license.'
+    q: 'Where can I rent a bike in Siliguri?',
+    a: 'You can easily rent a bike or scooter in Siliguri at Singh Ji\'s Bike Rental. We offer a wide range of premium motorcycles and scooters with doorstep delivery options across Siliguri, including NJP Railway Station and Bagdogra Airport.'
   },
   {
-    q: 'Is there a security deposit?',
-    a: 'Yes, a refundable security deposit of ₹2,000-₹5,000 is required depending on the bike model. This is fully refundable upon return of the bike in its original condition.'
+    q: 'Can I rent a bike near NJP Railway Station or Bagdogra Airport?',
+    a: 'Yes! We provide convenient bike rental services near NJP (New Jalpaiguri Railway Station) and Bagdogra Airport. You can book online and we will ensure your two-wheeler is ready when you arrive in Siliguri.'
   },
   {
-    q: 'Do you provide helmets and riding gear?',
-    a: 'Yes! We provide one complimentary helmet with every rental. Additional helmets and riding gear (jackets, gloves, knee guards) are available at nominal charges.'
+    q: 'Can I take a rented bike from Siliguri to Darjeeling or Sikkim?',
+    a: 'Absolutely! Our bikes are well-maintained and perfect for exploring Darjeeling, Kurseong, Kalimpong, and Sikkim. We provide the necessary documents you need for inter-state travel.'
   },
   {
-    q: 'What is your cancellation policy?',
-    a: 'Free cancellation up to 24 hours before the rental start time. Cancellations within 24 hours may attract a 25% cancellation fee. No-shows are non-refundable.'
+    q: 'What documents are required to rent a bike in Siliguri?',
+    a: 'You need a valid government-issued photo ID (Aadhar, Passport, or Voter ID) and a valid driving license appropriate for the two-wheeler you are renting.'
   },
   {
-    q: 'Can I take the bike to another city or state?',
-    a: 'Yes, inter-city and inter-state travel is allowed with prior intimation. Additional charges may apply based on distance and state permits required.'
+    q: 'Do you provide helmets with rental bikes?',
+    a: 'Yes, we provide one complimentary helmet with every rental to ensure your safety. Additional helmets and riding gear are available upon request.'
   },
   {
-    q: 'What happens if the bike breaks down?',
-    a: 'We provide 24/7 roadside assistance. In case of a breakdown, call our helpline and we\'ll arrange a replacement bike or repairs at the nearest service center at no extra cost.'
+    q: 'How much does it cost to rent a bike in Siliguri?',
+    a: 'Our affordable bike rentals in Siliguri start from just ₹600 per day for scooters and go up to premium motorcycles. The final price depends on the specific vehicle model and your rental duration.'
   }
 ];
