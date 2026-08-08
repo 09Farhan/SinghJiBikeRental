@@ -23,6 +23,20 @@ export default function FloatingActions() {
         isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0 pointer-events-none'
       )}
     >
+      {/* Back to Top */}
+      <button
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        className="w-14 h-14 bg-amber-400 rounded-full flex items-center justify-center shadow-lg shadow-amber-500/20 text-black hover:scale-110 transition-transform duration-300 group relative focus:outline-none"
+        aria-label="Back to top"
+      >
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+        </svg>
+        <span className="absolute right-full mr-4 bg-gray-800 text-white text-sm px-3 py-1.5 rounded-lg whitespace-nowrap opacity-0 md:group-hover:opacity-100 transition-opacity pointer-events-none">
+          Back to Top
+        </span>
+      </button>
+
       {/* WhatsApp */}
       <a
         href={`https://wa.me/${WHATSAPP_NUMBER?.replace(/[^0-9]/g, '')}`}
