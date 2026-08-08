@@ -1,7 +1,16 @@
-import { Resend } from 'resend';
+import nodemailer from 'nodemailer';
 
-const resend = new Resend(process.env.RESEND_API_KEY || 're_dummy_key');
-const fromEmail = process.env.EMAIL_FROM || 'bookings@singhjibikes.com';
+const transporter = nodemailer.createTransport({
+  host: 'smtp.gmail.com',
+  port: 465,
+  secure: true, // use SSL
+  auth: {
+    user: process.env.SMTP_EMAIL,
+    pass: process.env.SMTP_PASSWORD, // Must be an App Password if 2FA is enabled
+  },
+});
+
+const fromEmail = process.env.SMTP_EMAIL || 'bookings@singhjibikes.com';
 const adminEmails = [
   process.env.ADMIN_EMAIL_1 || 'admin@singhjibikes.com',
   process.env.ADMIN_EMAIL_2,
@@ -9,8 +18,8 @@ const adminEmails = [
 
 export const EmailProvider = {
   async sendBookingEmail(booking: any) {
-    if (!process.env.RESEND_API_KEY) {
-      console.warn('[EmailProvider] RESEND_API_KEY missing. Simulating booking email.');
+    if (!process.env.SMTP_EMAIL || !process.env.SMTP_PASSWORD) {
+      console.warn('[EmailProvider] SMTP credentials missing. Simulating booking email.');
       return { id: 'simulated_email_id' };
     }
 
@@ -42,21 +51,21 @@ export const EmailProvider = {
     `;
 
     try {
-      const data = await resend.emails.send({
-        from: `Singh Ji's Bike Rental <${fromEmail}>`,
-        to: adminEmails,
+      const info = await transporter.sendMail({
+        from: `"Singh Ji's Bike Rental" <${fromEmail}>`,
+        to: adminEmails.join(', '),
         replyTo: customer?.email,
         subject: `New Bike Booking Request - ${bike?.name} - ${new Date(startDate).toLocaleDateString()}`,
         html,
       });
-      return data;
+      return info;
     } catch (error) {
       throw error;
     }
   },
 
   async sendCustomerBookingEmail(booking: any) {
-    if (!process.env.RESEND_API_KEY) {
+    if (!process.env.SMTP_EMAIL || !process.env.SMTP_PASSWORD) {
       return { id: 'simulated_customer_email_id' };
     }
 
@@ -87,21 +96,21 @@ export const EmailProvider = {
     `;
 
     try {
-      const data = await resend.emails.send({
-        from: `Singh Ji's Bike Rental <${fromEmail}>`,
+      const info = await transporter.sendMail({
+        from: `"Singh Ji's Bike Rental" <${fromEmail}>`,
         to: customer.email,
         subject: `Your Booking Request is Received - Singh Ji's Bike Rental`,
         html,
       });
-      return data;
+      return info;
     } catch (error) {
       throw error;
     }
   },
 
   async sendLeadEmail(inquiry: any) {
-    if (!process.env.RESEND_API_KEY) {
-      console.warn('[EmailProvider] RESEND_API_KEY missing. Simulating lead email.');
+    if (!process.env.SMTP_EMAIL || !process.env.SMTP_PASSWORD) {
+      console.warn('[EmailProvider] SMTP credentials missing. Simulating lead email.');
       return { id: 'simulated_email_id' };
     }
 
@@ -130,14 +139,14 @@ export const EmailProvider = {
     `;
 
     try {
-      const data = await resend.emails.send({
-        from: `Singh Ji's Bike Rental <${fromEmail}>`,
-        to: adminEmails,
+      const info = await transporter.sendMail({
+        from: `"Singh Ji's Bike Rental" <${fromEmail}>`,
+        to: adminEmails.join(', '),
         replyTo: inquiry.email,
         subject: `${title} - ${inquiry.name}`,
         html,
       });
-      return data;
+      return info;
     } catch (error) {
       throw error;
     }
