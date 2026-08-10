@@ -97,8 +97,8 @@ export default function InventoryPage() {
   };
 
   const handleAddUnit = async (bikeId: string) => {
-    const regNum = window.prompt('Enter Registration Number for the new unit:');
-    if (!regNum) return;
+    const regNum = window.prompt('Enter Registration Number for the new unit (or leave blank for TBD):');
+    if (regNum === null) return; // User clicked Cancel
 
     try {
       const res = await fetch(`/api/bikes/${bikeId}/units`, {

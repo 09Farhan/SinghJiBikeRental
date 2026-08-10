@@ -16,10 +16,10 @@ export async function POST(req: NextRequest, { params }: { params: { id: string 
     }
 
     const body = await req.json();
-    const { registrationNumber, color = 'Standard' } = body;
+    let { registrationNumber, color = 'Standard' } = body;
     
-    if (!registrationNumber) {
-      return NextResponse.json({ success: false, error: 'Registration number is required' }, { status: 400 });
+    if (!registrationNumber || registrationNumber.trim() === '') {
+      registrationNumber = `TBD-${Date.now().toString().slice(-6)}`;
     }
 
     const unit = await BikeService.addBikeUnit(params.id, { registrationNumber, color });
