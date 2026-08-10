@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { z } from 'zod';
 import { loginSchema } from '@/lib/validations';
 import { AdminService } from '@/services/admin.service';
 import { RateLimitService } from '@/services/rate-limit.service';
@@ -48,6 +49,9 @@ export async function POST(req: NextRequest) {
     return response;
   } catch (error: any) {
     console.error('[Admin Auth API] Error:', error);
+    if (error instanceof z.ZodError) {
+      return NextResponse.json({ success: false, error: error.errors[0].message }, { status: 400 });
+    }
     return NextResponse.json({ success: false, error: 'An internal server error occurred' }, { status: 500 });
   }
 }
