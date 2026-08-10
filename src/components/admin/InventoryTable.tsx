@@ -11,9 +11,10 @@ interface InventoryTableProps {
   onDelete: (bikeId: string) => void;
   onToggleUnit: (bikeId: string, unitId: string, status: string) => void;
   onDeleteUnit?: (bikeId: string, unitId: string) => void;
+  onAddUnit?: (bikeId: string) => void;
 }
 
-export default function InventoryTable({ inventory, onEdit, onDelete, onToggleUnit, onDeleteUnit }: InventoryTableProps) {
+export default function InventoryTable({ inventory, onEdit, onDelete, onToggleUnit, onDeleteUnit, onAddUnit }: InventoryTableProps) {
   const [expandedRows, setExpandedRows] = useState<Record<string, boolean>>({});
 
   const toggleRow = (id: string) => {
@@ -95,7 +96,10 @@ export default function InventoryTable({ inventory, onEdit, onDelete, onToggleUn
                     >
                       Delete
                     </button>
-                    <button className="text-blue-400 hover:text-blue-300 text-sm font-medium">
+                    <button 
+                      onClick={() => onAddUnit && onAddUnit(bike.id)}
+                      className="text-blue-400 hover:text-blue-300 text-sm font-medium"
+                    >
                       + Add Unit
                     </button>
                   </td>

@@ -96,6 +96,29 @@ export default function InventoryPage() {
     }
   };
 
+  const handleAddUnit = async (bikeId: string) => {
+    const regNum = window.prompt('Enter Registration Number for the new unit:');
+    if (!regNum) return;
+
+    try {
+      const res = await fetch(`/api/bikes/${bikeId}/units`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ registrationNumber: regNum })
+      });
+      const data = await res.json();
+      if (data.success) {
+        toast.success('Unit added successfully');
+        await fetchInventory(); // Refresh to show new unit
+      } else {
+        toast.error('Failed to add unit: ' + data.error);
+      }
+    } catch (error) {
+      console.error('Failed to add unit', error);
+      toast.error('Error adding unit');
+    }
+  };
+
   const handleSave = async (bikeData: any) => {
     try {
       const { image, ...payload } = bikeData;
@@ -155,6 +178,7 @@ export default function InventoryPage() {
             onDelete={handleDeleteBike}
             onToggleUnit={handleToggleUnit} 
             onDeleteUnit={handleDeleteUnit}
+            onAddUnit={handleAddUnit}
           />
         )}
       </div>
