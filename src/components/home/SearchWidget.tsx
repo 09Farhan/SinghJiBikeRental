@@ -29,8 +29,8 @@ export default function SearchWidget() {
     router.push(`/bikes?${params.toString()}`);
   };
 
-  const baseInputClass = "w-full bg-[#0a0e1a] shadow-neu-pressed border border-gray-800 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-amber-500/50 transition-all [color-scheme:dark] cursor-pointer";
-  const selectInputClass = baseInputClass + " appearance-none";
+  const baseInputClass = "w-full min-w-0 appearance-none bg-[#0a0e1a] shadow-neu-pressed border border-gray-800 rounded-xl px-3 sm:px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-amber-500/50 transition-all [color-scheme:dark] cursor-pointer";
+  const selectInputClass = baseInputClass; // appearance-none is already in baseInputClass now
   const labelClass = "block text-xs font-medium text-gray-400 mb-1.5 uppercase tracking-wider";
 
   const handleInputClick = (e: React.MouseEvent<HTMLInputElement>) => {
@@ -49,7 +49,7 @@ export default function SearchWidget() {
         <form onSubmit={handleSubmit} className="flex flex-col lg:flex-row gap-6 lg:items-end">
           
           {/* Dates & Times */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 flex-grow">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 flex-grow">
             <div>
               <label className={labelClass}>Pick Up Date</label>
               <input 
