@@ -141,7 +141,7 @@ function BookingContentWrapper() {
 
   useEffect(() => {
     if (slug) {
-      fetch(`/api/bikes`)
+      fetch(`/api/bikes`, { cache: 'no-store' })
         .then(res => res.json())
         .then(data => {
           if (data.success) {
