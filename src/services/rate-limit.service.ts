@@ -22,7 +22,7 @@ export const RATE_LIMIT_CONFIGS: Record<RouteType, RateLimitConfig> = {
     maxDelaySeconds: 3600 // max 1 hour
   },
   public: {
-    maxAttempts: 30, // Moderate limits for forms/public endpoints
+    maxAttempts: 300, // Higher limits for public APIs
     windowMinutes: 10,
     baseDelaySeconds: 60, // 1 minute backoff
     multiplier: 1.5,
