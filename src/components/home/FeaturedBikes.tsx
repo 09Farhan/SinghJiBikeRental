@@ -24,9 +24,10 @@ export default async function FeaturedBikes() {
         {/* Bikes Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           {featuredBikes.map((bike, index) => (
-            <div 
+            <Link 
+              href={`/booking?bike=${bike.slug}`}
               key={bike.slug}
-              className="group rounded-2xl bg-[#111827] border border-gray-700/50 overflow-hidden hover:border-amber-500/30 transition-all hover:-translate-y-1 shadow-lg hover:shadow-amber-500/10"
+              className="group rounded-2xl bg-[#111827] border border-gray-700/50 overflow-hidden hover:border-amber-500/30 transition-all hover:-translate-y-1 shadow-lg hover:shadow-amber-500/10 block"
               style={{ animationDelay: `${index * 100}ms` }}
             >
               {/* Image Area */}
@@ -65,15 +66,14 @@ export default async function FeaturedBikes() {
                   <p className="text-amber-400 font-bold">
                     From {formatCurrency ? formatCurrency(bike.pricePerDay) : `₹${bike.pricePerDay}`}/day
                   </p>
-                  <Link 
-                    href={`/bikes/${bike.slug}`}
-                    className="text-amber-500 hover:text-amber-400 font-medium text-sm transition-colors flex items-center gap-1 group-hover:translate-x-1 duration-300"
+                  <span 
+                    className="text-amber-500 group-hover:text-amber-400 font-medium text-sm transition-colors flex items-center gap-1 group-hover:translate-x-1 duration-300"
                   >
-                    View Details <span aria-hidden="true">&rarr;</span>
-                  </Link>
+                    Book Now <span aria-hidden="true">&rarr;</span>
+                  </span>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 
