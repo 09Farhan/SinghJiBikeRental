@@ -35,6 +35,7 @@ export const bikeSchema = z.object({
   mileage: z.string().min(1, 'Mileage is required').max(50, 'Mileage is too long'),
   fuelType: z.enum(['PETROL', 'ELECTRIC']),
   transmission: z.enum(['MANUAL', 'AUTOMATIC']),
+  seatCapacity: z.number().int().positive('Seat capacity must be positive').optional(),
   images: z.array(z.string().max(500, 'Image URL is too long')).max(10, 'Too many images').optional(),
 }).strict();
 

@@ -42,14 +42,14 @@ export async function POST(req: NextRequest) {
     }
 
     const body = await req.json();
-    const registrationNumber = body.registrationNumber;
-    const validatedData = bikeSchema.parse(body);
+    const { registrationNumber, ...bikeData } = body;
+    const validatedData = bikeSchema.parse(bikeData);
 
     const bike = await BikeService.createBike({ ...validatedData, registrationNumber });
     return NextResponse.json({ success: true, data: bike }, { status: 201 });
   } catch (error: any) {
     if (error instanceof z.ZodError) {
-      return NextResponse.json({ success: false, errors: error.errors }, { status: 400 });
+      return NextResponse.json({ success: false, error: error.errors[0].message }, { status: 400 });
     }
     console.error('[Bikes POST API] Error:', error);
     return NextResponse.json({ success: false, error: 'An internal server error occurred' }, { status: 500 });

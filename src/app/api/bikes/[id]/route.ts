@@ -36,14 +36,14 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
     }
 
     const body = await req.json();
-    const registrationNumber = body.registrationNumber;
-    const validatedData = bikeSchema.partial().parse(body);
+    const { registrationNumber, ...bikeData } = body;
+    const validatedData = bikeSchema.partial().parse(bikeData);
 
     const bike = await BikeService.updateBike(params.id, { ...validatedData, registrationNumber });
     return NextResponse.json({ success: true, data: bike });
   } catch (error: any) {
     if (error instanceof z.ZodError) {
-      return NextResponse.json({ success: false, errors: error.errors }, { status: 400 });
+      return NextResponse.json({ success: false, error: error.errors[0].message }, { status: 400 });
     }
     console.error('[Bikes PUT API] Error:', error);
     return NextResponse.json({ success: false, error: 'An internal server error occurred' }, { status: 500 });
