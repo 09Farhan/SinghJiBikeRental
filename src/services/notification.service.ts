@@ -1,5 +1,6 @@
 import { prisma } from '@/lib/prisma';
 import { EmailProvider } from './providers/email.provider';
+import { WhatsAppProvider } from './providers/whatsapp.provider';
 
 export const NotificationService = {
   /**
@@ -26,13 +27,21 @@ export const NotificationService = {
       }
 
       try {
-        // Send emails concurrently to speed up the API response
-        const emailPromises = [EmailProvider.sendBookingEmail(booking)];
+        // Send emails and WhatsApp messages concurrently
+        const notificationPromises = [
+          EmailProvider.sendBookingEmail(booking),
+          WhatsAppProvider.sendAdminBookingNotification(booking)
+        ];
+        
         if (booking.customer?.email) {
-          emailPromises.push(EmailProvider.sendCustomerBookingEmail(booking));
+          notificationPromises.push(EmailProvider.sendCustomerBookingEmail(booking));
         }
         
-        await Promise.all(emailPromises);
+        if (booking.customer?.phone) {
+          notificationPromises.push(WhatsAppProvider.sendCustomerBookingNotification(booking));
+        }
+        
+        await Promise.allSettled(notificationPromises);
         
         await prisma.booking.update({
           where: { id: bookingId },
@@ -72,7 +81,12 @@ export const NotificationService = {
       }
 
       try {
-        const emailResult = await EmailProvider.sendLeadEmail(inquiry);
+        // Send emails and WhatsApp concurrently
+        await Promise.allSettled([
+          EmailProvider.sendLeadEmail(inquiry),
+          WhatsAppProvider.sendAdminLeadNotification(inquiry),
+          WhatsAppProvider.sendCustomerLeadNotification(inquiry)
+        ]);
         
         await prisma.contactInquiry.update({
           where: { id: inquiryId },
