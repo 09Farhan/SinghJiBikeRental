@@ -66,6 +66,7 @@ export default function BookingsTable({ bookings, onStatusChange, onDeleteBookin
                   )}
                 </div>
                 <div className="text-gray-500 text-xs">{booking.customer.email}</div>
+                <div className="text-gray-500 text-xs mt-0.5">{booking.customer.phone}</div>
               </td>
               <td className="px-6 py-4">
                 <div className="text-white text-sm">{booking.bikeUnit.bike.name}</div>
