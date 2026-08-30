@@ -169,7 +169,7 @@ export default function DelayedPopup() {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-gray-400 mb-1">Rental Date</label>
+                  <label className="block text-xs font-medium text-gray-400 mb-1">Rentals Date</label>
                   <input
                     type="date"
                     name="rentalDate"

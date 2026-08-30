@@ -16,22 +16,22 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Singh Ji\'s Bike Rental | Bike Rental in Siliguri',
-    template: '%s | Singh Ji\'s Bike Rental',
+    default: 'Singh Ji\'s Bike Rentals | Bike Rentals in Siliguri',
+    template: '%s | Singh Ji\'s Bike Rentals',
   },
-  description: 'Looking for a bike rental in Siliguri? Singh Ji\'s Bike Rental offers premium motorcycles and scooters on rent for local travel and Darjeeling/Sikkim trips. Book online!',
+  description: 'Looking for a bike rental in Siliguri? Singh Ji\'s Bike Rentals offers premium motorcycles and scooters on rent for local travel and Darjeeling/Sikkim trips. Book online!',
   keywords: ['bike rental in Siliguri', 'bike rental Siliguri', 'scooter rental Siliguri', 'bike rent in Siliguri', 'bike on rent in Siliguri', 'rent a bike in Siliguri', 'motorcycle rental Siliguri'],
   openGraph: {
     locale: 'en_IN',
     type: 'website',
-    siteName: 'Singh Ji\'s Bike Rental',
-    title: 'Singh Ji\'s Bike Rental | Bike Rental in Siliguri',
-    description: 'Looking for a bike rental in Siliguri? Singh Ji\'s Bike Rental offers premium motorcycles and scooters on rent for local travel and Darjeeling/Sikkim trips.',
+    siteName: 'Singh Ji\'s Bike Rentals',
+    title: 'Singh Ji\'s Bike Rentals | Bike Rentals in Siliguri',
+    description: 'Looking for a bike rental in Siliguri? Singh Ji\'s Bike Rentals offers premium motorcycles and scooters on rent for local travel and Darjeeling/Sikkim trips.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Singh Ji\'s Bike Rental | Bike Rental in Siliguri',
-    description: 'Looking for a bike rental in Siliguri? Singh Ji\'s Bike Rental offers premium motorcycles and scooters on rent for local travel and Darjeeling/Sikkim trips.',
+    title: 'Singh Ji\'s Bike Rentals | Bike Rentals in Siliguri',
+    description: 'Looking for a bike rental in Siliguri? Singh Ji\'s Bike Rentals offers premium motorcycles and scooters on rent for local travel and Darjeeling/Sikkim trips.',
   },
   robots: {
     index: true,
@@ -47,7 +47,7 @@ export default function RootLayout({
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': ['LocalBusiness', 'AutoRental'],
-    name: 'Singh Ji\'s Bike Rental',
+    name: 'Singh Ji\'s Bike Rentals',
     image: 'https://www.singhjibikerental.com/logo.png',
     '@id': 'https://www.singhjibikerental.com',
     url: 'https://www.singhjibikerental.com',

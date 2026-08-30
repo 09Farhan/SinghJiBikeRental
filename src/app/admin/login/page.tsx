@@ -45,7 +45,7 @@ export default function AdminLoginPage() {
         <Card className="bg-[#111827] border-gray-700/50 p-8 shadow-2xl">
           <div className="text-center mb-8">
             <h1 className="text-3xl font-bold text-white mb-2">Admin Login</h1>
-            <p className="text-gray-400">Singh Ji's Bike Rental</p>
+            <p className="text-gray-400">Singh Ji's Bike Rentals</p>
           </div>
           
           <form onSubmit={handleLogin} className="space-y-6">

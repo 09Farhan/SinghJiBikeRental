@@ -64,7 +64,7 @@ export default function BookingForm({
     <form onSubmit={handleSubmit} className="space-y-8 animate-fade-in">
       <div className="bg-[#111827] rounded-3xl p-6 md:p-8 border border-gray-700/50 space-y-6">
         <h3 className="text-xl font-heading font-semibold text-white border-b border-gray-800 pb-4">
-          1. Select Rental Dates
+          1. Select Rentals Dates
         </h3>
         <DateRangePicker 
           startDate={startDate}

@@ -13,7 +13,7 @@ export default function Footer() {
           <div className="flex flex-col gap-4">
             <Link href="/" className="flex items-center gap-1">
               <span className="text-amber-500 font-heading font-bold text-2xl">Singh Ji's</span>
-              <span className="text-gray-300 font-heading font-medium text-xl">Bike Rental</span>
+              <span className="text-gray-300 font-heading font-medium text-xl">Bike Rentals</span>
             </Link>
             <p className="text-gray-400 mt-2">
               Premium bike and scooter rentals in Siliguri for your ultimate adventure. Experience the thrill of the ride with our well-maintained fleet.
@@ -78,7 +78,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-gray-500 text-sm">
-            © {currentYear} Singh Ji's Bike Rental. All rights reserved.
+            © {currentYear} Singh Ji's Bike Rentals. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm text-gray-500">
             <Link href="/privacy" className="hover:text-gray-300">Privacy Policy</Link>

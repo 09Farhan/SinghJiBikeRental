@@ -3,7 +3,7 @@ import AdminLayoutWrapper from '@/components/layout/AdminLayoutWrapper';
 
 export const metadata: Metadata = {
   title: {
-    template: '%s | Admin - Singh Ji\'s Bike Rental',
+    template: '%s | Admin - Singh Ji\'s Bike Rentals',
     default: 'Admin Dashboard',
   },
 };

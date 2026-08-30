@@ -49,7 +49,7 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-1 z-50">
           <span className="text-amber-500 font-heading font-bold text-2xl">Singh Ji's</span>
-          <span className="text-gray-300 font-heading font-medium text-xl">Bike Rental</span>
+          <span className="text-gray-300 font-heading font-medium text-xl">Bike Rentals</span>
         </Link>
 
         {/* Desktop Nav */}

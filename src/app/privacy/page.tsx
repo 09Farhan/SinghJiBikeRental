@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Privacy Policy',
-  description: 'Privacy Policy for Singh Ji\'s Bike Rental in Siliguri. Learn how we collect, use, and protect your personal information.',
+  description: 'Privacy Policy for Singh Ji\'s Bike Rentals in Siliguri. Learn how we collect, use, and protect your personal information.',
 };
 
 export default function PrivacyPolicyPage() {
@@ -16,20 +16,20 @@ export default function PrivacyPolicyPage() {
         <div className="space-y-8 text-gray-300 font-body leading-relaxed">
           <section>
             <p className="mb-4">
-              Welcome to Singh Ji’s Bike Rental. We respect your privacy and are committed to protecting the personal information you provide while using our website and enquiring about our bike and scooter rental services in Siliguri, West Bengal.
+              Welcome to Singh Ji’s Bike Rentals. We respect your privacy and are committed to protecting the personal information you provide while using our website and enquiring about our bike and scooter rental services in Siliguri, West Bengal.
             </p>
             <p className="mb-4">
               This Privacy Policy explains what information we may collect, how we use it, how we protect it, and your choices regarding your personal information.
             </p>
             <p>
-              By using our website or contacting Singh Ji’s Bike Rental through our website, contact forms, phone, or WhatsApp, you acknowledge the practices described in this Privacy Policy.
+              By using our website or contacting Singh Ji’s Bike Rentals through our website, contact forms, phone, or WhatsApp, you acknowledge the practices described in this Privacy Policy.
             </p>
           </section>
 
           <section>
-            <h2 className="text-2xl font-heading font-semibold text-white mb-4">1. About Singh Ji’s Bike Rental</h2>
+            <h2 className="text-2xl font-heading font-semibold text-white mb-4">1. About Singh Ji’s Bike Rentals</h2>
             <p className="mb-4">
-              Singh Ji’s Bike Rental provides bike rental, motorcycle rental, scooter rental, and two-wheeler rental services in Siliguri, West Bengal.
+              Singh Ji’s Bike Rentals provides bike rental, motorcycle rental, scooter rental, and two-wheeler rental services in Siliguri, West Bengal.
             </p>
             <p>
               Our website is designed to provide information about our rental services, available vehicles, pricing, contact information, and booking or enquiry options.
@@ -81,7 +81,7 @@ export default function PrivacyPolicyPage() {
           <section>
             <h2 className="text-2xl font-heading font-semibold text-white mb-4">4. WhatsApp and Other Communication Services</h2>
             <p className="mb-4">
-              Our website may contain buttons or links that allow you to contact Singh Ji’s Bike Rental through WhatsApp.
+              Our website may contain buttons or links that allow you to contact Singh Ji’s Bike Rentals through WhatsApp.
             </p>
             <p className="mb-4">
               When you choose to contact us through WhatsApp, you leave our website and interact with WhatsApp’s services. Information that you send through WhatsApp may be processed according to WhatsApp’s applicable terms and privacy policies.
@@ -130,7 +130,7 @@ export default function PrivacyPolicyPage() {
           <section>
             <h2 className="text-2xl font-heading font-semibold text-white mb-4">7. Sharing of Information</h2>
             <p className="mb-4">
-              Singh Ji’s Bike Rental does not sell or rent your personal information to third parties.
+              Singh Ji’s Bike Rentals does not sell or rent your personal information to third parties.
             </p>
             <p className="mb-4">We may share information when reasonably necessary with:</p>
             <ul className="list-disc pl-6 space-y-2 mb-4">
@@ -218,7 +218,7 @@ export default function PrivacyPolicyPage() {
               If you have questions, concerns, or requests regarding this Privacy Policy or the way your personal information is handled, please contact:
             </p>
             <div className="bg-[#111827] p-6 rounded-xl border border-gray-800">
-              <p className="font-semibold text-white mb-2">Singh Ji’s Bike Rental</p>
+              <p className="font-semibold text-white mb-2">Singh Ji’s Bike Rentals</p>
               <p>Location: Siliguri, West Bengal, India</p>
               <p>Phone: +91 7365844003</p>
               <p>Email: <a href="mailto:singhjirental@gmail.com" className="text-amber-500 hover:underline">singhjirental@gmail.com</a></p>
@@ -234,7 +234,7 @@ export default function PrivacyPolicyPage() {
           <section className="text-sm pb-8">
             <h3 className="text-lg font-heading font-semibold text-white mb-3">About This Website</h3>
             <p className="mb-4">
-              Singh Ji’s Bike Rental is a local bike and scooter rental service in Siliguri, West Bengal. Customers can use this website to explore available rental services, enquire about bikes and scooters, check rental information, and contact us for booking assistance.
+              Singh Ji’s Bike Rentals is a local bike and scooter rental service in Siliguri, West Bengal. Customers can use this website to explore available rental services, enquire about bikes and scooters, check rental information, and contact us for booking assistance.
             </p>
             <p className="text-gray-500">
               <strong className="text-gray-400">Keywords:</strong> bike rental in Siliguri, bike rent in Siliguri, scooter rental in Siliguri, motorcycle rental Siliguri, two-wheeler rental Siliguri.

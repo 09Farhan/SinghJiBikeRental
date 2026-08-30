@@ -72,7 +72,7 @@ export default async function BikeDetailPage({ params }: { params: { slug: strin
             </div>
 
             <div className="mb-8 p-6 bg-[#111827] shadow-neu rounded-3xl border border-gray-800 flex flex-col gap-2">
-              <p className="text-gray-400 text-sm uppercase tracking-wider">Rental Price</p>
+              <p className="text-gray-400 text-sm uppercase tracking-wider">Rentals Price</p>
               <div className="flex items-baseline gap-2">
                 <span className="text-4xl font-bold text-amber-400">{formatCurrency(bike.pricePerDay)}</span>
                 <span className="text-gray-500">/ day</span>
@@ -115,9 +115,9 @@ export default async function BikeDetailPage({ params }: { params: { slug: strin
           <BikeSpecs bike={bike} />
         </div>
 
-        {/* Rental Terms (Hardcoded for demo) */}
+        {/* Rentals Terms (Hardcoded for demo) */}
         <div className="mb-16 bg-[#111827] shadow-neu rounded-3xl p-8 border border-gray-800">
-           <h3 className="text-xl font-heading font-semibold text-white mb-6">Rental Terms & Conditions</h3>
+           <h3 className="text-xl font-heading font-semibold text-white mb-6">Rentals Terms & Conditions</h3>
            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-gray-400">
               <ul className="space-y-3 list-disc list-inside">
                 <li>Valid driving license is mandatory for all rentals.</li>

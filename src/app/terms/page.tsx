@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Terms of Service',
-  description: 'Terms and Conditions for Singh Ji\'s Bike Rental in Siliguri. Read our policies regarding bike rentals, bookings, and customer responsibilities.',
+  description: 'Terms and Conditions for Singh Ji\'s Bike Rentals in Siliguri. Read our policies regarding bike rentals, bookings, and customer responsibilities.',
 };
 
 export default function TermsOfServicePage() {
@@ -16,10 +16,10 @@ export default function TermsOfServicePage() {
         <div className="space-y-8 text-gray-300 font-body leading-relaxed">
           <section>
             <p className="mb-4">
-              Welcome to Singh Ji’s Bike Rental, a bike and scooter rental service in Siliguri, West Bengal. These Terms & Conditions govern your use of our website and your interaction with our bike, motorcycle, scooter, and two-wheeler rental services.
+              Welcome to Singh Ji’s Bike Rentals, a bike and scooter rental service in Siliguri, West Bengal. These Terms & Conditions govern your use of our website and your interaction with our bike, motorcycle, scooter, and two-wheeler rental services.
             </p>
             <p className="mb-4">
-              By using this website, contacting us, making a booking, or renting a vehicle from Singh Ji’s Bike Rental, you agree to comply with these Terms & Conditions.
+              By using this website, contacting us, making a booking, or renting a vehicle from Singh Ji’s Bike Rentals, you agree to comply with these Terms & Conditions.
             </p>
             <p>
               Please read them carefully before making a rental booking.
@@ -29,7 +29,7 @@ export default function TermsOfServicePage() {
           <section>
             <h2 className="text-2xl font-heading font-semibold text-white mb-4">1. About Our Services</h2>
             <p className="mb-4">
-              Singh Ji’s Bike Rental provides bike rental and scooter rental services in Siliguri, West Bengal.
+              Singh Ji’s Bike Rentals provides bike rental and scooter rental services in Siliguri, West Bengal.
             </p>
             <p className="mb-4">
               Information displayed on the website may include vehicle details, photographs, rental prices, availability, service information, and contact options.
@@ -53,7 +53,7 @@ export default function TermsOfServicePage() {
               <li>Comply with applicable traffic and motor vehicle laws</li>
             </ul>
             <p>
-              Singh Ji’s Bike Rental may request additional documentation where reasonably necessary for verification or rental purposes.
+              Singh Ji’s Bike Rentals may request additional documentation where reasonably necessary for verification or rental purposes.
             </p>
           </section>
 
@@ -63,13 +63,13 @@ export default function TermsOfServicePage() {
               A booking enquiry does not automatically guarantee vehicle availability.
             </p>
             <p className="mb-4">
-              A rental is considered confirmed only after Singh Ji’s Bike Rental has confirmed the booking and agreed to the applicable rental terms, price, vehicle, and rental period.
+              A rental is considered confirmed only after Singh Ji’s Bike Rentals has confirmed the booking and agreed to the applicable rental terms, price, vehicle, and rental period.
             </p>
             <p className="mb-4">Customers should provide accurate information regarding:</p>
             <ul className="list-disc pl-6 space-y-2 mb-4">
               <li>Name</li>
               <li>Contact information</li>
-              <li>Rental dates</li>
+              <li>Rentals dates</li>
               <li>Preferred vehicle</li>
               <li>Pickup and return requirements</li>
             </ul>
@@ -79,9 +79,9 @@ export default function TermsOfServicePage() {
           </section>
 
           <section>
-            <h2 className="text-2xl font-heading font-semibold text-white mb-4">4. Rental Charges</h2>
+            <h2 className="text-2xl font-heading font-semibold text-white mb-4">4. Rentals Charges</h2>
             <p className="mb-4">
-              Rental charges depend on the vehicle and rental period.
+              Rentals charges depend on the vehicle and rental period.
             </p>
             <p className="mb-4">
               The applicable rental price will be communicated to the customer before confirmation of the rental.
@@ -181,7 +181,7 @@ export default function TermsOfServicePage() {
           <section>
             <h2 className="text-2xl font-heading font-semibold text-white mb-4">10. Vehicle Condition</h2>
             <p className="mb-4">
-              The customer should inspect the vehicle before accepting it and report any existing damage or issue to Singh Ji’s Bike Rental before starting the rental.
+              The customer should inspect the vehicle before accepting it and report any existing damage or issue to Singh Ji’s Bike Rentals before starting the rental.
             </p>
             <p className="mb-4">
               Customers may be responsible for damage caused during their rental period, subject to the applicable rental agreement and applicable law.
@@ -193,7 +193,7 @@ export default function TermsOfServicePage() {
 
           <section>
             <h2 className="text-2xl font-heading font-semibold text-white mb-4">11. Accidents, Damage, Breakdown and Theft</h2>
-            <p className="mb-4">Customers must immediately contact Singh Ji’s Bike Rental if:</p>
+            <p className="mb-4">Customers must immediately contact Singh Ji’s Bike Rentals if:</p>
             <ul className="list-disc pl-6 space-y-2 mb-4">
               <li>An accident occurs</li>
               <li>The vehicle is damaged</li>
@@ -230,9 +230,9 @@ export default function TermsOfServicePage() {
           </section>
 
           <section>
-            <h2 className="text-2xl font-heading font-semibold text-white mb-4">14. Rental Period and Late Returns</h2>
+            <h2 className="text-2xl font-heading font-semibold text-white mb-4">14. Rentals Period and Late Returns</h2>
             <p className="mb-4">
-              The rental period begins and ends according to the time agreed between the customer and Singh Ji’s Bike Rental.
+              The rental period begins and ends according to the time agreed between the customer and Singh Ji’s Bike Rentals.
             </p>
             <p className="mb-4">
               Customers should return the vehicle on time.
@@ -257,7 +257,7 @@ export default function TermsOfServicePage() {
               Any refund will be processed according to the applicable cancellation/refund policy.
             </p>
             <p>
-              For bookings affected by vehicle availability, operational issues, unforeseen circumstances, or other exceptional situations, Singh Ji’s Bike Rental may offer an alternative vehicle, alternative date, refund, or other appropriate resolution where applicable.
+              For bookings affected by vehicle availability, operational issues, unforeseen circumstances, or other exceptional situations, Singh Ji’s Bike Rentals may offer an alternative vehicle, alternative date, refund, or other appropriate resolution where applicable.
             </p>
           </section>
 
@@ -277,7 +277,7 @@ export default function TermsOfServicePage() {
           <section>
             <h2 className="text-2xl font-heading font-semibold text-white mb-4">17. Travel Outside Siliguri</h2>
             <p className="mb-4">
-              Customers who intend to travel outside Siliguri, including destinations such as Darjeeling, Kalimpong, Kurseong, or Sikkim, should confirm permission and applicable rental conditions with Singh Ji’s Bike Rental before starting the journey.
+              Customers who intend to travel outside Siliguri, including destinations such as Darjeeling, Kalimpong, Kurseong, or Sikkim, should confirm permission and applicable rental conditions with Singh Ji’s Bike Rentals before starting the journey.
             </p>
             <p className="mb-4">
               Travel restrictions may apply depending on the vehicle, route, local regulations, permits, weather, road conditions, or rental agreement.
@@ -322,7 +322,7 @@ export default function TermsOfServicePage() {
               Our website may contain links or integrations with third-party services such as WhatsApp, Google Maps, payment services, social media platforms, or other external websites.
             </p>
             <p className="mb-4">
-              Singh Ji’s Bike Rental is not responsible for the availability, content, privacy practices, or terms of third-party services.
+              Singh Ji’s Bike Rentals is not responsible for the availability, content, privacy practices, or terms of third-party services.
             </p>
             <p>
               Customers should review the relevant third-party terms before using those services.
@@ -332,7 +332,7 @@ export default function TermsOfServicePage() {
           <section>
             <h2 className="text-2xl font-heading font-semibold text-white mb-4">21. Limitation of Liability</h2>
             <p className="mb-4">
-              To the extent permitted by applicable law, Singh Ji’s Bike Rental will not be responsible for losses or damages arising from circumstances outside our reasonable control.
+              To the extent permitted by applicable law, Singh Ji’s Bike Rentals will not be responsible for losses or damages arising from circumstances outside our reasonable control.
             </p>
             <p className="mb-4">
               Nothing in these Terms & Conditions is intended to exclude or limit any liability that cannot legally be excluded or limited under applicable law.
@@ -345,7 +345,7 @@ export default function TermsOfServicePage() {
           <section>
             <h2 className="text-2xl font-heading font-semibold text-white mb-4">22. Changes to Services and Terms</h2>
             <p className="mb-4">
-              Singh Ji’s Bike Rental may update its services, prices, vehicle availability, website content, and these Terms & Conditions from time to time.
+              Singh Ji’s Bike Rentals may update its services, prices, vehicle availability, website content, and these Terms & Conditions from time to time.
             </p>
             <p>
               The latest version published on this website will apply to future website use and bookings, subject to applicable law and any specific rental agreement already entered into.
@@ -363,12 +363,12 @@ export default function TermsOfServicePage() {
           </section>
 
           <section>
-            <h2 className="text-2xl font-heading font-semibold text-white mb-4">24. Contact Singh Ji’s Bike Rental</h2>
+            <h2 className="text-2xl font-heading font-semibold text-white mb-4">24. Contact Singh Ji’s Bike Rentals</h2>
             <p className="mb-4">
               For questions regarding these Terms & Conditions, bookings, bike rental, scooter rental, or other services, please contact:
             </p>
             <div className="bg-[#111827] p-6 rounded-xl border border-gray-800">
-              <p className="font-semibold text-white mb-2">Singh Ji’s Bike Rental</p>
+              <p className="font-semibold text-white mb-2">Singh Ji’s Bike Rentals</p>
               <p>Location: Siliguri, West Bengal, India</p>
               <p>Phone: +91 7365844003</p>
               <p>Email: <a href="mailto:singhjirental@gmail.com" className="text-amber-500 hover:underline">singhjirental@gmail.com</a></p>
@@ -379,12 +379,12 @@ export default function TermsOfServicePage() {
           <hr className="border-gray-800 my-12" />
 
           <section className="text-sm pb-8">
-            <h3 className="text-lg font-heading font-semibold text-white mb-3">Bike Rental in Siliguri</h3>
+            <h3 className="text-lg font-heading font-semibold text-white mb-3">Bike Rentals in Siliguri</h3>
             <p className="mb-4">
-              Singh Ji’s Bike Rental provides convenient bike rental in Siliguri and scooter rental in Siliguri for local customers, tourists, and visitors looking for two-wheeler rental services.
+              Singh Ji’s Bike Rentals provides convenient bike rental in Siliguri and scooter rental in Siliguri for local customers, tourists, and visitors looking for two-wheeler rental services.
             </p>
             <p className="mb-4">
-              Customers can contact Singh Ji’s Bike Rental to enquire about available bikes and scooters, rental periods, pricing, pickup and return arrangements, and travel requirements.
+              Customers can contact Singh Ji’s Bike Rentals to enquire about available bikes and scooters, rental periods, pricing, pickup and return arrangements, and travel requirements.
             </p>
             <p className="text-gray-500">
               For availability and current rental terms, please contact us directly before making your booking.

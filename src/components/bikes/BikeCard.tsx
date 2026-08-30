@@ -20,7 +20,7 @@ export default function BikeCard({ bike, index = 0 }: BikeCardProps) {
         {bike.images?.[0] ? (
           <Image 
             src={bike.images[0]} 
-            alt={`${bike.name} - Bike Rental in Siliguri`}
+            alt={`${bike.name} - Bike Rentals in Siliguri`}
             fill 
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             className="object-cover group-hover:scale-110 transition-transform duration-500"

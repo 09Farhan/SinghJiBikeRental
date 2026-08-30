@@ -11,14 +11,14 @@ import { FAQS as faqs } from '@/lib/constants';
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
-  title: "Singh Ji's Bike Rental | Bike Rental in Siliguri",
-  description: "Looking for a bike rental in Siliguri? Singh Ji's Bike Rental offers premium motorcycles and scooters on rent for local travel and Darjeeling/Sikkim trips. Book online!",
+  title: "Singh Ji's Bike Rentals | Bike Rentals in Siliguri",
+  description: "Looking for a bike rental in Siliguri? Singh Ji's Bike Rentals offers premium motorcycles and scooters on rent for local travel and Darjeeling/Sikkim trips. Book online!",
   keywords: "bike rental Siliguri, scooter rental Siliguri, rent a bike in Siliguri, bike rent in Siliguri, two wheeler rental Siliguri, bike rental near NJP, bike rental Bagdogra",
   openGraph: {
-    title: "Singh Ji's Bike Rental | Bike Rental in Siliguri",
-    description: "Looking for a bike rental in Siliguri? Singh Ji's Bike Rental offers premium motorcycles and scooters on rent for local travel and Darjeeling/Sikkim trips.",
+    title: "Singh Ji's Bike Rentals | Bike Rentals in Siliguri",
+    description: "Looking for a bike rental in Siliguri? Singh Ji's Bike Rentals offers premium motorcycles and scooters on rent for local travel and Darjeeling/Sikkim trips.",
     url: 'https://singhjibikes.com',
-    siteName: "Singh Ji's Bike Rental",
+    siteName: "Singh Ji's Bike Rentals",
     locale: 'en_IN',
     type: 'website',
   },
@@ -42,10 +42,10 @@ export default function HomePage() {
   const rentalServiceSchema = {
     '@context': 'https://schema.org',
     '@type': 'Service',
-    serviceType: 'Vehicle Rental',
+    serviceType: 'Vehicle Rentals',
     provider: {
       '@type': 'LocalBusiness',
-      name: "Singh Ji's Bike Rental",
+      name: "Singh Ji's Bike Rentals",
       address: {
         '@type': 'PostalAddress',
         addressLocality: 'Siliguri',

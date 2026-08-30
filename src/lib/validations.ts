@@ -20,7 +20,7 @@ export const contactSchema = z.object({
   message: z.string().max(2000, 'Message is too long').optional(),
   preferredBike: z.string().max(100, 'Preferred bike is too long').optional(),
   pickupLocation: z.string().max(200, 'Pickup location is too long').optional(),
-  rentalDate: z.string().max(50, 'Rental date is too long').optional(),
+  rentalDate: z.string().max(50, 'Rentals date is too long').optional(),
   source: z.string().max(50).default('CONTACT_FORM'),
 }).strict();
 

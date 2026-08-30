@@ -1,4 +1,4 @@
-export const SITE_NAME = "Singh Ji's Bike Rental";
+export const SITE_NAME = "Singh Ji's Bike Rentals";
 export const SITE_DESCRIPTION = 'Premium bike and scooter rentals in Siliguri, West Bengal. Quality rides for your everyday commute and weekend getaways.';
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
 export const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP || '+917365844003';
@@ -32,7 +32,7 @@ export const ADMIN_NAV_LINKS = [
 export const FAQS = [
   {
     q: 'Where can I rent a bike in Siliguri?',
-    a: 'You can easily rent a bike or scooter in Siliguri at Singh Ji\'s Bike Rental. We offer a wide range of premium motorcycles and scooters with doorstep delivery options across Siliguri, including NJP Railway Station and Bagdogra Airport.'
+    a: 'You can easily rent a bike or scooter in Siliguri at Singh Ji\'s Bike Rentals. We offer a wide range of premium motorcycles and scooters with doorstep delivery options across Siliguri, including NJP Railway Station and Bagdogra Airport.'
   },
   {
     q: 'Can I rent a bike near NJP Railway Station or Bagdogra Airport?',

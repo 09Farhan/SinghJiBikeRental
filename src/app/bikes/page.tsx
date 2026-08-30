@@ -5,7 +5,7 @@ import { BikeService } from '@/services/bike.service';
 
 export const metadata: Metadata = {
   title: 'Our Fleet - Premium Bikes & Scooters for Rent',
-  description: 'Browse our premium fleet of motorcycles and scooters. Book your perfect ride with Singh Ji\'s Bike Rental.',
+  description: 'Browse our premium fleet of motorcycles and scooters. Book your perfect ride with Singh Ji\'s Bike Rentals.',
 };
 // Force dynamic to always fetch fresh bikes from DB
 export const dynamic = 'force-dynamic';

@@ -31,7 +31,7 @@ export default function BikeGallery({ images, bikeName }: BikeGalleryProps) {
         {hasImages ? (
           <Image 
             src={images[selectedIndex]} 
-            alt={`${bikeName} Rental in Siliguri - Image ${selectedIndex + 1}`}
+            alt={`${bikeName} Rentals in Siliguri - Image ${selectedIndex + 1}`}
             fill 
             sizes="(max-width: 768px) 100vw, 50vw" 
             className="object-cover" 

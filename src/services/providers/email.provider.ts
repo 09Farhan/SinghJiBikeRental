@@ -29,7 +29,7 @@ export const EmailProvider = {
     const html = `
       <div style="font-family: Arial, sans-serif; max-w-md: 600px; margin: 0 auto; color: #333;">
         <h2 style="color: #d97706;">New Booking Request - ${bike?.brand} ${bike?.name}</h2>
-        <p>A new booking request has been submitted on Singh Ji's Bike Rental.</p>
+        <p>A new booking request has been submitted on Singh Ji's Bike Rentals.</p>
         
         <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
           <tr><td style="padding: 8px; border-bottom: 1px solid #eee;"><strong>Booking ID:</strong></td><td style="padding: 8px; border-bottom: 1px solid #eee;">${id}</td></tr>
@@ -52,7 +52,7 @@ export const EmailProvider = {
 
     try {
       const info = await transporter.sendMail({
-        from: `"Singh Ji's Bike Rental" <${fromEmail}>`,
+        from: `"Singh Ji's Bike Rentals" <${fromEmail}>`,
         to: adminEmails.join(', '),
         replyTo: customer?.email,
         subject: `New Bike Booking Request - ${bike?.name} - ${new Date(startDate).toLocaleDateString()}`,
@@ -75,7 +75,7 @@ export const EmailProvider = {
     const html = `
       <div style="font-family: Arial, sans-serif; max-w-md: 600px; margin: 0 auto; color: #333;">
         <h2 style="color: #2563eb;">Booking Received, ${customer?.name.split(' ')[0]}!</h2>
-        <p>Thank you for choosing Singh Ji's Bike Rental. We have received your booking request.</p>
+        <p>Thank you for choosing Singh Ji's Bike Rentals. We have received your booking request.</p>
         
         <div style="background-color: #f8fafc; padding: 15px; border-radius: 8px; margin: 20px 0;">
           <h3 style="margin-top: 0; color: #1e293b;">Booking Summary</h3>
@@ -90,16 +90,16 @@ export const EmailProvider = {
         
         <p style="margin-top: 30px;">
           Best Regards,<br>
-          <strong>Singh Ji's Bike Rental Team</strong>
+          <strong>Singh Ji's Bike Rentals Team</strong>
         </p>
       </div>
     `;
 
     try {
       const info = await transporter.sendMail({
-        from: `"Singh Ji's Bike Rental" <${fromEmail}>`,
+        from: `"Singh Ji's Bike Rentals" <${fromEmail}>`,
         to: customer.email,
-        subject: `Your Booking Request is Received - Singh Ji's Bike Rental`,
+        subject: `Your Booking Request is Received - Singh Ji's Bike Rentals`,
         html,
       });
       return info;
@@ -127,7 +127,7 @@ export const EmailProvider = {
           <tr><td style="padding: 8px; border-bottom: 1px solid #eee;"><strong>Phone:</strong></td><td style="padding: 8px; border-bottom: 1px solid #eee;">${inquiry.phone}</td></tr>
           ${inquiry.preferredBike ? `<tr><td style="padding: 8px; border-bottom: 1px solid #eee;"><strong>Preferred Vehicle:</strong></td><td style="padding: 8px; border-bottom: 1px solid #eee;">${inquiry.preferredBike}</td></tr>` : ''}
           ${inquiry.pickupLocation ? `<tr><td style="padding: 8px; border-bottom: 1px solid #eee;"><strong>Pickup Location:</strong></td><td style="padding: 8px; border-bottom: 1px solid #eee;">${inquiry.pickupLocation}</td></tr>` : ''}
-          ${inquiry.rentalDate ? `<tr><td style="padding: 8px; border-bottom: 1px solid #eee;"><strong>Rental Date:</strong></td><td style="padding: 8px; border-bottom: 1px solid #eee;">${inquiry.rentalDate}</td></tr>` : ''}
+          ${inquiry.rentalDate ? `<tr><td style="padding: 8px; border-bottom: 1px solid #eee;"><strong>Rentals Date:</strong></td><td style="padding: 8px; border-bottom: 1px solid #eee;">${inquiry.rentalDate}</td></tr>` : ''}
           ${inquiry.message ? `<tr><td style="padding: 8px; border-bottom: 1px solid #eee;"><strong>Message:</strong></td><td style="padding: 8px; border-bottom: 1px solid #eee;">${inquiry.message}</td></tr>` : ''}
           <tr><td style="padding: 8px; border-bottom: 1px solid #eee;"><strong>Source:</strong></td><td style="padding: 8px; border-bottom: 1px solid #eee;">${inquiry.source}</td></tr>
         </table>
@@ -140,7 +140,7 @@ export const EmailProvider = {
 
     try {
       const info = await transporter.sendMail({
-        from: `"Singh Ji's Bike Rental" <${fromEmail}>`,
+        from: `"Singh Ji's Bike Rentals" <${fromEmail}>`,
         to: adminEmails.join(', '),
         replyTo: inquiry.email,
         subject: `${title} - ${inquiry.name}`,

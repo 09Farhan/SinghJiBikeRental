@@ -61,7 +61,7 @@ export default function BookingSummary({
         </div>
 
         <div className="flex justify-between items-center text-gray-400 text-sm">
-          <span>Rental Duration</span>
+          <span>Rentals Duration</span>
           <span className="text-white font-medium">{totalDays} {totalDays === 1 ? 'Day' : 'Days'}</span>
         </div>
 

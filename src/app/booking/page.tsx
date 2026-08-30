@@ -51,7 +51,7 @@ function BookingContent({ initialBike }: { initialBike: any }) {
         </div>
         <h2 className="text-4xl font-heading font-bold text-white mb-4">Booking Confirmed!</h2>
         <p className="text-gray-400 text-lg mb-8">
-          Thank you for choosing Singh Ji's Bike Rental. We have sent the booking details to your email.
+          Thank you for choosing Singh Ji's Bike Rentals. We have sent the booking details to your email.
         </p>
         <div className="bg-[#111827] border border-gray-700/50 rounded-2xl p-6 mb-8 text-left">
            <h4 className="text-white font-medium mb-2 border-b border-gray-700 pb-2">Next Steps</h4>
