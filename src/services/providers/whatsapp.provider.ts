@@ -58,23 +58,32 @@ export const WhatsAppProvider = {
     const adminPhones = process.env.ADMIN_WHATSAPP_NUMBER;
     if (!adminPhones) return;
 
-    const message = `*🚨 New Booking Alert!*\n\n` +
-      `*Customer:* ${booking.customer.name}\n` +
-      `*Phone:* ${booking.customer.phone}\n` +
-      `*Vehicle:* ${booking.bikeUnit.bike.name} (${booking.bikeUnit.registrationNumber})\n` +
-      `*Dates:* ${new Date(booking.startDate).toLocaleDateString()} to ${new Date(booking.endDate).toLocaleDateString()}\n` +
-      `*Total:* ₹${booking.totalAmount}\n\n` +
-      `Please check the admin dashboard for more details.`;
-
     const phones = adminPhones.split(',').map(p => p.trim()).filter(Boolean);
     
-    // Send to all admin numbers concurrently
+    // Send to all admin numbers concurrently using a template
     await Promise.allSettled(
       phones.map(phone => 
         this.sendMessage({
           to: this.formatPhoneNumber(phone),
-          type: 'text',
-          text: { body: message }
+          type: 'template',
+          template: {
+            name: 'admin_booking_alert',
+            language: { code: 'en' },
+            components: [
+              {
+                type: 'body',
+                parameters: [
+                  { type: 'text', text: booking.customer.name },
+                  { type: 'text', text: booking.customer.phone },
+                  { type: 'text', text: booking.bikeUnit.bike.name },
+                  { type: 'text', text: booking.bikeUnit.registrationNumber },
+                  { type: 'text', text: new Date(booking.startDate).toLocaleDateString() },
+                  { type: 'text', text: new Date(booking.endDate).toLocaleDateString() },
+                  { type: 'text', text: booking.totalAmount.toString() }
+                ]
+              }
+            ]
+          }
         })
       )
     );
@@ -84,22 +93,30 @@ export const WhatsAppProvider = {
     const adminPhones = process.env.ADMIN_WHATSAPP_NUMBER;
     if (!adminPhones) return;
 
-    const message = `*📥 New Contact Inquiry!*\n\n` +
-      `*Name:* ${inquiry.name}\n` +
-      `*Phone:* ${inquiry.phone}\n` +
-      `*Email:* ${inquiry.email}\n` +
-      (inquiry.preferredBike ? `*Interested In:* ${inquiry.preferredBike}\n` : '') +
-      `*Message:* ${inquiry.message || 'No message provided'}`;
-
     const phones = adminPhones.split(',').map(p => p.trim()).filter(Boolean);
     
-    // Send to all admin numbers concurrently
+    // Send to all admin numbers concurrently using a template
     await Promise.allSettled(
       phones.map(phone => 
         this.sendMessage({
           to: this.formatPhoneNumber(phone),
-          type: 'text',
-          text: { body: message }
+          type: 'template',
+          template: {
+            name: 'admin_lead_alert',
+            language: { code: 'en' },
+            components: [
+              {
+                type: 'body',
+                parameters: [
+                  { type: 'text', text: inquiry.name },
+                  { type: 'text', text: inquiry.phone },
+                  { type: 'text', text: inquiry.email },
+                  { type: 'text', text: inquiry.preferredBike || 'Not specified' },
+                  { type: 'text', text: inquiry.message || 'No message provided' }
+                ]
+              }
+            ]
+          }
         })
       )
     );
