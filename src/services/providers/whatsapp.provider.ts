@@ -55,8 +55,8 @@ export const WhatsAppProvider = {
   // ----------------------------------------------------------------------
 
   async sendAdminBookingNotification(booking: any) {
-    const adminPhone = process.env.ADMIN_WHATSAPP_NUMBER;
-    if (!adminPhone) return;
+    const adminPhones = process.env.ADMIN_WHATSAPP_NUMBER;
+    if (!adminPhones) return;
 
     const message = `*🚨 New Booking Alert!*\n\n` +
       `*Customer:* ${booking.customer.name}\n` +
@@ -66,16 +66,23 @@ export const WhatsAppProvider = {
       `*Total:* ₹${booking.totalAmount}\n\n` +
       `Please check the admin dashboard for more details.`;
 
-    await this.sendMessage({
-      to: this.formatPhoneNumber(adminPhone),
-      type: 'text',
-      text: { body: message }
-    });
+    const phones = adminPhones.split(',').map(p => p.trim()).filter(Boolean);
+    
+    // Send to all admin numbers concurrently
+    await Promise.allSettled(
+      phones.map(phone => 
+        this.sendMessage({
+          to: this.formatPhoneNumber(phone),
+          type: 'text',
+          text: { body: message }
+        })
+      )
+    );
   },
 
   async sendAdminLeadNotification(inquiry: any) {
-    const adminPhone = process.env.ADMIN_WHATSAPP_NUMBER;
-    if (!adminPhone) return;
+    const adminPhones = process.env.ADMIN_WHATSAPP_NUMBER;
+    if (!adminPhones) return;
 
     const message = `*📥 New Contact Inquiry!*\n\n` +
       `*Name:* ${inquiry.name}\n` +
@@ -84,11 +91,18 @@ export const WhatsAppProvider = {
       (inquiry.preferredBike ? `*Interested In:* ${inquiry.preferredBike}\n` : '') +
       `*Message:* ${inquiry.message || 'No message provided'}`;
 
-    await this.sendMessage({
-      to: this.formatPhoneNumber(adminPhone),
-      type: 'text',
-      text: { body: message }
-    });
+    const phones = adminPhones.split(',').map(p => p.trim()).filter(Boolean);
+    
+    // Send to all admin numbers concurrently
+    await Promise.allSettled(
+      phones.map(phone => 
+        this.sendMessage({
+          to: this.formatPhoneNumber(phone),
+          type: 'text',
+          text: { body: message }
+        })
+      )
+    );
   },
 
   // ----------------------------------------------------------------------
