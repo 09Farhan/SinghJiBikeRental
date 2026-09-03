@@ -68,7 +68,7 @@ export const WhatsAppProvider = {
           type: 'template',
           template: {
             name: 'admin_booking_alert',
-            language: { code: 'en_US' },
+            language: { code: 'en' },
             components: [
               {
                 type: 'body',
@@ -103,7 +103,7 @@ export const WhatsAppProvider = {
           type: 'template',
           template: {
             name: 'admin_lead_alert',
-            language: { code: 'en_US' },
+            language: { code: 'en' },
             components: [
               {
                 type: 'body',
@@ -136,7 +136,7 @@ export const WhatsAppProvider = {
       type: 'template',
       template: {
         name: templateName,
-        language: { code: 'en_US' },
+        language: { code: 'en' },
         components: [
           {
             type: 'body',
@@ -162,7 +162,7 @@ export const WhatsAppProvider = {
       type: 'template',
       template: {
         name: templateName,
-        language: { code: 'en_US' },
+        language: { code: 'en' },
         components: [
           {
             type: 'body',
