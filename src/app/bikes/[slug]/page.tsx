@@ -152,7 +152,7 @@ export default async function BikeDetailPage({ params }: { params: { slug: strin
             },
             "offers": {
               "@type": "Offer",
-              "url": `https://singhjibikerental.com/bikes/${bike.slug}`,
+              "url": `https://singhjibikerentals.com/bikes/${bike.slug}`,
               "priceCurrency": "INR",
               "price": bike.pricePerDay,
               "availability": (bike.availableUnits || 0) > 0 ? "https://schema.org/InStock" : "https://schema.org/OutOfStock"
